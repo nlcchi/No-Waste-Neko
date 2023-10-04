@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Page</title>
+
+    <!-- Font API -->
+    <link href='https://fonts.googleapis.com/css?family=Space Mono' rel='stylesheet'>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+    <style>
+        body{
+            background: url('proj_pics/kitchen\ background.png') no-repeat center center fixed; 
+            background-size: cover;
+            font-family: 'Space Mono';font-size: 22px;
+
+        }
+
+        #logo{
+            width:200px;
+            height:150px
+        }
+
+        #cat{
+            position:fixed;
+            bottom:0;
+            right:0
+        }
+        .container{
+            background-color:rgb(245,215,190) ;
+        }
+        #name{
+            background-color:rgb(184,111,80);
+        }
+        .info{
+            border: 3px solid rgb(184,111,80);
+            background-color:beige
+
+        }
+
+        
+    </style>
+  </head>
+
+  
+  <body>
+    <div class="row mt-3">
+        <div class="col text-start mx-3">
+            <img id="logo" src="proj_pics/logo.jpg" class="text-start" alt="">
+        </div>
+        <div class="col text-end mx-3">
+            <a type="button" class=" btn btn-lg bg-light text-dark" href="homepage.html">Home</a>
+        </div>
+    </div>
+
+    <!-- User profile info -->
+    <div class="container d-block mx-auto mt-3 border border-danger h-75">
+
+        <!-- need to get the correct cat pix -->
+        <img src="proj_pics/cat.png" class="mx-auto d-block" alt="">
+        <h3 id="name" class="rounded-pill w-50 d-block mx-auto text-center text-light">Sophie Montalban</h3>
+
+        <div class="row d-flex">
+            <div class="col info h-75">
+                <ul><h3>Dietary Requirements:</h3>
+                    <li> Req 1</li>
+                    <li> Req 2</li>
+                    <li> Req 3</li>
+                
+                </ul>
+
+            </div>
+            <div class="col info h-75">
+                <ul><h3>Personal preferences:</h3>
+                    <li> Req 1</li>
+                    <li> Req 2</li>
+                    <li> Req 3</li>
+                </ul>
+            </div>
+        </div>
+        <button type="button" class="btn btn-light btn-lg mt-3 mx-auto d-flex">Edit</button>
+    </div>
+
+
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
