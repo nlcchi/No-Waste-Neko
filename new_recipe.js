@@ -8,7 +8,7 @@ window.addEventListener('load', (event) => {
     ingredients += 'chicken,carrot'; //to be changed when game is done
     console.log(ingredients);
 
-    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=ba6c0db4041042189779e7d7311402ae&number=9' + ingredients;
+    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=ba6c0db4041042189779e7d7311402ae&number=21' + ingredients;
 
     shown_recipes_row = document.getElementById('recipes-row');
 
