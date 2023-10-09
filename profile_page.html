@@ -82,7 +82,53 @@
                 </ul>
             </div>
         </div>
-        <button type="button" class="btn btn-light btn-lg mt-3 mx-auto d-flex">Edit</button>
+        <button type="button" class="btn btn-light btn-lg mt-3 mx-auto d-flex" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
+
+        <!-- Modal pop-up to edit preferences-->
+      
+        <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center" id="exampleModalLabel">Add New Item</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <form id="addItemForm">
+                        <div class="mb-3">
+                            <label for="input1" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="input1" placeholder="Enter Input 1">
+                            <button type="button" data-input="input1" class="btn btn-light captureImageBtn">Capture Image</button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input2" class="form-label">Expiration Date</label>
+                            <input type="text" class="form-control" id="input2" placeholder="Enter Input 2">
+                            <button type="button" data-input="input2" class="btn btn-light captureImageBtn">Capture Image</button>
+                        </div>
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="exampleSelect" class="form-label">Product Category</label>
+                            <select class="form-select" id="exampleSelect">
+                              <option value="drink">Drink</option>
+                              <option value="fresh">Fresh</option>
+                              <option value="frozen">Frozen</option>
+                            </select>
+                          </div>
+                    </div>
+                    <!-- Add more form inputs as needed -->
+                    
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
     </div>
 
 
