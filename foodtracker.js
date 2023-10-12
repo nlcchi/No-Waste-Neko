@@ -1,7 +1,5 @@
 // to be changed after creating API and db
 var ingredients = [{"Name": "chicken", "Category": "Meat", "Exp": "2023-10-23"}, {"Name": "carrot", "Category": "Vegetable", "Exp": "2023-10-26"}, {"Name": "tomato", "Category": "Vegetable", "Exp": "2023-10-15"}, {"Name": "cabbage", "Category": "Vegetable", "Exp": "2023-10-10"}];
-var expired = [];
-var expiring = [];
 
 var displayIngre = document.getElementById("front-row");
 for (ingredient of ingredients) {
@@ -18,10 +16,6 @@ for (ingredient of ingredients) {
     // console.log(diffInDays)
 
     if (diffInDays <= 0) {
-        if (expiring.includes(ingredient.Name)) {
-            expiring.splice(expiring.indexOf(ingredient.Name), 1);
-        }
-        expired.push(ingredient.Name);
         displayIngre.innerHTML += `
         <div class="col mb-3">
             <div class="card" >
@@ -43,7 +37,6 @@ for (ingredient of ingredients) {
             </div>
         `;
     } else if (diffInDays <= 7) {
-        expiring.push(ingredient.Name);
         displayIngre.innerHTML += `
         <div class="col mb-3">
             <div class="card" >
@@ -88,4 +81,3 @@ for (ingredient of ingredients) {
     `;
     }
 }
-console.log(expired, expiring);
