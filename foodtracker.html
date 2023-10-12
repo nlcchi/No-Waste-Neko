@@ -55,120 +55,7 @@
           </div>
     
       <!-- Front food row -->
-          <div class="row food-row d-flex justify-content-center mb-3 mt-3" id="front-row">
-    
-              <div class="col-md-4">
-                  <div class="card" >
-                      <div class="card-body" >
-                          <h5 class="card-title">Product Name</h5>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">Product Category</h6>
-                          <ul>
-                              <li>Expiration Date: </li>
-                              <li>Days Till Expiry: </li>
-                          </ul>
-    
-                          <!-- Remove button -->
-                          <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-light">Remove</button>
-                          </div>
-                      </div>
-    
-                  </div>
-              </div>
-    
-              <div class="col-md-4">
-                  <div class="card" >
-                      <div class="card-body" >
-                          <h5 class="card-title">Product Name</h5>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">Product Category</h6>
-                          <ul>
-                              <li>Expiration Date: </li>
-                              <li>Days Till Expiry: </li>
-                          </ul>
-                          <!-- Remove button -->
-                          <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-light">Remove</button>
-                          </div>
-                      </div>
-    
-                  </div>
-              </div>
-    
-              <div class="col-md-4">
-                  <div class="card" >
-                      <div class="card-body" >
-                          <h5 class="card-title">Product Name</h5>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">Product Category</h6>
-                          <ul>
-                              <li>Expiration Date: </li>
-                              <li>Days Till Expiry: </li>
-                          </ul>
-                          <!-- Remove button -->
-                          <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-light">Remove</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-    
-          </div>
-          
-      <!-- Back food row -->
-          <div class="row food-row d-flex justify-content-center" id="front-row">
-    
-              <div class="col-md-4">
-                  <div class="card" >
-                      <div class="card-body" >
-                          <h5 class="card-title">Product Name</h5>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">Product Category</h6>
-                          <ul>
-                              <li>Expiration Date: </li>
-                              <li>Days Till Expiry: </li>
-                          </ul>
-                          <!-- Remove button -->
-                          <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-light">Remove</button>
-                          </div>
-                      </div>
-              
-                  </div>
-              </div>
-    
-    
-              <div class="col-md-4">
-                  <div class="card" >
-                      <div class="card-body" >
-                          <h5 class="card-title">Product Name</h5>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">Product Category</h6>
-                          <ul>
-                              <li>Expiration Date: </li>
-                              <li>Days Till Expiry: </li>
-                          </ul>
-                          <!-- Remove button -->
-                          <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-light">Remove</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-    
-              <div class="col-md-4">
-                  <div class="card" >
-                      <div class="card-body" >
-                          <h5 class="card-title">Product Name</h5>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">Product Category</h6>
-                          <ul>
-                              <li>Expiration Date: </li>
-                              <li>Days Till Expiry: </li>
-                          </ul>
-                          <!-- Remove button -->
-                          <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-light">Remove</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-    
+          <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3" id="front-row">
           </div>
     
       <!-- Add new item button -->
@@ -192,21 +79,27 @@
                   <form id="addItemForm">
                       <div class="mb-3">
                           <label for="input1" class="form-label">Product Name</label>
-                          <input type="text" class="form-control" id="input1" placeholder="Enter Input 1">
+                          <input type="text" class="form-control" id="Name" placeholder="Product Name">
                           <button type="button" data-input="input1" class="btn btn-light captureImageBtn">Capture Image</button>
                       </div>
                       <div class="mb-3">
                           <label for="input2" class="form-label">Expiration Date</label>
-                          <input type="text" class="form-control" id="input2" placeholder="Enter Input 2">
-                          <button type="button" data-input="input2" class="btn btn-light captureImageBtn">Capture Image</button>
+                          <input type="date" class="form-control" id="Exp">
                       </div>
                   <div class="mb-3">
                       <div class="mb-3">
                           <label for="exampleSelect" class="form-label">Product Category</label>
-                          <select class="form-select" id="exampleSelect">
-                            <option value="drink">Drink</option>
-                            <option value="fresh">Fresh</option>
-                            <option value="frozen">Frozen</option>
+                          <select class="form-select" id="Category">
+                            <option>--Please Select One--</option>
+                            <option value="meat">Meat</option>
+                            <option value="meatNP">Non-packaged Meat [To store in freezer]</option>
+                            <option value="Vprotein">Vegan Protein</option>
+                            <option value="vegetable">Vegetables</option>
+                            <option value="vegetableNP">Non-packaged Vegetables [To store in fridge]</option>
+                            <option value="fruit">Fruits</option>
+                            <option value="carb">Carbs</option>
+                            <option value="dairy">dairy products</option>
+                            <option value="beverage">Beverages</option>
                           </select>
                         </div>
                   </div>
@@ -222,7 +115,7 @@
           </div>
         </div>
 
-
+    <script src="foodtracker.js"></script>
     <!-- Include Tesseract.js -->
     <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
     <!-- Include Bootstrap JS -->
