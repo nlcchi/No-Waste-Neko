@@ -55,6 +55,7 @@ function displayCurrentQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     var questionElement = document.createElement('h2');
     questionElement.innerText = currentQuestion.question;
+    console.log(questionElement)
     questionContainer.appendChild(questionElement);
 
     // show choices

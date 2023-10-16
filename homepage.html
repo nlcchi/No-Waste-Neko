@@ -21,27 +21,9 @@
 
         }
 
-        div.col button{
-            width:200px;
-            height:200px;
-        }
-        .col{
-            /* border: 3px solid red; */
-            padding:20px;
-            display:flex;
-            justify-content:center;
-        }
-
-        #profile{
-            width:150px;
-            height:32px;
-            margin-left:100px;
-        }
-
-        #cat{
-            position:fixed;
-            bottom:0;
-            right:0
+        .icons{
+            width:110px;
+            height:110px
         }
 
 
@@ -55,14 +37,14 @@
   <body>
     <!-- First 3 btns -->
     <div class="container d-flex justify-content-center p-5 ">
-        <a type="button" class="btn btn-light btn-lg d-flex flex-column align-items-center col-sm-4 m-3" id="fridge" href="foodtracker.html">Show my fridge!
-            <img src="proj_pics/fridge.png">
+        <a type="button" class="btn btn-light btn-lg d-flex flex-column align-items-center m-3" id="fridge" href="foodtracker.html">Show my fridge!
+            <img src="proj_pics/fridge.png" class="icons">
         </a>
-        <a type="button" class="btn btn-light btn-lg d-flex flex-column align-items-center col-sm-4 m-3 " href="">Give me a recipe!
-            <img src="proj_pics/appetiser.png">
+        <a type="button" class="btn btn-light btn-lg d-flex flex-column align-items-center m-3 " href="quiz.html">Give me a recipe!
+            <img src="proj_pics/chef hat.png" class="icons">
         </a>
-        <a type="button" class="btn btn-light btn-lg  d-flex flex-column align-items-center col-sm-4 m-3" href="saved_recipes.html">Saved Recipe Book
-            <img src="proj_pics/appetiser.png">
+        <a type="button" class="btn btn-light btn-lg  d-flex flex-column align-items-center m-3" href="saved_recipes.html">Saved Recipe Book
+            <img src="proj_pics/book.png" class="icons">
         </a>
     </div>
  
@@ -70,18 +52,19 @@
     <!-- Bottom: my profile, welcome back, chef cat -->
 
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="col-sm-3">
-            <a type="button" class="btn btn-md bg-light" href="profile_page.html"> My profile</a>
+        <div class="row">
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                <a type="button" class="btn btn-md bg-light" href="profile_page.html"> My profile</a>
+            </div>
+    
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <h4 class="text-center bg-light rounded-pill w-75">Welcome back, Sophie</h4>
+            </div>
+    
+            <div class="col-md-3">
+                <img src="proj_pics/cat-chef.png" class="img-fluid col-sm-3" style="width:400px; height:300px" alt="">
+            </div>
         </div>
-
-        <div class="col-sm-6 bg-light rounded-pill">
-            <h4 class="text-center">Welcome back, Sophie</h4>
-        </div>
-
-        <div class="col-sm-3">
-            <img src="proj_pics/cat-chef.png" class="img-fluid col-sm-3 " style="width:300px; height:300px" alt="">
-        </div>
-
     </div>
 
 
