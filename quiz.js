@@ -2,7 +2,7 @@
 1. finalise questions
 2. add code to add picture for each choice
 3. fix the add of design for each choice
-4. direct to spoonacular page
+4. [DONE] direct to spoonacular page 
 5. use vue(?)
 */
 
