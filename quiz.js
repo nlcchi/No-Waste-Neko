@@ -8,21 +8,13 @@
 
 let questions = [
     // { 
-    //     question: 'Serving size', 
-    //     choices: ['1','2','3','4+']
+    //     question: 'Dietary requirements', 
+    //     choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
     // },
-    { 
-        question: 'Dietary requirements', 
-        choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
-    },
     { 
         question: 'Which course', 
         choices: ['Appetizer', 'Mains', 'Dessert']
     },
-    // { 
-    //     question: 'Main Flavour', 
-    //     choices: ['Sweet', 'Sour', 'Salty','Bitter','Umami','Spicy']
-    // },
     { 
         question: 'Prep time', 
         choices: ['<15mins', '15-25mins','25-35min','45+ mins']
@@ -46,7 +38,9 @@ let questionKeys = {
 };
 
 let currentQuestionIndex = 0;
-let answers = {};
+let answers = {
+    'exlude ingredients' : ''
+};
 
 function displayCurrentQuestion() {
     var questionContainer = document.getElementById('question-container');
@@ -93,5 +87,8 @@ function displayChoices(choice, currentQuestion){
         // All questions answered; note: redirect to spoonacular
         document.write('done')
         console.log(answers)
+        // save answers in session and redirects to next page
+        sessionStorage.setItem('answers', JSON.stringify(answers));
+        window.location.href = 'new_recipes.html';
     }
 }
