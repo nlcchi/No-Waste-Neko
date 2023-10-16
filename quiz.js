@@ -38,8 +38,10 @@ let questionKeys = {
 };
 
 let currentQuestionIndex = 0;
+
+let dietaryRequirements = sessionStorage.getItem('dietary-requirements');
 let answers = {
-    'exlude ingredients' : ''
+    'exlude ingredients' : dietaryRequirements
 };
 
 function displayCurrentQuestion() {
