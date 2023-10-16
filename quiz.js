@@ -55,9 +55,10 @@ function displayCurrentQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     var questionElement = document.createElement('h2');
     questionElement.innerText = currentQuestion.question;
-    console.log(questionElement)
-    // Add bootstrap design
-    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75')
+
+    // Add bootstrap styling + animations
+    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown')
+
     questionContainer.appendChild(questionElement);
 
     // show choices
@@ -65,11 +66,27 @@ function displayCurrentQuestion() {
     for (let index = 0; index < choices.length; index++) {
         var choice = choices[index];
         var choiceDiv = document.createElement('div');
-        choiceDiv.className = 'choices'; //put color
+        choiceDiv.classList.add = 'choices'; //put color
         var choiceButton = document.createElement('button');
+
+        // Add bootstrap styling + icon img + animations
+        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column' ,'align-items-center', 'm-3', 'w-50','animate__animated', 'animate__fadeInUp');
+        let img_elem = document.createElement('img');
+
+        // thinking of doing this dynamically (img.src = `${choice}.png`), and maybe we can randomise the images for every new round
+        // for example, we can randomise the dessert icons for every new round. 
+        if(choice == 'Appetizer'){
+            img_elem.src = ('proj_pics/appetiser.png')
+        }
+        else if (choice == 'Dessert'){
+            img_elem.src = ('proj_pics/pudding pixel.png')
+        }
         choiceButton.innerText = choice;
+        choiceButton.appendChild(img_elem)
         choiceButton.addEventListener('click', () => displayChoices(choice, currentQuestion));
+
         optionsContainer.appendChild(choiceButton);
+        
     };
 
     currentQuestionIndex++;
