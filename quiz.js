@@ -60,6 +60,8 @@ function displayCurrentQuestion() {
     var questionElement = document.createElement('h2');
     questionElement.innerText = currentQuestion.question;
     console.log(questionElement)
+    // Add bootstrap design
+    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75')
     questionContainer.appendChild(questionElement);
 
     // show choices
