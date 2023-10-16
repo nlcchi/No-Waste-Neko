@@ -31,44 +31,45 @@
       <div id="h1" class="d-flex justify-content-center mt-3">
           <h1 class="border border-light bg-light rounded-pill w-50 text-center">What's in your fridge?</h1>
       </div>
+
+      <div class="container justify-content-center d-flex mt-5 sticky-top">
+        <div class="btn-group border">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Expired</a></li>
+                <li><a class="dropdown-item" href="#">Non-Expired</a></li>
+                <li><a class="dropdown-item" href="#">Menu item</a></li>
+            </ul>
+        </div>
+
+        <!-- Home page -->
+        <div id="home-btn" class="ms-3">
+            <a class="btn btn-outline-primary" href="homepage.html" role="button">Home</a>
+        </div>
+
+
+
+      </div>
     
-      <div class="row d-flex">
-          <div class="col">
-              <!-- Sort by -->
-              <div class="btn-group border ms-5">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Sort by
-                  </button>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Menu item</a></li>
-                      <li><a class="dropdown-item" href="#">Menu item</a></li>
-                      <li><a class="dropdown-item" href="#">Menu item</a></li>
-                  </ul>
-              </div>
-          </div>
-    
-          <div class="col d-flex justify-content-around">
-              <!-- Home page -->
-              <div id="home-btn" style=>
-                  <a class="btn btn-outline-primary" href="homepage.html" role="button">Home</a>
-              </div>
-          </div>
+      
     
       <!-- Front food row -->
-          <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3" id="front-row">
+          <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5" id="front-row">
           </div>
     
       <!-- Add new item button -->
-      <div class="d-flex justify-content-center mt-3">
-          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">Add New Item</button>
+      <div class="d-flex justify-content-center sticky-bottom">
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addItem">Add New Item</button>
       </div>
     
       <!-- Add new item popup -->
-      <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalLabel">Add New Item</h5>
+                <h5 class="modal-title text-center" id="addItemHeader">Add New Item</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
