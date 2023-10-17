@@ -59,9 +59,16 @@ function displayCurrentQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     var questionElement = document.createElement('h2');
     questionElement.innerText = currentQuestion.question;
+<<<<<<< Updated upstream
     console.log(questionElement)
     // Add bootstrap design
     questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75')
+=======
+
+    // Add bootstrap styling + animations
+    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown', 'p-3')
+
+>>>>>>> Stashed changes
     questionContainer.appendChild(questionElement);
 
     // show choices
