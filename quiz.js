@@ -2,27 +2,19 @@
 1. finalise questions
 2. add code to add picture for each choice
 3. fix the add of design for each choice
-4. direct to spoonacular page
+4. [DONE] direct to spoonacular page 
 5. use vue(?)
 */
 
 let questions = [
     // { 
-    //     question: 'Serving size', 
-    //     choices: ['1','2','3','4+']
+    //     question: 'Dietary requirements', 
+    //     choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
     // },
-    { 
-        question: 'Dietary requirements', 
-        choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
-    },
     { 
         question: 'Which course', 
         choices: ['Appetizer', 'Mains', 'Dessert']
     },
-    // { 
-    //     question: 'Main Flavour', 
-    //     choices: ['Sweet', 'Sour', 'Salty','Bitter','Umami','Spicy']
-    // },
     { 
         question: 'Prep time', 
         choices: ['<15mins', '15-25mins','25-35min','45+ mins']
@@ -46,7 +38,11 @@ let questionKeys = {
 };
 
 let currentQuestionIndex = 0;
-let answers = {};
+
+let dietaryRequirements = sessionStorage.getItem('dietary-requirements');
+let answers = {
+    'exlude ingredients' : dietaryRequirements
+};
 
 function displayCurrentQuestion() {
     var questionContainer = document.getElementById('question-container');
@@ -59,16 +55,14 @@ function displayCurrentQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     var questionElement = document.createElement('h2');
     questionElement.innerText = currentQuestion.question;
-<<<<<<< Updated upstream
-    console.log(questionElement)
-    // Add bootstrap design
-    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75')
-=======
 
     // Add bootstrap styling + animations
     questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown', 'p-3')
 
->>>>>>> Stashed changes
+
+    // Add bootstrap styling + animations
+    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown')
+
     questionContainer.appendChild(questionElement);
 
     // show choices
@@ -76,11 +70,27 @@ function displayCurrentQuestion() {
     for (let index = 0; index < choices.length; index++) {
         var choice = choices[index];
         var choiceDiv = document.createElement('div');
-        choiceDiv.className = 'choices'; //put color
+        choiceDiv.classList.add = 'choices'; //put color
         var choiceButton = document.createElement('button');
+
+        // Add bootstrap styling + icon img + animations
+        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column' ,'align-items-center', 'm-3', 'w-50','animate__animated', 'animate__fadeInUp');
+        let img_elem = document.createElement('img');
+
+        // thinking of doing this dynamically (img.src = `${choice}.png`), and maybe we can randomise the images for every new round
+        // for example, we can randomise the dessert icons for every new round. 
+        if(choice == 'Appetizer'){
+            img_elem.src = ('proj_pics/appetiser.png')
+        }
+        else if (choice == 'Dessert'){
+            img_elem.src = ('proj_pics/pudding pixel.png')
+        }
         choiceButton.innerText = choice;
+        choiceButton.appendChild(img_elem)
         choiceButton.addEventListener('click', () => displayChoices(choice, currentQuestion));
+
         optionsContainer.appendChild(choiceButton);
+        
     };
 
     currentQuestionIndex++;
@@ -103,5 +113,8 @@ function displayChoices(choice, currentQuestion){
         // All questions answered; note: redirect to spoonacular
         document.write('done')
         console.log(answers)
+        // save answers in session and redirects to next page
+        sessionStorage.setItem('answers', JSON.stringify(answers));
+        window.location.href = 'new_recipes.html';
     }
 }
