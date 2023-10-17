@@ -75,8 +75,12 @@ function displayCurrentQuestion() {
 
         // thinking of doing this dynamically (img.src = `${choice}.png`), and maybe we can randomise the images for every new round
         // for example, we can randomise the dessert icons for every new round. 
-        img_elem.src = `proj_pics/quiz_icons/${choice}.png`
-
+        if(choice == 'Appetizer'){
+            img_elem.src = ('proj_pics/appetiser.png')
+        }
+        else if (choice == 'Dessert'){
+            img_elem.src = ('proj_pics/pudding pixel.png')
+        }
         choiceButton.innerText = choice;
         choiceButton.appendChild(img_elem)
         choiceButton.addEventListener('click', () => displayChoices(choice, currentQuestion));
