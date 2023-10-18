@@ -54,6 +54,10 @@ function displayCurrentQuestion() {
     questionElement.innerText = currentQuestion.question;
 
     // Add bootstrap styling + animations
+    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown', 'p-3')
+
+
+    // Add bootstrap styling + animations
     questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown')
 
     questionContainer.appendChild(questionElement);
