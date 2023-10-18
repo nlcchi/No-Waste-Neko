@@ -60,9 +60,6 @@ function displayCurrentQuestion() {
     questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown', 'p-3')
 
 
-    // Add bootstrap styling + animations
-    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown')
-
     questionContainer.appendChild(questionElement);
 
     // show choices
@@ -72,21 +69,19 @@ function displayCurrentQuestion() {
         var choiceDiv = document.createElement('div');
         choiceDiv.classList.add = 'choices'; //put color
         var choiceButton = document.createElement('button');
+        choiceButton.innerText = choice;
 
         // Add bootstrap styling + icon img + animations
         choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column' ,'align-items-center', 'm-3', 'w-50','animate__animated', 'animate__fadeInUp');
-        let img_elem = document.createElement('img');
+        // Time question has no icons
+        if(currentQuestionIndex != 1){
+            let img_elem = document.createElement('img');
+            img_elem.src = `proj_pics/quiz_icons/${choice}.png`
+            img_elem.style = 'width:110px; height:110px'
+            choiceButton.appendChild(img_elem)
+        }
 
-        // thinking of doing this dynamically (img.src = `${choice}.png`), and maybe we can randomise the images for every new round
-        // for example, we can randomise the dessert icons for every new round. 
-        if(choice == 'Appetizer'){
-            img_elem.src = ('proj_pics/appetiser.png')
-        }
-        else if (choice == 'Dessert'){
-            img_elem.src = ('proj_pics/pudding pixel.png')
-        }
-        choiceButton.innerText = choice;
-        choiceButton.appendChild(img_elem)
+
         choiceButton.addEventListener('click', () => displayChoices(choice, currentQuestion));
 
         optionsContainer.appendChild(choiceButton);
