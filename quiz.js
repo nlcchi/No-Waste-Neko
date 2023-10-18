@@ -21,8 +21,20 @@ let questions = [
         choices: ['Japanese', 'Chinese', 'Italian', 'Indian', 'Mexican']
     },
     { 
-        question: 'Choice of Protein', 
-        choices: ['Chicken', 'Pork', 'Beef', 'Fish','Tofu']
+        question: 'Use veggie from fridge?', 
+        choices: ['Yes', 'No']
+    },
+    { 
+        question: 'Use Protein from fridge?', 
+        choices: ['Yes', 'No']
+    },
+    { 
+        question: 'dairy?', 
+        choices: ['Yes', 'No'],
+        'dependency': {
+            'question': 'which course',
+            'answer': 'Dessert'
+        }
     }
 ];
 
@@ -34,13 +46,16 @@ let questionKeys = {
     'Choice of Protein': ['query', 'includeIngredients']
 };
 
-let currentQuestionIndex = 0;
-
 let dietaryRequirements = sessionStorage.getItem('dietary-requirements');
 let answers = {
     'exlude ingredients' : dietaryRequirements
 };
 
+function filterQuestions(questionList, typeOfCourse){
+    
+}
+
+let currentQuestionIndex = 0;
 function displayCurrentQuestion() {
     var questionContainer = document.getElementById('question-container');
     var optionsContainer = document.getElementById('options-container');
