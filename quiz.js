@@ -1,16 +1,13 @@
 /*THINGS TO DO
 1. finalise questions
-2. add code to add picture for each choice
-3. fix the add of design for each choice
+2. [DONE] add code to add picture for each choice
+3. [DONE] fix the add of design for each choice
 4. [DONE] direct to spoonacular page 
 5. use vue(?)
+6. add back button
 */
 
 let questions = [
-    // { 
-    //     question: 'Dietary requirements', 
-    //     choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
-    // },
     { 
         question: 'Which course', 
         choices: ['Appetizer', 'Mains', 'Dessert']
@@ -66,7 +63,7 @@ function displayCurrentQuestion() {
     for (let index = 0; index < choices.length; index++) {
         var choice = choices[index];
         var choiceDiv = document.createElement('div');
-        choiceDiv.classList.add = 'choices'; //put color
+        // choiceDiv.classList.add = 'choices'; //put color
         var choiceButton = document.createElement('button');
 
         // Add bootstrap styling + icon img + animations
