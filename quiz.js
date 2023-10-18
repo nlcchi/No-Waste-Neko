@@ -1,120 +1,116 @@
-/*THINGS TO DO
-1. finalise questions
-2. add code to add picture for each choice
-3. fix the add of design for each choice
-4. [DONE] direct to spoonacular page 
-5. use vue(?)
-*/
-
-let questions = [
-    // { 
-    //     question: 'Dietary requirements', 
-    //     choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
-    // },
-    { 
-        question: 'Which course', 
-        choices: ['Appetizer', 'Mains', 'Dessert']
-    },
-    { 
-        question: 'Prep time', 
-        choices: ['<15mins', '15-25mins','25-35min','45+ mins']
-    },
-    { 
-        question: 'Cuisine', 
-        choices: ['Japanese', 'Chinese', 'Italian', 'Indian', 'Mexican']
-    },
-    { 
-        question: 'Choice of Protein', 
-        choices: ['Chicken', 'Pork', 'Beef', 'Fish','Tofu']
-    }
-];
-
-let questionKeys = {
-    'Dietary requirements': 'diet',
-    'Which course': 'meal type',
-    'Prep time': 'maxReadyTime',
-    'Cuisine': 'cuisine',
-    'Choice of Protein': ['query', 'includeIngredients']
-};
-
-let currentQuestionIndex = 0;
-
-let dietaryRequirements = sessionStorage.getItem('dietary-requirements');
-let answers = {
-    'exlude ingredients' : dietaryRequirements
-};
-
-function displayCurrentQuestion() {
-    var questionContainer = document.getElementById('question-container');
-    var optionsContainer = document.getElementById('options-container');
-    
-    questionContainer.innerHTML = '';
-    optionsContainer.innerHTML = '';
-    
-    // show question
-    var currentQuestion = questions[currentQuestionIndex];
-    var questionElement = document.createElement('h2');
-    questionElement.innerText = currentQuestion.question;
-
-    // Add bootstrap styling + animations
-    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown', 'p-3')
-
-
-    // Add bootstrap styling + animations
-    questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown')
-
-    questionContainer.appendChild(questionElement);
-
-    // show choices
-    var choices = currentQuestion.choices;
-    for (let index = 0; index < choices.length; index++) {
-        var choice = choices[index];
-        var choiceDiv = document.createElement('div');
-        choiceDiv.classList.add = 'choices'; //put color
-        var choiceButton = document.createElement('button');
-
-        // Add bootstrap styling + icon img + animations
-        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column' ,'align-items-center', 'm-3', 'w-50','animate__animated', 'animate__fadeInUp');
-        let img_elem = document.createElement('img');
-
-        // thinking of doing this dynamically (img.src = `${choice}.png`), and maybe we can randomise the images for every new round
-        // for example, we can randomise the dessert icons for every new round. 
-        if(choice == 'Appetizer'){
-            img_elem.src = ('proj_pics/appetiser.png')
-        }
-        else if (choice == 'Dessert'){
-            img_elem.src = ('proj_pics/pudding pixel.png')
-        }
-        choiceButton.innerText = choice;
-        choiceButton.appendChild(img_elem)
-        choiceButton.addEventListener('click', () => displayChoices(choice, currentQuestion));
-
-        optionsContainer.appendChild(choiceButton);
-        
-    };
-
-    currentQuestionIndex++;
-
-    //display everything
-}
-
-function displayChoices(choice, currentQuestion){
-    var key = questionKeys[currentQuestion.question];
-            if (Array.isArray(key)) {
-                for (let i = 0; i < key.length; i++) {
-                    answers[key[i]] = choice;
-                }
-            } else {
-                answers[key] = choice;
+let questions = {
+    mealType: {
+      question: 'Meal type',
+      choices: {
+        'Appetiser': {
+          question: 'Time Prep',
+          choices: ['10 mins', '30 mins', '60 mins'],
+          cuisine: {
+            question: 'Cuisine',
+            choices: ['Asian', 'Chinese', 'Italian', 'Indian', 'Japanese', 'Mexican']
+          }
+          
+        },
+        'Main Course': {
+          question: 'Time Prep',
+          choices: ['10 mins', '30 mins', '60 mins'],
+          cuisine: {
+            question: 'Cuisine',
+            choices: ['Asian', 'Chinese', 'Italian', 'Indian', 'Japanese', 'Mexican'],
+            proteinFromFridge: {
+                question: 'Use any protein from fridge?',
+                choices: ['Yes', 'No'],
+                proteinChoice: {
+                question: 'Choice of Protein',
+                choices: ['Chicken', 'Pork', 'Beef', 'Fish', 'Tofu'],
+                },
+                vegetableFromFridge: {
+                    question: 'Use any vegetable from fridge?',
+                    choices: ['Yes', 'No'],
+                    vegetableChoice: {
+                    question: 'Choice of Vegetable',
+                    choices: ['Broccoli', 'Carrots', 'Spinach', 'Bell Peppers', 'Zucchini'],
+                    },
+                },
+            },
+          },
+        },
+        'Dessert': {
+            question: 'Time Prep',
+            choices: ['10 mins', '30 mins', '60 mins'],
+            dairy: {
+                question: 'Dairy',
+                choices: ['Yes', 'No'],
             }
-    if (currentQuestionIndex < questions.length) {
-        displayCurrentQuestion();
-    } else {
-        // All questions answered; note: redirect to spoonacular
-        document.write('done')
-        console.log(answers)
-        // save answers in session and redirects to next page
-        sessionStorage.setItem('answers', JSON.stringify(answers));
-        window.location.href = 'new_recipes.html';
+        },
+      },
+    },
+  };
+  let currentQuestion = questions.mealType;
+  let answers = {};
+  
+  function displayCurrentQuestion() {
+    var question = currentQuestion.question;
+    var choices = currentQuestion.choices;
+  
+    var questionContainer = document.getElementById('question-container');
+    questionContainer.innerHTML = ''; // Clear the question container
+  
+    var questionElement = document.createElement('h2');
+    questionElement.innerText = question;
+    questionContainer.appendChild(questionElement);
+  
+    var optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+  
+    for (let choiceKey in choices) {
+      var choiceButton = document.createElement('button');
+      choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column', 'align-items-center', 'm-3', 'w-50', 'animate__animated', 'animate__fadeInUp');
+      choiceButton.innerText = choices[choiceKey]; // Use the choice text
+      choiceButton.addEventListener('click', () => displayChoices(choiceKey, choices[choiceKey]));
+      optionsContainer.appendChild(choiceButton);
     }
-}
+  }  
+  
+  function displayChoices(choiceKey, choice) {
+    var key = currentQuestion.choices[choiceKey];
+  
+    if (key === 'Time Prep' || key === 'Cuisine' || key === 'Dairy') {
+      // Handle choices for 'Time Prep', 'Cuisine', and 'Dairy'
+      answers[currentQuestion.question] = choiceKey;
+  
+      if (typeof choice === 'object') {
+        // If there are sub-questions, navigate to the next sub-question
+        currentQuestion = choice;
+        currentQuestion.parent = questions.mealType; // Store parent question for navigation
+      } else {
+        // Move to the next top-level question
+        currentQuestion = currentQuestion.parent;
+      }
+    } else {
+      // Handle choices for 'Use any protein from fridge?' and 'Use any vegetable from fridge?'
+      answers[currentQuestion.question] = choiceKey;
+  
+      if (typeof choice === 'object') {
+        // If there are sub-questions, navigate to the next sub-question
+        currentQuestion = choice;
+        currentQuestion.parent = currentQuestion; // Store parent question for navigation
+      } else {
+        // Move to the next top-level question
+        currentQuestion = currentQuestion.parent;
+      }
+    }
+  
+    if (currentQuestion) {
+      // Display the next question
+      displayCurrentQuestion();
+    } else {
+      // All questions answered; handle as needed
+      console.log(answers);
+      // You can handle the redirection logic here
+    }
+  }
+  
+  // Initialize the question display
+  displayCurrentQuestion();
+  
