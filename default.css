@@ -1,0 +1,22 @@
+body{
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center;
+    background-size: cover;
+    font-family: 'Public Pixel', sans-serif;
+    background-attachment: fixed;
+}
+.non-recipe{
+    background-image: url('proj_pics/kitchen\ background.png'); 
+}
+
+#new_recipes{
+    background-image: url('proj_pics/dining\ room\ bg.png');
+}
+
+#saved_recipes{
+    background-image: url('proj_pics/dining\ room\ bg.png');
+}
+
+#foodtracker{
+    background-image: url("")
+}
