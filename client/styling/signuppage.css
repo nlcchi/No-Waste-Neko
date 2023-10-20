@@ -4,7 +4,7 @@
                 
 
 body {
-    background-image: url('proj_pics/kitchen\ background.png');
+    background-image: url('../styling/pics/kitchen\ background.png');
     background-size: cover; /* Adjust to control how the image covers the body */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-position: center center; 
@@ -17,7 +17,7 @@ body {
     height: 100vh;
 }
 
-.login-container {
+.signup-container {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -39,6 +39,7 @@ label {
     font-weight: bold;
 }
 
+input[type="email"],
 input[type="text"],
 input[type="password"] {
     width: 50%;
@@ -49,26 +50,7 @@ input[type="password"] {
     margin-top: 10px;
 }
 
-.btn-login {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Public Pixel', sans-serif;
-}
-
-.btn-login:hover {
-    background-color: #0056b3;
-}
-
-.signup-login-buttons {
-    margin-top: 20px;
-}
-
-.btn-signup {
+.btn{
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -79,9 +61,12 @@ input[type="password"] {
     font-family: 'Public Pixel', sans-serif;
 }
 
-.btn-signup:hover {
-    background-color: #218838;
+.btn:hover {
+    background-color: #28a745;
 }
+
+
+
 
                                             
                 

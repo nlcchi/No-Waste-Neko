@@ -1,5 +1,5 @@
 <?php
-    require_once 'common.php';
+    require_once '../../backend/common.php';
 
     // WRITE YOUR CODES HERE
     if(isset($_GET['username'])) {
@@ -15,13 +15,13 @@
 
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="loginpage.css">
+    <link rel="stylesheet" type="text/css" href="../styling/loginpage.css">
 </head>
 
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="process_login.php" method="post">
+        <form action="../../backend/process_login.php" method="post">
             <div class="input-group">
                 <label for="username">Username/Email:</label>
                 <input type="text" id="username" name="username" value = '<?php echo $username ?>' required>

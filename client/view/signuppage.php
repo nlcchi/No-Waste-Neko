@@ -1,5 +1,5 @@
 <?php
-    require_once 'common.php';
+    require_once '../../backend/common.php';
 
     // WRITE YOUR CODES HERE
     if(isset($_GET['username'])) {
@@ -19,12 +19,12 @@
 <html>
 <head>
     <title>Sign Up Page</title>
-    <link rel="stylesheet" type="text/css" href="signuppage.css">
+    <link rel="stylesheet" type="text/css" href="../styling/signuppage.css">
 </head>
 <body>
     <div class="signup-container">
         <h2>Sign Up</h2>
-        <form action="process_signup.php" method="post">
+        <form action="../../backend/process_signup.php" method="post">
             <div class="input-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value= '<?= $tmp_email?>' required>
