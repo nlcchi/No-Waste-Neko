@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profile Page</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Profile Page</title>
 
+        <!-- Vue.js Version 3 CDN -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        
     <!-- Font API -->
     <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
 
@@ -38,104 +41,116 @@
     </style>
     <!-- Default styling -->
     <link rel="stylesheet" href="../styling/default.css">
-  </head>
+</head>
 
-  
-  <body class="non-recipe">
 
+<body class="non-recipe">
+    <div id="main">
     <!-- Logo and Home button -->
     <div class="container d-flex mt-3">
         <div class="col text-start mx-3">
-            <img id="logo" src="../styling/pics/pics/logo.png"  alt="">
+            <img id="logo" src="../styling/pics/logo.png"  alt="">
         </div>
         <div class="col text-end mx-3">
             <a type="button" class=" btn btn-lg bg-light text-dark mt-5 " href="homepage.html">Home</a>
         </div>
     </div>
-
+    
     <!-- User profile info -->
     <div class="container d-block mx-auto h-75" id="profile">
-
+        
         <!-- need to get the correct cat pix -->
         <img src="../styling/pics/cat-chef.png" class="mx-auto d-block" alt="">
         <h3 id="name" class="rounded-pill w-50 d-block mx-auto text-center text-light">Sophie Montalban</h3>
-
+        
         <div class="row">
             <div class="col info h-75">
                 <!-- Multi-select checkboxes -->
-                <ul><h3 id="dietary_requirements">Diet:</h3>
+                <h3 id="dietary_requirements">Diet:</h3>
+                <ul>
                     <!-- Examples of diet: vegan -->
                     <!-- Halal -> exclude ingredietns (pork, lard); set alcohol to 0 -->
-                    <li> Req 1</li>
-                    <li> Req 2</li>
-                    <li> Req 3</li>
-                
+                    <li v-for="diet of dietReq">{{ diet }}</li>
+                    
                 </ul>
-
+                
             </div>
             <div class="col info h-75">
-                <ul><h3>Intolerance:</h3>
+                <h3>Intolerance:</h3>
+                <ul>
                     <!-- 12 allergy options (intolerance) + other (exclude ingredients)  -->
-                    <li> Req 1</li>
-                    <li> Req 2</li>
-                    <li> Req 3</li>
+                    <li v-for="intol of intolerances">{{ intol }}</li>
                 </ul>
             </div>
         </div>
         <button type="button" class="btn btn-light btn-lg mt-3 mx-auto d-flex" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-
+        
         <!-- Modal pop-up to edit preferences-->
-      
+        
         <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-center" id="exampleModalLabel">Add New Item</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    
-                    <form id="addItemForm">
-                        <div class="mb-3">
-                            <label for="input1" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="input1" placeholder="Enter Input 1">
-                            <button type="button" data-input="input1" class="btn btn-light captureImageBtn">Capture Image</button>
-                        </div>
-                        <div class="mb-3">
-                            <label for="input2" class="form-label">Expiration Date</label>
-                            <input type="text" class="form-control" id="input2" placeholder="Enter Input 2">
-                            <button type="button" data-input="input2" class="btn btn-light captureImageBtn">Capture Image</button>
-                        </div>
-                    <div class="mb-3">
-                        <div class="mb-3">
-                            <label for="exampleSelect" class="form-label">Product Category</label>
-                            <select class="form-select" id="exampleSelect">
-                              <option value="drink">Drink</option>
-                              <option value="fresh">Fresh</option>
-                              <option value="frozen">Frozen</option>
-                            </select>
-                          </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Add New Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <!-- Add more form inputs as needed -->
-                    
-                  </form>
+                    <div class="modal-body">
+                        
+                        <form id="addItemForm">
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="dietReq" class="form-label">Dietary Requirements</label>
+                                    <select class="form-select" id="dietReq">
+                                        <option value="Vegetarian">Vegetarian</option>
+                                        <option value="Vegan">Vegan</option>
+                                        <option value="Pescetarian">Pescetarian</option>
+                                        <option value="Halal">Halal</option>
+                                        <option value="Gluten Free">Gluten Free</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Add more form inputs as needed -->
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="intolerance" class="form-label">Dietary Requirements</label>
+                                    <select class="form-select" id="intolerance">
+                                        <option value="Dairy">Dairy</option>
+                                        <option value="Egg">Egg</option>
+                                        <option value="Gluten">Gluten</option>
+                                        <option value="Grain">Grain</option>
+                                        <option value="Peanut">Peanut</option>
+                                        <option value="Seafood">Seafood</option>
+                                        <option value="Sesame">Sesame</option>
+                                        <option value="Shellfish">Shellfish</option>
+                                        <option value="Soy">Soy</option>
+                                        <option value="Sulfite">Sulfite</option>
+                                        <option value="Tree Nut">Tree Nut</option>
+                                        <option value="Wheate">Wheate</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
             </div>
         </div>
         <!-- End of modal -->
     </div>
-
+    
+</div>
     <script>
         function saveDietaryRequirements(){
             var dietaryRequirements = document.getElementById("dietary_requirements")
         }
-    </script>
+        </script>
     
+    <script src="../scripts/profile_page.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
+    <!-- Axios Version 0.21.1 CDN -->  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
 </html>
