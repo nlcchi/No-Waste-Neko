@@ -55,7 +55,7 @@
             <a type="button" class=" btn btn-lg bg-light text-dark mt-5 " href="homepage.html">Home</a>
         </div>
     </div>
-    
+     i
     <!-- User profile info -->
     <div class="container d-block mx-auto h-75" id="profile">
         
@@ -64,7 +64,7 @@
         <h3 id="name" class="rounded-pill w-50 d-block mx-auto text-center text-light">Sophie Montalban</h3>
         
         <div class="row">
-            <div class="col info h-75">
+            <div class="col info">
                 <!-- Multi-select checkboxes -->
                 <h3 id="dietary_requirements">Diet:</h3>
                 <ul>
@@ -75,7 +75,7 @@
                 </ul>
                 
             </div>
-            <div class="col info h-75">
+            <div class="col info">
                 <h3>Intolerance:</h3>
                 <ul>
                     <!-- 12 allergy options (intolerance) + other (exclude ingredients)  -->
@@ -99,8 +99,8 @@
                         <form id="addItemForm">
                             <div class="mb-3">
                                 <div class="mb-3">
-                                    <label for="dietReq" class="form-label">Dietary Requirements</label>
-                                    <select class="form-select" id="dietReq">
+                                    <label for="dietary" class="form-label">Dietary Requirements</label>
+                                    <select class="form-select" id="dietary" multiple>
                                         <option value="Vegetarian">Vegetarian</option>
                                         <option value="Vegan">Vegan</option>
                                         <option value="Pescetarian">Pescetarian</option>
@@ -113,7 +113,7 @@
                             <div class="mb-3">
                                 <div class="mb-3">
                                     <label for="intolerance" class="form-label">Dietary Requirements</label>
-                                    <select class="form-select" id="intolerance">
+                                    <select class="form-select" id="intolerance" multiple>
                                         <option value="Dairy">Dairy</option>
                                         <option value="Egg">Egg</option>
                                         <option value="Gluten">Gluten</option>
@@ -133,20 +133,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" @click="saveChanges">Save changes</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End of modal -->
     </div>
-    
-</div>
-    <script>
-        function saveDietaryRequirements(){
-            var dietaryRequirements = document.getElementById("dietary_requirements")
-        }
-        </script>
+    </div>
     
     <script src="../scripts/profile_page.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
