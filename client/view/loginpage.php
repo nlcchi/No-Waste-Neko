@@ -14,7 +14,7 @@
 <html>
 
 <head>
-    <title>Login Page</title>
+    <title>No Waste Neko</title>
     <link rel="stylesheet" type="text/css" href="../styling/loginpage.css">
 </head>
 

@@ -7,17 +7,13 @@
 */
 
 let questions = [
-    // { 
-    //     question: 'Dietary requirements', 
-    //     choices: ['Vegetarian', 'Vegan', 'Gluten-free', 'Halal', 'Keto', 'None']
-    // },
     { 
         question: 'Which course', 
-        choices: ['Appetizer', 'Mains', 'Dessert']
+        choices: ['Appetizer', 'Main course', 'Dessert']
     },
     { 
-        question: 'Prep time', 
-        choices: ['<15mins', '15-25mins','25-35min','45+ mins']
+        question: 'Maximun Prepration time (in mins)', 
+        choices: ['15','30','45', '60', '90', '120']
     },
     { 
         question: 'Cuisine', 
@@ -30,19 +26,14 @@ let questions = [
 ];
 
 let questionKeys = {
-    'Dietary requirements': 'diet',
-    'Which course': 'meal type',
-    'Prep time': 'maxReadyTime',
+    'Which course': 'type',
+    'Maximun Prepration time (in mins)': 'maxReadyTime',
     'Cuisine': 'cuisine',
-    'Choice of Protein': ['query', 'includeIngredients']
+    'Choice of Protein': 'query'
 };
 
 let currentQuestionIndex = 0;
-
-let dietaryRequirements = sessionStorage.getItem('dietary-requirements');
-let answers = {
-    'exlude ingredients' : dietaryRequirements
-};
+let answers = {};
 
 function displayCurrentQuestion() {
     var questionContainer = document.getElementById('question-container');
@@ -51,64 +42,46 @@ function displayCurrentQuestion() {
     questionContainer.innerHTML = '';
     optionsContainer.innerHTML = '';
     
-    // show question
     var currentQuestion = questions[currentQuestionIndex];
     var questionElement = document.createElement('h2');
     questionElement.innerText = currentQuestion.question;
 
-    // Add bootstrap styling + animations
     questionElement.classList.add('text-center', 'bg-light', 'rounded-pill' ,'w-75', 'animate__animated', 'animate__fadeInDown', 'p-3')
-
-
     questionContainer.appendChild(questionElement);
 
-    // show choices
     var choices = currentQuestion.choices;
-    for (let index = 0; index < choices.length; index++) {
-        var choice = choices[index];
-        var choiceDiv = document.createElement('div');
-        choiceDiv.classList.add = 'choices'; //put color
+    for (let choice of choices) {
         var choiceButton = document.createElement('button');
         choiceButton.innerText = choice;
 
-        // Add bootstrap styling + icon img + animations
         choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column' ,'align-items-center', 'm-3', 'w-50','animate__animated', 'animate__fadeInUp');
-        // Time question has no icons
-        if(currentQuestionIndex != 1){
+
+        if (currentQuestionIndex !== 1){
             let img_elem = document.createElement('img');
-            img_elem.src = `proj_pics/quiz_icons/${choice}.png`
+            img_elem.src = `../styling/pics/quiz_icons/${choice}.png`
             img_elem.style = 'width:110px; height:110px'
             choiceButton.appendChild(img_elem)
         }
 
+        choiceButton.value = choice;
 
-        choiceButton.addEventListener('click', () => displayChoices(choice, currentQuestion));
+        choiceButton.addEventListener('click', function() {
+            displayChoices(choice, currentQuestion);
+        });
 
         optionsContainer.appendChild(choiceButton);
-        
     };
 
     currentQuestionIndex++;
-
-    //display everything
 }
 
 function displayChoices(choice, currentQuestion){
     var key = questionKeys[currentQuestion.question];
-            if (Array.isArray(key)) {
-                for (let i = 0; i < key.length; i++) {
-                    answers[key[i]] = choice;
-                }
-            } else {
-                answers[key] = choice;
-            }
+    answers[key] = choice;
     if (currentQuestionIndex < questions.length) {
         displayCurrentQuestion();
     } else {
-        // All questions answered; note: redirect to spoonacular
-        document.write('done')
-        console.log(answers)
-        // save answers in session and redirects to next page
+        console.log(answers);
         sessionStorage.setItem('answers', JSON.stringify(answers));
         window.location.href = 'new_recipes.html';
     }
