@@ -17,7 +17,6 @@
         .card-body{
             background-color:rgb(199,212,232);
         }
-
     </style>
   </head>
   <body id="foodtracker">
@@ -31,9 +30,9 @@
                 Sort by
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Expired</a></li>
-                <li><a class="dropdown-item" href="#">Non-Expired</a></li>
-                <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <a class="dropdown-item" href="#" id="filterExpired">Expired</a>
+              <a class="dropdown-item" href="#" id="filterNonExpired">Non-Expired</a>
+              <a class="dropdown-item" href="#" id="filterAll">All Items</a>
             </ul>
         </div>
 
@@ -41,19 +40,14 @@
         <div id="home-btn" class="ms-3">
             <a class="btn btn-primary" href="homepage.html" role="button">Home</a>
         </div>
-
-
-
       </div>
-    
-      
     
       <!-- Front food row -->
           <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5" id="front-row">
           </div>
     
       <!-- Add new item button -->
-      <div class="d-flex justify-content-center sticky-bottom">
+      <div class="d-flex justify-content-center sticky-bottom ">
           <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#addItem">Add New Item</button>
       </div>
     
