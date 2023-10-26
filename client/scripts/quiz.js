@@ -5,12 +5,21 @@
 4. [DONE] direct to spoonacular page 
 5. use vue(?)
 */
-
 let questions = [
     { 
         question: 'Which course', 
         choices: ['Appetizer', 'Main course', 'Dessert']
-    },
+    }
+];
+
+let vegetableQuestions = [
+    { 
+        question: 'Choice of Vegetable', 
+        choices: ['Carrot', 'Broccoli', 'Spinach', 'Peas', 'Corn']
+    }
+];
+
+let preparationQuestions = [
     { 
         question: 'Maximun Prepration time (in mins)', 
         choices: ['15','30','45', '60', '90', '120']
@@ -29,7 +38,8 @@ let questionKeys = {
     'Which course': 'type',
     'Maximun Prepration time (in mins)': 'maxReadyTime',
     'Cuisine': 'cuisine',
-    'Choice of Protein': 'query'
+    'Choice of Protein': 'query',
+    'Choice of Vegetable': 'query'
 };
 
 let currentQuestionIndex = 0;
@@ -76,8 +86,17 @@ function displayCurrentQuestion() {
 }
 
 function displayChoices(choice, currentQuestion){
+    if (currentQuestion.question === 'Which course') {
+        if (choice === 'Main course' || choice === 'Appetizer') {
+            questions = questions.concat(preparationQuestions, vegetableQuestions);
+        } else if (choice === 'Dessert') {
+            questions = questions.concat(preparationQuestions.slice(0, 1));
+        }
+    }
+    
     var key = questionKeys[currentQuestion.question];
     answers[key] = choice;
+    
     if (currentQuestionIndex < questions.length) {
         displayCurrentQuestion();
     } else {
