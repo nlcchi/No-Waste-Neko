@@ -2,6 +2,9 @@
 // to be changed, where the game will take the input of user and update ingredients
 
 window.addEventListener('load', (event) => {
+    // Show loading screen
+    showLoadingScreen();
+
     // a line to get the ingredients from the game, possibly using session storage...=
     answers = JSON.parse(sessionStorage.getItem('answers'));
     console.log(answers);
@@ -25,7 +28,7 @@ window.addEventListener('load', (event) => {
     toURL += `&intolerances=${intolerances.join(',')}`
     // console.log(toURL);
 
-    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&number=21' + toURL;
+    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=68cde3b31a3a4afe83e42bad147fea8c&number=21' + toURL;
     // console.log(url);
 
     shown_recipes_row = document.getElementById('recipes-row');
@@ -34,18 +37,31 @@ window.addEventListener('load', (event) => {
         // console.log("axios working", response);
         let recipes = response.data.results;
         // console.log(recipes);
+
+        // Hide loading screen when the last recipe is loaded
+        if (recipes.length > 0) {
+            hideLoadingScreen();
+        }
         for (recipe of recipes) {
             // console.log(recipe);
-            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
+            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=68cde3b31a3a4afe83e42bad147fea8c&includeNutrition=false`).then((response) => {
                 // console.log(response.data);
                 recipe = response.data;
                 shown_recipes_row.innerHTML += createRecipeCard(recipe);
+
             }).catch((error) => {
                 console.log(error);
+                console.log("Hiding loading screen...");
+                hideLoadingScreen();
+                console.log("Loading screen should be hidden now");
+
             });
         }
     }).catch((error) => {
         console.log(error);
+        console.log("Hiding loading screen...");
+        hideLoadingScreen();
+        console.log("Loading screen should be hidden now");
     });
 });   
 
@@ -105,5 +121,14 @@ function likeRecipe(recipeId) {
     //   likeBtn.classList.toggle('liked');
     // });
   }
+
+  function showLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'flex';
+  }
+  
+  function hideLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'none';
+  }
+  
   
   
