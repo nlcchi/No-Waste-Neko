@@ -25,7 +25,7 @@ window.addEventListener('load', (event) => {
     toURL += `&intolerances=${intolerances.join(',')}`
     // console.log(toURL);
 
-    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=04c359f786bc4e02bf51de5bb7d4538c&number=21' + toURL;
+    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&number=21' + toURL;
     // console.log(url);
 
     shown_recipes_row = document.getElementById('recipes-row');
@@ -36,7 +36,7 @@ window.addEventListener('load', (event) => {
         // console.log(recipes);
         for (recipe of recipes) {
             // console.log(recipe);
-            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=04c359f786bc4e02bf51de5bb7d4538c&includeNutrition=false`).then((response) => {
+            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
                 // console.log(response.data);
                 recipe = response.data;
                 shown_recipes_row.innerHTML += createRecipeCard(recipe);
@@ -56,7 +56,11 @@ function createRecipeCard(recipe) {
         <div class="card m-4" style="width: 18rem;">
         <img src="${recipe.image}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">${recipe.title}</h5>
+            <h5 class="card-title">${recipe.title} 
+                <button id="like-btn-${recipe.id}" class="btn heart-btn" onclick="likeRecipe(${recipe.id})">
+                    <i class="far fa-heart"></i>
+                </button>
+            </h5>
             <p class="card-text"> Serving Size: ${recipe.servings}
             <br>
             Ready in ${recipe.readyInMinutes} minutes
@@ -69,3 +73,37 @@ function createRecipeCard(recipe) {
 // console.log(recipe_card);
 return recipe_card;
 }
+
+function likeRecipe(recipeId) {
+    console.log(recipeId);
+    // Toggle the liked state visually
+    let likeBtn = document.getElementById(`like-btn-${recipeId}`);
+    likeBtn.classList.add('liked');
+  
+    // // Send the request to the server
+    // fetch('http://yourserver.com/api/likeRecipe', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ recipeId: recipeId })
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   if (data.success) {
+    //     console.log('Recipe liked successfully');
+    //     // Here, you can add any additional functionality needed after liking a recipe
+    //   } else {
+    //     console.error('Failed to like recipe');
+    //     // If the server-side operation fails, revert the liked state visually
+    //     likeBtn.classList.toggle('liked');
+    //   }
+    // })
+    // .catch(error => {
+    //   console.error('Error liking recipe:', error);
+    //   // If there's an error in the request, revert the liked state visually
+    //   likeBtn.classList.toggle('liked');
+    // });
+  }
+  
+  
