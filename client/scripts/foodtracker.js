@@ -1,5 +1,5 @@
 // to be changed after creating API and db
-var ingredients = [{"Name": "chicken", "Category": "Meat", "Exp": "2023-10-23"}, {"Name": "carrot", "Category": "Vegetable", "Exp": "2023-10-26"}, {"Name": "tomato", "Category": "Vegetable", "Exp": "2023-10-15"}, {"Name": "cabbage", "Category": "Vegetable", "Exp": "2023-11-30"}];
+var ingredients = [{"Name": "chicken", "Category": "Meat", "Exp": "2023-10-27"}, {"Name": "carrot", "Category": "Vegetable", "Exp": "2023-10-26"}, {"Name": "tomato", "Category": "Vegetable", "Exp": "2023-10-15"}, {"Name": "cabbage", "Category": "Vegetable", "Exp": "2023-11-30"}];
 
 document.getElementById("filterExpired").addEventListener("click", function() {
     displayItems('expired');
@@ -141,72 +141,3 @@ function getNormalCard(diffInDays) {
 }
 
 displayItems('all');
-// for (ingredient of ingredients) {
-//     var diffInDays = getDaysTillExpiry(ingredient.Exp);
-
-//     if (diffInDays <= 0) {
-//         displayIngre.innerHTML += `
-//         <div class="col mb-3">
-//             <div class="card" >
-//                 <div class="card-body bg-danger-subtle" >
-//                     <h5 class="card-title"><span style="color: red;">${ingredient.Name}</span></h5>
-//                     <h6 class="card-subtitle mb-2 text-body-secondary">${ingredient.Category}</h6>
-//                     <ul>
-//                         <li>Expiration Date: ${ingredient.Exp}</li>
-//                         <li>Days Till Expiry: <span style="color: red;">Expired!</span></li>
-//                     </ul>
-
-//                     <!-- Remove button -->
-//                     <div class="d-flex justify-content-center">
-//                         <button type="button" class="btn btn-light">Remove</button>
-//                     </div>
-//                 </div>
-
-//             </div>
-//             </div>
-//         `;
-//     } else if (diffInDays <= 7) {
-//         displayIngre.innerHTML += `
-//         <div class="col mb-3">
-//             <div class="card">
-//                 <div class="card-body bg-warning-subtle">
-//                     <h5 class="card-title">${ingredient.Name}</h5>
-//                     <h6 class="card-subtitle mb-2 text-body-secondary">${ingredient.Category}</h6>
-//                     <ul>
-//                         <li>Expiration Date: ${ingredient.Exp}</li>
-//                         <li>Days Till Expiry: <span style="color: red;">${diffInDays}</span></li>
-//                     </ul>
-
-//                     <!-- Remove button -->
-//                     <div class="d-flex justify-content-center">
-//                         <button type="button" class="btn btn-light">Remove</button>
-//                     </div>
-//                 </div>
-
-//             </div>
-//             </div>
-//         `;
-//     }
-//      else {
-//         displayIngre.innerHTML += `
-//     <div class="col mb-3">
-//           <div class="card" >
-//               <div class="card-body" >
-//                   <h5 class="card-title">${ingredient.Name}</h5>
-//                   <h6 class="card-subtitle mb-2 text-body-secondary">${ingredient.Category}</h6>
-//                   <ul>
-//                       <li>Expiration Date: ${ingredient.Exp}</li>
-//                       <li>Days Till Expiry: ${diffInDays}</li>
-//                   </ul>
-
-//                   <!-- Remove button -->
-//                   <div class="d-flex justify-content-center">
-//                       <button type="button" class="btn btn-light">Remove</button>
-//                   </div>
-//               </div>
-
-//           </div>
-//         </div>
-//     `;
-//     }
-// }
