@@ -28,7 +28,7 @@ window.addEventListener('load', (event) => {
     toURL += `&intolerances=${intolerances.join(',')}`
     // console.log(toURL);
 
-    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=04c359f786bc4e02bf51de5bb7d4538c&number=21' + toURL;
+    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=5276eade17fc4159ab4c6467ce330145&number=21' + toURL;
     // console.log(url);
 
     shown_recipes_row = document.getElementById('recipes-row');
@@ -44,7 +44,7 @@ window.addEventListener('load', (event) => {
         }
         for (recipe of recipes) {
             // console.log(recipe);
-            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=04c359f786bc4e02bf51de5bb7d4538c&includeNutrition=false`).then((response) => {
+            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=5276eade17fc4159ab4c6467ce330145&includeNutrition=false`).then((response) => {
                 // console.log(response.data);
                 recipe = response.data;
                 shown_recipes_row.innerHTML += createRecipeCard(recipe);
@@ -67,12 +67,16 @@ window.addEventListener('load', (event) => {
 
 function createRecipeCard(recipe) {
     // console.log(recipe.image);
+    let displayTitle = recipe.title;
+    if (displayTitle.length > 20) {
+        displayTitle = displayTitle.substring(0, 20) + '...';
+    }
     let recipe_card = `
     <div class='col col-lg-4 col-md-6'>
         <div class="card m-4" style="width: 18rem;">
         <img src="${recipe.image}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">${recipe.title} 
+            <h5 class="card-title">${displayTitle} 
                 <button id="like-btn-${recipe.id}" class="btn heart-btn" onclick="likeRecipe(${recipe.id})">
                     <i class="far fa-heart"></i>
                 </button>
