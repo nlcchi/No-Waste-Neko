@@ -36,7 +36,7 @@ let preparationQuestions = [
 
 let questionKeys = {
     'Which course': 'type',
-    'Maximun Prepration time (in mins)': 'maxReadyTime',
+    'Maximum Preparation time (in mins)': 'maxReadyTime',
     'Cuisine': 'cuisine',
     'Choice of Protein': 'query',
     'Choice of Vegetable': 'query'
@@ -47,10 +47,11 @@ let answers = {};
 
 function displayCurrentQuestion() {
     var questionContainer = document.getElementById('question-container');
-    var optionsContainer = document.getElementById('options-container');
-    
+
+    // Added row in quiz.html to make options responsive on phone
+    var optionsRow = document.getElementById('options-row');
     questionContainer.innerHTML = '';
-    optionsContainer.innerHTML = '';
+    optionsRow.innerHTML = '';
     
     var currentQuestion = questions[currentQuestionIndex];
     var questionElement = document.createElement('h2');
@@ -61,16 +62,36 @@ function displayCurrentQuestion() {
 
     var choices = currentQuestion.choices;
     for (let choice of choices) {
+
+        // Create a col for each option for phone responsiveness
+        var choiceButtonCol = document.createElement('div')
+        choiceButtonCol.classList.add('col', 'col-sm-12', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        
+
         var choiceButton = document.createElement('button');
-        choiceButton.innerText = choice;
+        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'my-3','animate__animated', 'animate__fadeInUp');
+        
 
-        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'm-3', 'd-flex', 'flex-column' ,'align-items-center', 'm-3', 'w-50','animate__animated', 'animate__fadeInUp');
+        // Create a new div for the text and img to fit into the button
+        var innerDiv = document.createElement('div')
+        innerDiv.classList.add('d-flex', 'flex-column' ,'align-items-center')
+        innerDiv.innerHTML += `<span>${choice}</span>`
 
-        if (currentQuestionIndex !== 1){
+        if(currentQuestionIndex == 1){
+            // Adjust the buttons size
+            choiceButton.style = "width:150px; height:150px"
+        }
+        else{
+            // Adjust the button size 
+            if(currentQuestionIndex == 0){
+                choiceButton.style = "width:300px; height:250px"
+            }
+            else{
+                choiceButton.style = "width:200px; height:200px"
+            }
             let img_elem = document.createElement('img');
             img_elem.src = `../styling/pics/quiz_icons/${choice}.png`
-            img_elem.style = 'width:110px; height:110px'
-            choiceButton.appendChild(img_elem)
+            innerDiv.appendChild(img_elem)
         }
 
         choiceButton.value = choice;
@@ -79,7 +100,10 @@ function displayCurrentQuestion() {
             displayChoices(choice, currentQuestion);
         });
 
-        optionsContainer.appendChild(choiceButton);
+        // Append innerDiv into choiceButton
+        choiceButton.appendChild(innerDiv);
+        choiceButtonCol.appendChild(choiceButton)
+        optionsRow.appendChild(choiceButtonCol);
     };
 
     currentQuestionIndex++;
