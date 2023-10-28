@@ -18,15 +18,29 @@
     <link rel="stylesheet" href=../styling/default.css>
 
     <style>
-        .choices {
-            display:flex;
-            align-items:center
 
-        }
         img{
             width:110px;
-            height:110px;
+            height:110px
         }
+        @media (max-width: 767px) {
+            h2 {
+                font-size: 18px;
+            }
+            span {
+                font-size: 16px;
+            }
+        }
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+            span {
+                font-size: 20px;
+                
+            }
+        }
+        
     </style>
 
     <script src="../scripts/quiz.js"></script>
@@ -38,6 +52,9 @@
 
     <div id="options-container" class="d-flex justify-content-center align-items-center mt-5">
 
+        <div class="row" id="options-row">
+            
+        </div>
     </div>
 
     <script>
