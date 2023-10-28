@@ -18,18 +18,26 @@
     <style>
         img{
             width:150px; height:150px
+            /* width: 100%;
+            height: 100%; */
         }
 
         #logo{
-            width:200px;
-            height:150px
+            width:170px;
+            height:100px;
+            position: absolute;
+            top:10px;
+            left:10px;
         }
 
         #profile{
-            background-color:rgb(245,215,190) ;
+            background-color:rgb(245,215,190);
+            margin: auto;
+            padding: 30px;
         }
         #name{
             background-color:rgb(184,111,80);
+            padding: 2px;
         }
         .info{
             border: 3px solid rgb(184,111,80);
@@ -37,31 +45,34 @@
 
         }
 
-        
-    </style>
-    <!-- Default styling -->
-    <link rel="stylesheet" href="../styling/default.css">
-</head>
+        /* .top-container{
+            height:30%;
+        }
+        .profile-container{
+            height:50%;
+        } */
 
+
+    </style>
 
 <body class="non-recipe">
     <div id="main">
     <!-- Logo and Home button -->
-    <div class="container d-flex mt-3">
-        <div class="col text-start mx-3">
+    <!-- d-flex -->
+    <div class="container d-flex mb-5">
+        <div class="col text-start">
             <img id="logo" src="../styling/pics/logo.png"  alt="">
         </div>
         <div class="col text-end mx-3">
             <a type="button" class=" btn btn-lg bg-light text-dark mt-5 " href="homepage.html">Home</a>
         </div>
     </div>
-     i
+
     <!-- User profile info -->
-    <div class="container d-block mx-auto h-75" id="profile">
-        
-        <!-- need to get the correct cat pix -->
+    <!-- d-block mx-auto h-75 -->
+    <div class="container d-block h-75 mx-auto" id="profile">
+
         <img src="../styling/pics/cat-chef.png" class="mx-auto d-block" alt="">
-        <h3 id="name" class="rounded-pill w-50 d-block mx-auto text-center text-light">Sophie Montalban</h3>
         
         <div class="row">
             <div class="col info">
