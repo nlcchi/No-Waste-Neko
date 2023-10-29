@@ -21,7 +21,7 @@ let vegetableQuestions = [
 
 let preparationQuestions = [
     { 
-        question: 'Maximun Prepration time (in mins)', 
+        question: 'Maximum Preparation time (in mins)', 
         choices: ['15','30','45', '60', '90', '120']
     },
     { 
@@ -109,7 +109,9 @@ function displayCurrentQuestion() {
     currentQuestionIndex++;
 }
 
-function displayChoices(choice, currentQuestion){
+let maxReadyTime; // Initialize maxReadyTime outside of the function
+
+function displayChoices(choice, currentQuestion) {
     if (currentQuestion.question === 'Which course') {
         if (choice === 'Main course' || choice === 'Appetizer') {
             questions = questions.concat(preparationQuestions, vegetableQuestions);
@@ -117,13 +119,34 @@ function displayChoices(choice, currentQuestion){
             questions = questions.concat(preparationQuestions.slice(0, 1));
         }
     }
-    
+
     var key = questionKeys[currentQuestion.question];
-    answers[key] = choice;
-    
+
+    // Check if the key already exists in answers and if it's an array, if not, initialize it as an array
+    if (!answers[key]) {
+        answers[key] = [];
+    }
+
+    // Special case for 'Maximum Preparation time (in mins)' key
+    if (key === 'maxReadyTime') {
+        maxReadyTime = parseInt(choice); // Convert choice to an integer and store it in maxReadyTime
+    } else {
+        // Check if the value is a string before calling toLowerCase
+        if (typeof choice === 'string') {
+            // If it's not 'query', convert the choice to lowercase
+            choice = choice.toLowerCase();
+
+            // Add the choice to the key specified in questionKeys
+            answers[key].push(choice);
+        }
+    }
+
     if (currentQuestionIndex < questions.length) {
         displayCurrentQuestion();
     } else {
+        // Set maxReadyTime in answers
+        answers['maxReadyTime'] = maxReadyTime;
+
         console.log(answers);
         sessionStorage.setItem('answers', JSON.stringify(answers));
         window.location.href = 'new_recipes.html';

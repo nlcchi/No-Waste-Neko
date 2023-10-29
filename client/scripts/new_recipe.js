@@ -12,7 +12,7 @@ window.addEventListener('load', (event) => {
     let toURL = '';
     for (const [key,values] of Object.entries(answers)) {
         // console.log(key,values);
-        toURL += `&${key}=${answers[key].toLowerCase()}`;
+        toURL += `&${key}=${answers[key]}`;
     }
     // console.log(toURL);
 
