@@ -12,7 +12,7 @@ window.addEventListener('load', (event) => {
     let toURL = '';
     for (const [key,values] of Object.entries(answers)) {
         // console.log(key,values);
-        toURL += `&${key}=${answers[key].toLowerCase()}`;
+        toURL += `&${key}=${answers[key]}`;
     }
     // console.log(toURL);
 
@@ -28,7 +28,7 @@ window.addEventListener('load', (event) => {
     toURL += `&intolerances=${intolerances.join(',')}`
     // console.log(toURL);
 
-    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=5276eade17fc4159ab4c6467ce330145&number=21' + toURL;
+    let url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&number=21' + toURL;
     // console.log(url);
 
     shown_recipes_row = document.getElementById('recipes-row');
@@ -44,7 +44,7 @@ window.addEventListener('load', (event) => {
         }
         for (recipe of recipes) {
             // console.log(recipe);
-            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=5276eade17fc4159ab4c6467ce330145&includeNutrition=false`).then((response) => {
+            axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
                 // console.log(response.data);
                 recipe = response.data;
                 shown_recipes_row.innerHTML += createRecipeCard(recipe);
@@ -71,10 +71,18 @@ function createRecipeCard(recipe) {
     if (displayTitle.length > 20) {
         displayTitle = displayTitle.substring(0, 20) + '...';
     }
+    // console.log(recipe);
+    var displayImage;
+    if (recipe.hasOwnProperty('image') && recipe.image !== null) {
+        displayImage = recipe.image;
+    } else {
+        displayImage = '../styling/pics/logo.png'; 
+    }
+    console.log(displayImage);
     let recipe_card = `
     <div class='col col-lg-4 col-md-6'>
         <div class="card m-4" style="width: 18rem;">
-        <img src="${recipe.image}" class="card-img-top" alt="...">
+        <img src="${displayImage}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${displayTitle} 
                 <button id="like-btn-${recipe.id}" class="btn heart-btn" onclick="likeRecipe(${recipe.id})">
@@ -99,40 +107,29 @@ function likeRecipe(recipeId) {
     // Toggle the liked state visually
     let likeBtn = document.getElementById(`like-btn-${recipeId}`);
     likeBtn.classList.add('liked');
-  
-    // // Send the request to the server
-    // fetch('http://yourserver.com/api/likeRecipe', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ recipeId: recipeId })
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   if (data.success) {
-    //     console.log('Recipe liked successfully');
-    //     // Here, you can add any additional functionality needed after liking a recipe
-    //   } else {
-    //     console.error('Failed to like recipe');
-    //     // If the server-side operation fails, revert the liked state visually
-    //     likeBtn.classList.toggle('liked');
-    //   }
-    // })
-    // .catch(error => {
-    //   console.error('Error liking recipe:', error);
-    //   // If there's an error in the request, revert the liked state visually
-    //   likeBtn.classList.toggle('liked');
-    // });
-  }
 
-  function showLoadingScreen() {
-    document.getElementById('loading-screen').style.display = 'flex';
-  }
-  
-  function hideLoadingScreen() {
-    document.getElementById('loading-screen').style.display = 'none';
-  }
+    // Add the recipe ID to the likedRecipes array
+    likedRecipes.push(recipeId);
+
+    // Send an AJAX request to add the recipe to the database
+    // axios.post('add_liked_recipe.php', {
+    //     recipe_id: recipeId
+    // })
+    // .then(function (response) {
+    //     console.log(response.data);
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // });
+}
+
+function showLoadingScreen() {
+document.getElementById('loading-screen').style.display = 'flex';
+}
+
+function hideLoadingScreen() {
+document.getElementById('loading-screen').style.display = 'none';
+}
   
   
   
