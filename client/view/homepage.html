@@ -47,6 +47,7 @@
         @media (min-width: 768px) {
             .bottom-segment{
         height: 50vh;
+        bottom:0;
        }
 
       .buttons-segment{
@@ -56,7 +57,16 @@
       .funfact-segment{
         height: 20vh;
       }
-        }
+
+       .overlay {
+       /* position: fixed; */
+       bottom: 0;
+       right: 0;
+       left: 0;
+       top: 0;
+       height: 100vh
+       }
+          
     </style>
   </head>
   
@@ -100,7 +110,7 @@
     
         <!-- middle fun fact -->
         <!-- align-items-center w-75 h-25 -->
-        <div class="funfact-segment container d-flex  w-75 h-25"> 
+        <div class="funfact-segment container d-flex  w-75"> 
             <h4 class="text-center my-auto bg-light rounded p-2" id="funfact"></h4>
         </div>
     
