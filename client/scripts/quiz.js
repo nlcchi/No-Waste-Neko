@@ -133,7 +133,6 @@ function displayChoices(choice, currentQuestion) {
     } else {
         // Check if the value is a string before calling toLowerCase
         if (typeof choice === 'string') {
-            // If it's not 'query', convert the choice to lowercase
             choice = choice.toLowerCase();
 
             // Add the choice to the key specified in questionKeys

@@ -107,40 +107,29 @@ function likeRecipe(recipeId) {
     // Toggle the liked state visually
     let likeBtn = document.getElementById(`like-btn-${recipeId}`);
     likeBtn.classList.add('liked');
-  
-    // // Send the request to the server
-    // fetch('http://yourserver.com/api/likeRecipe', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ recipeId: recipeId })
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   if (data.success) {
-    //     console.log('Recipe liked successfully');
-    //     // Here, you can add any additional functionality needed after liking a recipe
-    //   } else {
-    //     console.error('Failed to like recipe');
-    //     // If the server-side operation fails, revert the liked state visually
-    //     likeBtn.classList.toggle('liked');
-    //   }
-    // })
-    // .catch(error => {
-    //   console.error('Error liking recipe:', error);
-    //   // If there's an error in the request, revert the liked state visually
-    //   likeBtn.classList.toggle('liked');
-    // });
-  }
 
-  function showLoadingScreen() {
-    document.getElementById('loading-screen').style.display = 'flex';
-  }
-  
-  function hideLoadingScreen() {
-    document.getElementById('loading-screen').style.display = 'none';
-  }
+    // Add the recipe ID to the likedRecipes array
+    likedRecipes.push(recipeId);
+
+    // Send an AJAX request to add the recipe to the database
+    // axios.post('add_liked_recipe.php', {
+    //     recipe_id: recipeId
+    // })
+    // .then(function (response) {
+    //     console.log(response.data);
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // });
+}
+
+function showLoadingScreen() {
+document.getElementById('loading-screen').style.display = 'flex';
+}
+
+function hideLoadingScreen() {
+document.getElementById('loading-screen').style.display = 'none';
+}
   
   
   
