@@ -30,23 +30,25 @@
     </div>
 
     <div class="row d-flex">
-        <div class="col d-flex justify-content-around">
+        <div class="col d-flex justify-content-center">
             <!-- Home page -->
-            <div id="home-btn" style=>
-                <a class="btn btn-primary" href="homepage.html" role="button">Home</a>
+            <div id="home-btn">
+                <a class="btn btn-warning" href="homepage.html" role="button">Home</a>
             </div>
         </div>
     </div>
 
 
     <!-- Front recipe row -->
-    <div class="row food-row d-flex justify-content-center mb-3 mt-3" id="front-row">
+    <!-- food-row -->
+    <div class="row d-flex justify-content-center mt-3 mb-3 mx-3">
 
-        <div class="col col-md-4">
+        <div class="col-3 mt-3 d-flex justify-content-center">
+            <!-- style="width: 18rem;"  -->
             <div class="card" style="width: 18rem;" >
                 <img src="../styling/pics/food display.jpeg" alt="">
                 <div class="card-body" >
-                    <h5 class="card-title">Teriyaki Avocado Salmon</h5>
+                    <h5 class="card-title">Teriyaki Salmon Bowl</h5>
                     <ul>
                         <li>Serving Size: </li>
                         <li>Estimated Cooking Time: 45mins </li>
@@ -54,7 +56,7 @@
 
                     <div class="d-flex justify-content-center">
                         <!-- Recipe URL button -->
-                        <a type="button" class="btn btn-light" href="https://www.eatwell101.com/teriyaki-salmon-bowl-recipe">Full Recipe</a>
+                        <a type="button" class="btn btn-secondary" href="https://www.eatwell101.com/teriyaki-salmon-bowl-recipe">Full Recipe</a>
                         <!-- Remove button -->
                         <button type="button" class="btn btn-danger">Remove</button>
                     </div>
@@ -63,14 +65,13 @@
         </div>
 
     </div>
-</body>
-    
-
-
-
-
 
     
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/saved_recipes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
+    
+</body>
 </html>
