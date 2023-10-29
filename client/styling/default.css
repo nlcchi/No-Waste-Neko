@@ -14,7 +14,8 @@ body{
 }
 
 #saved_recipes{
-    background-image: url('pics/dining\ room\ bg.png');
+    /* background-image: url('pics/dining\ room\ bg.png'); */
+    background-image: url('pics/book-bg.png');
 }
 
 #foodtracker{
