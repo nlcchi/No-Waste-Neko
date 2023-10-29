@@ -103,6 +103,15 @@ img {
     background-color: #ead4aa ; 
     color: black; 
     border: 2px solid #b86f50; 
+    transition: background-color 0.3s;
+}
+
+.btn-sign-up:hover {
+    background-color: #ebca8d;
+}
+
+.btn-login:hover {
+    background-color: #ebca8d; 
 }
 
 
