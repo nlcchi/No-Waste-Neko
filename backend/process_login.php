@@ -24,7 +24,7 @@
         { 
 
             $_SESSION['username'] = $username;
-            header("Location: homepage.html");
+            header("Location: ../client/view/homepage.html?username={$username}");
             exit();
         }
         else
@@ -39,5 +39,5 @@
     }
 
     $_SESSION['errors'] = $errors;
-    header("Location: loginpage.php?username={$username}");
+    header("Location: ../client/view/loginpage.php?username={$username}");
 ?>
