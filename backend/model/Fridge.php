@@ -29,9 +29,6 @@ class Fridge {
         return $this->expiryDate;
     }
 
-    public function setPasswordHash($hashed){
-        $this->passwordHash = $hashed;
-    }
 }
 
 ?>

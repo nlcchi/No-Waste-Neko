@@ -6,7 +6,7 @@ require_once 'common.php';
 $username = $_GET['username'];
 
 // Check if username is already taken
-$dao = new PreferenceDAO();
+$dao = new FridgeDAO();
 
 $status = $dao->get($username);
 

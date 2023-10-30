@@ -17,7 +17,7 @@ class FridgeDAO {
         if ($stmt->execute() ) {
             
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-                $fridge = new User($row["username"], $row["productName"], $row["productCat"], $row["expiryDate"]);
+                $fridge = new Fridge($row["username"], $row["productName"], $row["productCat"], $row["expiryDate"]);
             }
             
         }
