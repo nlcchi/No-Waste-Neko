@@ -1,26 +1,16 @@
 <?php
 
-require_once "Logger.php";
-
 class ConnectionManager {
 
-    function connect() {$servername = 'neko-db.mysql.database.azure.com';
-        $username = 'neko';
-        $password = 'A+forwad2';
-        $dbname = 'user_db';
-        $port = 3306;
+    function connect() {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "user_db";
         
         // Create connection
-        $conn = new PDO(
-                    "mysql:host=$servername;dbname=$dbname;port=$port"
-                    , $username
-                    , $password
-                    ,array(
-                        PDO::MYSQL_ATTR_SSL_CA => '../DigiCertGlobalRootCA.crt.pem',
-                        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-                        )
-                    );     
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // if fail, exception will be thrown
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);     
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
                 
         // if fail, exception will be thrown
