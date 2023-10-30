@@ -9,7 +9,7 @@ class UserDAO {
         $conn = $connMgr->connect();
         
         // prepare select
-        $sql = "SELECT username, email, passwordHash  FROM useraccount WHERE username = :username";
+        $sql = "SELECT username, passwordHash  FROM useraccount WHERE username = :username";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
             
@@ -17,7 +17,7 @@ class UserDAO {
         if ($stmt->execute() ) {
             
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-                $user = new User($row["username"], $row["email"], $row["passwordHash"]);
+                $user = new User($row["username"], $row["passwordHash"]);
             }
             
         }
@@ -40,15 +40,13 @@ class UserDAO {
         $conn = $connMgr->connect();
         
         // prepare insert
-        $sql = "INSERT INTO useraccount (username, email, passwordHash) VALUES (:username, :email, :passwordHash)";
+        $sql = "INSERT INTO useraccount (username, passwordHash) VALUES (:username, :passwordHash)";
         $stmt = $conn->prepare($sql);
         
         $username = $user->getUsername();
-        $email = $user->getEmail();
         $passwordHash = $user->getPasswordHash();
 
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-        $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->bindParam(":passwordHash", $passwordHash, PDO::PARAM_STR);
         
 
