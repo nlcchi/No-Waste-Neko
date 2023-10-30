@@ -31,13 +31,13 @@ require_once "common.php";
         $status = $dao->create($user);
         var_dump($passwordHash);
     } else {
-        header("Location: signuppage.php?&username={$username}");
+        header("Location: ../client/view/signuppage.php?&username={$username}");
     }
 
 if ($status) {
     // success; redirect page
     $_SESSION["login_page"] = $username;
-    header("Location: loginpage.php?username={$username}");
+    header("Location: ../client/view/loginpage.php?username={$username}");
     exit();
 }
     

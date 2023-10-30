@@ -30,7 +30,7 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn-login">Login</button>
+            <button type="submit" class="btn-login" id="login">Login</button>
         </form>
         <div class="signup-login-buttons">
             <a class="btn-signup" href="signuppage.php">Sign Up</a>
@@ -39,6 +39,12 @@
     </div>
 
     <?php printErrors(); ?>
+
+    <script>
+        document.getElementById("login").addEventListener("click", function() {
+            sessionStorage.setItem("username", document.getElementById("username").value);
+        });
+    </script>
 
 </body>
 
