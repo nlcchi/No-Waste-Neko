@@ -69,7 +69,7 @@ function displayCurrentQuestion() {
         
 
         var choiceButton = document.createElement('button');
-        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'my-3','animate__animated', 'animate__fadeInUp');
+        choiceButton.classList.add('btn', 'btn-lg', 'my-3','animate__animated', 'animate__fadeInUp');
         
 
         // Create a new div for the text and img to fit into the button
