@@ -88,7 +88,7 @@ class RecipeDAO {
         $result = $stmt->execute();
         
         if (! $result ){ // encountered error
-            $parameters = [ "user" => $user, ];
+            $parameters = [ "user" => $username, ];
             $connMgr->handleError( $stmt, $sql, $parameters );
         }
         

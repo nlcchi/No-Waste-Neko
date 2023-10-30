@@ -1,12 +1,13 @@
 <?php
 
 class Recipe {
-    public $username;
-    public $imgURL;
-    public $recipeName;
-    public $servingSize;
-    public $estCookingTime;
-    public $recipeURL;
+    private $username;
+    private $imgURL;
+    private $recipeName;
+
+    private $servingSize;
+    private $estCookingTime;
+    private $recipeURL;
 
 
     function __construct($username, $imgURL, $recipeName, $servingSize, $estCookingTime, $recipeURL) {

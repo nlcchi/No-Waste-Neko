@@ -67,7 +67,7 @@ class PreferenceDAO {
 
         $result = $stmt->execute();
         if (! $result ){ // encountered error
-            $parameters = [ "user" => $user, ];
+            $parameters = [ "prefrence" => $preference, ];
             $connMgr->handleError( $stmt, $sql, $parameters );
         }
         
@@ -99,7 +99,7 @@ class PreferenceDAO {
         $result = $stmt->execute();
         
         if (! $result ){ // encountered error
-            $parameters = [ "user" => $user, ];
+            $parameters = [ "prefrence" => $preference, ];
             $connMgr->handleError( $stmt, $sql, $parameters );
         }
         
