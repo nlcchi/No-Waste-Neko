@@ -4,7 +4,6 @@ require_once "common.php";
     $errors = [];
 
     // Get the data from form processing
-    $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $c_password = $_POST['c_password'];
@@ -15,13 +14,8 @@ require_once "common.php";
     if($dao->get($username)) {
         $errors[] = "Username is already taken.";
         $_SESSION['errors'] = $errors;
-        header("Location: signuppage.php?email={$email}&username={$username}");
+        header("Location: signuppage.php?&username={$username}");
         exit();
-    }
-
-    // If one or more fields have validation error
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $errors[] = "Invalid email format";
     }
 
     if($password != $c_password) {
@@ -33,11 +27,11 @@ require_once "common.php";
     // if everything is checked. Create user Object and write to database
     if($errors==[]) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $user = new User($username, $email, $passwordHash);
+        $user = new User($username, $passwordHash);
         $status = $dao->create($user);
         var_dump($passwordHash);
     } else {
-        header("Location: signuppage.php?email={$email}&username={$username}");
+        header("Location: signuppage.php?&username={$username}");
     }
 
 if ($status) {

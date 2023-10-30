@@ -23,7 +23,7 @@
         <h2>Login</h2>
         <form action="../../backend/process_login.php" method="post">
             <div class="input-group">
-                <label for="username">Username/Email:</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" value = '<?php echo $username ?>' required>
             </div>
             <div class="input-group">
