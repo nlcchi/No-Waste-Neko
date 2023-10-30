@@ -36,24 +36,28 @@
        height: 100vh
        }
 
-       @media (max-width: 767px) {
+      @media (max-width: 767px) {
           .bottom-segment, .buttons-segment, .funfact-segment{
             height:auto;
           }
-        }
-        @media (min-width: 768px) {
-            .bottom-segment{
-        height: 50vh;
-       }
-
-      .buttons-segment{
-        height: 35vh;
-       }
-
-      .funfact-segment{
-        height: 20vh;
       }
-        }
+      @media (min-width: 768px) {
+            .bottom-segment{
+              height: 50vh;
+            }
+            .funfact-segment{
+              height: 15vh;
+              
+            }
+            .buttons-segment{
+              height: 35vh;
+            }
+      }
+
+      .main-btns{
+        
+      }
+        
     </style>
   </head>
   
@@ -64,30 +68,30 @@
         <div class="buttons-segment container d-flex justify-content-center">
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <a type="button" class="btn btn-light btn-lg d-flex flex-column justify-content-center align-items-center m-3" href="foodtracker.html" >
+                    <button class="main-btns btn btn-light btn-lg d-flex flex-column justify-content-center align-items-center m-3" href="foodtracker.html" >
                         <div class="d-flex flex-column justify-content-center align-items-center" id="fridge">
                             Show my fridge!
                             <img src="../styling/pics/fridge.png" class="icons">
                         </div>
-                    </a>
+                    </button>
                 </div>
     
                 <div class="col-12 col-md-4">
-                    <a type="button" class="btn btn-light btn-lg d-flex flex-column align-items-center m-3" href="quiz.html">
+                    <button class="main-btns btn btn-light btn-lg d-flex flex-column align-items-center m-3" href="quiz.html">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             Give me a recipe!
                             <img src="../styling/pics/chef hat.png" class="icons">
                         </div>
-                    </a>
+                    </button>
                 </div>
     
                 <div class="col-12 col-md-4">
-                    <a type="button" class="btn btn-light btn-lg d-flex flex-column align-items-center m-3" href="saved_recipes.html">
+                    <button class="main-btns btn btn-light btn-lg d-flex flex-column align-items-center m-3" href="saved_recipes.html">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             Saved Recipe Book
                             <img src="../styling/pics/book.png" class="icons">
                         </div>
-                    </a>
+                    </button>
                 </div>
             </div>  
         </div>
@@ -103,7 +107,7 @@
         <div class="bottom-segment container d-flex justify-content-center h-25">
             <div class="row">
                 <div class="col-md-3 d-flex justify-content-center align-items-end">
-                    <a type="button" class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile</a>
+                    <button class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile</button>
                 </div>
     
     
