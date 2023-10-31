@@ -22,28 +22,35 @@
 
     <style>
 
-        img{
-            width:110px;
-            height:110px
+        h2{
+            background-color:rgb(255, 251, 242); 
+            border: 3px #954639ff solid;
         }
-        @media (max-width: 767px) {
-            h2 {
-                font-size: 18px;
-            }
-            span {
-                font-size: 16px;
-            }
+        .btn{
+            background-color:rgb(255, 251, 242); 
+            border: 3px #954639ff dashed;
         }
-        @media (min-width: 768px) {
-            h2 {
-                font-size: 24px;
-            }
-            span {
-                font-size: 20px;
-                
-            }
+        .btn:hover{
+            background-color: #D97742ff;
+            border:3px rgb(255, 251, 242) dashed;
+            color:white;
         }
+        #pot-container{
+            display:flex;
+            text-align:center
+        }
+        .gifs{
+            width:500px;
+            height:300px
         
+        }
+
+        @media screen and (max-width: 768px) {
+            #gif-container{
+                order:-1
+            }
+        }
+  
     </style>
 
     <script src="../scripts/quiz.js"></script>
@@ -54,13 +61,15 @@
     </div>
 
     <div id="options-container" class="d-flex justify-content-center align-items-center mt-5">
-        <div class="row">
-            
-        </div>
 
-        <div class="row" id="options-row">
+        <div class="row" id="options-row" style="max-width:100%">
             
         </div>
+    </div>
+
+    <div id="gif-container" class="d-flex justify-content-center align-items-center" style="display: none">
+        <img src="../styling/pics/cooking pot pixel.gif" id="cooking-gif" class="d-none gifs" alt="">
+        <img src="../styling/pics/baking.gif" id="baking-gif" class="d-none gifs" alt="">
     </div>
 
     <script>

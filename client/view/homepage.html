@@ -11,6 +11,9 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
+    <!-- Animate.CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <!-- Default styling -->
     <link rel="stylesheet" href="../styling/default.css">
 
@@ -19,10 +22,8 @@
 
     <style>
       .icons{
-        /* width:110px;
-        height:110px */
-        width: 160px;
-        height: 170px;
+        width:110px;
+        height:110px
       }
 
       #funfact{
@@ -58,6 +59,43 @@
         height: 20vh;
       }
     }
+    /* colour palette */
+    /* --chestnut: #954639ff;
+--white: #FEFEFEff;
+--brown-sugar: #B96E4Eff;
+--silver: #B9B3B3ff;
+--chestnut-2: #944D3Cff;
+--reseda-green: #6E7E5Bff;
+--brown-sugar-2: #A8745Cff;
+--wheat: #EAD5AAff;
+--chestnut-3: #954639ff;
+--reseda-green-2: #72815Fff; */
+
+    /* button colour */
+    .btn{
+      background-color:rgb(255, 251, 242); 
+      border: 3px #954639ff dashed;
+
+    }
+
+    #foodtracker-btn:hover{
+      background-color:rgb(10, 135, 144);
+      border:3px rgb(255, 251, 242) dashed;
+      color:white;
+    }
+
+    #quiz-start-btn:hover{
+      background-color: #D97742ff;
+      border:3px rgb(255, 251, 242) dashed;
+      color:white;
+    }
+
+    #saved-recipe-btn:hover{
+      background-color: #954639ff;
+      border:3px rgb(255, 251, 242) dashed;
+      color:white;
+    }
+
 
           
     </style>
@@ -73,30 +111,30 @@
         <div class="buttons-segment container d-flex justify-content-center">
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <button class="btn btn-light btn-lg d-flex flex-column justify-content-center align-items-center m-3" @click="redirectToFridge()" >
+                    <a type="button" id="foodtracker-btn" class="btn btn-lg d-flex flex-column justify-content-center align-items-center m-3" @click="redirectToFridge()" >
                         <div class="d-flex flex-column justify-content-center align-items-center" id="fridge">
                             Show my fridge!
                             <img src="../styling/pics/fridge.png" class="icons">
                         </div>
-                    </button>
+                      </a>
                 </div>
     
                 <div class="col-12 col-md-4">
-                    <button class="btn btn-light btn-lg d-flex flex-column align-items-center m-3" @click="redirectToQuiz()">
-                        <div class="d-flex flex-column justify-content-center align-items-center">
+                    <a type="button" id="quiz-start-btn" class="btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToQuiz()">
+                     <div class="d-flex flex-column justify-content-center align-items-center">
                             Give me a recipe!
                             <img src="../styling/pics/chef hat.png" class="icons">
                         </div>
-                    </button>
+                      </a>
                 </div>
     
                 <div class="col-12 col-md-4">
-                    <button class="btn btn-light btn-lg d-flex flex-column align-items-center m-3" @click="redirectToSaved()">
+                    <a type="button" id="saved-recipe-btn" class="btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToSaved()">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             Saved Recipe Book
                             <img src="../styling/pics/book.png" class="icons">
                         </div>
-                    </button>
+                      </a>
                 </div>
             </div>  
         </div>
@@ -112,7 +150,9 @@
         <div class="bottom-segment container d-flex justify-content-center h-25">
             <div class="row">
                 <div class="col-md-3 d-flex justify-content-center align-items-end">
-                    <a type="button" class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile</a>
+                    <a type="button" class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile
+
+                    </a>
                 </div>
     
     

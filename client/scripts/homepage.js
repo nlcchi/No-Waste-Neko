@@ -29,9 +29,9 @@ for (const ingredient of ingredients) {
 
 
 if (expired.length > 0) {
-    document.getElementById('fridge').innerHTML += `<span class="badge rounded-pill text-bg-danger m-2">Food expired!</span>`;
+    document.getElementById('fridge').innerHTML += `<span class="badge rounded-pill text-bg-danger m-2 animate__animated animate__pulse animate__infinite">Food expired!</span>`;
 } else if (expiring.length > 0) {
-    document.getElementById('fridge').innerHTML += `<span class="badge rounded-pill text-bg-danger m-2">Food expiring!</span>`;
+    document.getElementById('fridge').innerHTML += `<span class="badge rounded-pill text-bg-danger m-2 animate__animated animate__pulse animate__infinite">Food expiring!</span>`;
 } else {
     ;
 }

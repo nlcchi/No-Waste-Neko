@@ -1,4 +1,4 @@
-/*THINGS TO DO
+'/'/*THINGS TO DO
 1. finalise questions
 2. add code to add picture for each choice
 3. fix the add of design for each choice
@@ -21,7 +21,7 @@ let vegetableQuestions = [
 
 let preparationQuestions = [
     { 
-        question: 'Maximum Preparation time (in mins)', 
+        question: 'Max Prep time (in mins)', 
         choices: ['15','30','45', '60', '90', '120']
     },
     { 
@@ -65,11 +65,16 @@ function displayCurrentQuestion() {
 
         // Create a col for each option for phone responsiveness
         var choiceButtonCol = document.createElement('div')
-        choiceButtonCol.classList.add('col', 'col-sm-12', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        if(currentQuestionIndex==1){
+            choiceButtonCol.classList.add('col', 'col-6', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        }
+        else{
+            choiceButtonCol.classList.add('col', 'col-12', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        }
         
 
         var choiceButton = document.createElement('button');
-        choiceButton.classList.add('btn', 'btn-lg', 'bg-light', 'my-3','animate__animated', 'animate__fadeInUp');
+        choiceButton.classList.add('btn', 'btn-lg', 'my-3','animate__animated', 'animate__fadeInUp');
         
 
         // Create a new div for the text and img to fit into the button
@@ -90,6 +95,7 @@ function displayCurrentQuestion() {
                 choiceButton.style = "width:200px; height:200px"
             }
             let img_elem = document.createElement('img');
+            img_elem.style="width:100px; height:100px"
             img_elem.src = `../styling/pics/quiz_icons/${choice}.png`
             innerDiv.appendChild(img_elem)
         }
@@ -115,8 +121,12 @@ function displayChoices(choice, currentQuestion) {
     if (currentQuestion.question === 'Which course') {
         if (choice === 'Main course' || choice === 'Appetizer') {
             questions = questions.concat(preparationQuestions, vegetableQuestions);
+            document.getElementById('cooking-gif').classList.remove('d-none')
+            document.getElementById('cooking-gif').classList.add('d-inline')
         } else if (choice === 'Dessert') {
             questions = questions.concat(preparationQuestions.slice(0, 1));
+            document.getElementById('baking-gif').classList.remove('d-none')
+            document.getElementById('baking-gif').classList.add('d-inline')
         }
     }
 
