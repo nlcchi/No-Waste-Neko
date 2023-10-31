@@ -29,7 +29,7 @@
 
       <div class="container justify-content-center d-flex mt-5 sticky-top">
         <div class="btn-group border">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary" type="button">
                 Sort by
             </button>
             <select class="form-select" v-model="selectedFilter">
@@ -47,6 +47,21 @@
     
       <!-- Front food row -->
       <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5" id="front-row">
+        <div v-for="ingredient in filteredIngredients" :key="ingredient.id" class="col mb-3">
+          <div class="card">
+            <div class="card-body" :class="getCardClass(ingredient)">
+              <h5 class="card-title">{{ ingredient.productName }}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">{{ ingredient.productCat }}</h6>
+              <ul>
+                <li>Expiration Date: {{ ingredient.expiryDate }}</li>
+                <li>Days Till Expiry: <span :style="getDaysStyle(ingredient)">{{ getDaysText(ingredient) }}</span></li>
+              </ul>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" @click="removeItem(ingredient)">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     
       <!-- Add new item button -->

@@ -13,7 +13,20 @@ const main = Vue.createApp({
             this.displayItems(newFilter);
         },
     },
-
+    // Computed Properties
+    computed: {
+      filteredIngredients() {
+        return this.ingredients.filter(ingredient => {
+          const daysTillExpiry = this.getDaysTillExpiry(ingredient.expiryDate);
+          if (this.filter === 'expired') {
+            return daysTillExpiry <= 0;
+          } else if (this.filter === 'nonExpired') {
+            return daysTillExpiry > 0;
+          }
+          return true; // Show all if filter is 'all' or any other value
+        });
+      },
+    },
     // Methods
     methods: {
         updateFilter(filter) {
@@ -48,114 +61,53 @@ const main = Vue.createApp({
             return diffInDays;
         },
 
-        displayItems(filter) {
-            let displayIngre = document.getElementById("front-row");
-            displayIngre.innerHTML = ''; // Clear current items
-            for (var ingredient of this.ingredients) {
-                // console.log(ingredient);
-                var diffInDays = this.getDaysTillExpiry(ingredient.expiryDate);
-                
-                if (filter === 'expired' && diffInDays <= 0) {
-                    // ... (display expired items)displayIngre.innerHTML += this.getExpiredCard(ingredient);
-                    displayIngre.innerHTML += this.getExpiredCard(ingredient);
-                } else if (filter === 'nonExpired' && diffInDays > 0) {
-                    // ... (display non-expired items)
-                    if (diffInDays <= 7) {
-                        displayIngre.innerHTML += this.getExpiringCard(diffInDays, ingredient);
-                    }
-                     else {
-                        displayIngre.innerHTML += this.getNormalCard(diffInDays,  ingredient);
-                    }
-                } else if (filter === 'all') {
-                    // ... (display all items)
-                    if (diffInDays <= 0) {
-                        displayIngre.innerHTML += this.getExpiredCard(ingredient);
-                    } else if (diffInDays <= 7) {
-                        displayIngre.innerHTML += this.getExpiringCard(diffInDays, ingredient);
-                    }
-                     else {
-                        displayIngre.innerHTML += this.getNormalCard(diffInDays, ingredient);
-                    }
-                }
+        getCardClass(ingredient) {
+        // Logic to return the appropriate class based on ingredient's expiry date
+            if (this.getDaysTillExpiry(ingredient.expiryDate) <= 0) {
+                return 'bg-danger-subtle';
+            } else if (this.getDaysTillExpiry(ingredient.expiryDate) <= 7) {
+                return 'bg-warning-subtle';
+            }
+            return '';
+        },
+
+        getDaysStyle(ingredient) {
+        // Logic to return the appropriate style based on ingredient's expiry date
+            if (this.getDaysTillExpiry(ingredient.expiryDate) <= 7) {
+                return 'color: red;';
+            }
+            return '';
+        },
+
+        getDaysText(ingredient) {
+        // Logic to return the appropriate text based on ingredient's expiry date
+            if (this.getDaysTillExpiry(ingredient.expiryDate) <= 0) {
+                return 'Expired!';
+            } else {
+                return this.getDaysTillExpiry(ingredient.expiryDate);
             }
         },
 
-        getExpiredCard(ingredient) {
-            // console.log(ingredient);
-            return `
-            <div class="col mb-3">
-                <div class="card" >
-                    <div class="card-body bg-danger-subtle" >
-                        <h5 class="card-title"><span style="color: red;">${ingredient.productName}</span></h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">${ingredient.productCat}</h6>
-                        <ul>
-                            <li>Expiration Date: ${ingredient.expiryDate}</li>
-                            <li>Days Till Expiry: <span style="color: red;">Expired!</span></li>
-                        </ul>
-        
-                        <!-- Remove button -->
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-light">Remove</button>
-                        </div>
-                    </div>
-        
-                </div>
-                </div>
-            `;
+        removeItem(ingredient) {
+        // Logic to remove the item
+        console.log('Removing item:', ingredient);
+        var user = sessionStorage.getItem("username");
+        let url = "../../backend/del_fridge.php?username="+user+"&productName="+ingredient.productName+"&productCat="+ingredient.productCat+"&expiryDate="+ingredient.expiryDate;
+        axios.get(url).then(response =>{
+              var data = response.data;
+                console.log(data);
+                window.location.reload();
+            }).catch(error => {
+                console.log(error);
+            });
         },
-
-        getExpiringCard(diffInDays, ingredient) {
-            return `
-            <div class="col mb-3">
-                <div class="card">
-                    <div class="card-body bg-warning-subtle">
-                        <h5 class="card-title">${ingredient.productName}</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">${ingredient.productCat}</h6>
-                        <ul>
-                            <li>Expiration Date: ${ingredient.expiryDate}</li>
-                            <li>Days Till Expiry: <span style="color: red;">${diffInDays}</span></li>
-                        </ul>
-        
-                        <!-- Remove button -->
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-light">Remove</button>
-                        </div>
-                    </div>
-        
-                </div>
-                </div>
-            `;
-        },
-
-        getNormalCard(diffInDays, ingredient) {
-            return `
-           <div class="col mb-3">
-                 <div class="card" >
-                     <div class="card-body" >
-                         <h5 class="card-title">${ingredient.productName}</h5>
-                         <h6 class="card-subtitle mb-2 text-body-secondary">${ingredient.productCat}</h6>
-                         <ul>
-                             <li>Expiration Date: ${ingredient.expiryDate}</li>
-                             <li>Days Till Expiry: ${diffInDays}</li>
-                         </ul>
-       
-                         <!-- Remove button -->
-                         <div class="d-flex justify-content-center">
-                             <button type="button" class="btn btn-light">Remove</button>
-                         </div>
-                     </div>
-       
-                 </div>
-               </div>
-           `;
-       },
     },
 
     // Lifecycle Hook
     mounted() {
         var user = sessionStorage.getItem("username");
         let url = "../../backend/get_fridge.php?username="+user;
-        console.log(url);
+        // console.log(url);
         axios.get(url).then(response => {
             var data = response.data;
             //    console.log(data.data);
@@ -163,7 +115,7 @@ const main = Vue.createApp({
             // console.log(this.ingredients);
             
             this.sortIngredients();
-            console.log(this.filter);
+            // console.log(this.filter);
             this.displayItems(this.filter);
         }).catch(error => {
             console.log(error);
