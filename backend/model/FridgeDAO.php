@@ -9,17 +9,16 @@ class FridgeDAO {
         $conn = $connMgr->connect();
         
         // prepare select
-        $sql = "SELECT username, productName, productCat, exipryDate  FROM userfridge WHERE username = :username";
+        $sql = "SELECT * FROM userfridge WHERE username = :username";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
             
-        $user = null;
+        $fridge = [];
         if ($stmt->execute() ) {
             
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-                $fridge = new Fridge($row["username"], $row["productName"], $row["productCat"], $row["expiryDate"]);
+            while ($row = $stmt->fetch() ) {
+                $fridge[] = new Fridge($row["username"], $row["productName"], $row["productCat"], $row["expiryDate"]);
             }
-            
         }
         else {
             $connMgr->handleError( $stmt, $sql );

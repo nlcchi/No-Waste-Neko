@@ -32,11 +32,11 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort by
             </button>
-            <ul class="dropdown-menu">
-              <a class="dropdown-item" href="#" id="filterExpired">Expired</a>
-              <a class="dropdown-item" href="#" id="filterNonExpired">Non-Expired</a>
-              <a class="dropdown-item" href="#" id="filterAll">All Items</a>
-            </ul>
+            <select class="form-select" v-model="selectedFilter">
+              <option value="expired">Expired</option>
+              <option value="nonExpired">Non-Expired</option>
+              <option value="all">All Items</option>
+          </select>
         </div>
 
         <!-- Home page -->
@@ -46,8 +46,8 @@
       </div>
     
       <!-- Front food row -->
-          <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5" id="front-row">
-          </div>
+      <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5" id="front-row">
+      </div>
     
       <!-- Add new item button -->
       <div class="d-flex justify-content-center sticky-bottom ">
@@ -106,7 +106,11 @@
           </div>
         </div>
 
-    <script src="../scripts/foodtracker.js"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- vue cdn -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../scripts/foodtracker_vue.js"></script>
     <!-- Include Tesseract.js -->
     <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
     <!-- Include Bootstrap JS -->
