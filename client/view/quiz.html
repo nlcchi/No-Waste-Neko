@@ -53,29 +53,46 @@
   
     </style>
 
-    <script src="../scripts/quiz.js"></script>
 </head>
 <body class="non-recipe">
-    <div id="question-container" class="d-flex justify-content-center align-items-center mt-4">
-        
+    <div id="main" class="container">
+        <div class="d-flex justify-content-center align-items-center mt-4">
+            <h2 class="text-center bg-light rounded-pill w-75 animate__animated animate__fadeInDown p-3" 
+            v-if="currentQuestion">
+            {{ currentQuestion.question }}
+        </h2>
     </div>
-
-    <div id="options-container" class="d-flex justify-content-center align-items-center mt-5">
-
-        <div class="row" id="options-row" style="max-width:100%">
-            
-        </div>
+    
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="row" style="max-width:100%">
+            <div v-for="choice in currentChoices" :key="choice" 
+            class="col col-12 col-md d-flex justify-content-center align-items-center" 
+            :class="{ 'col-6': isVegetableQuestion }">
+            <button class="btn btn-lg my-3 animate__animated animate__fadeInUp" 
+            :style="buttonStyle"
+            @click="selectChoice(choice)">
+            <div class="d-flex flex-column align-items-center">
+                <span>{{ choice }}</span>
+                <img v-if="showImage" :src="'../styling/pics/quiz_icons/' + choice + '.png'" style="width:100px; height:100px">
+            </div>
+        </button>
     </div>
+</div>
+</div>
 
-    <div id="gif-container" class="d-flex justify-content-center align-items-center" style="display: none">
-        <img src="../styling/pics/cooking pot pixel.gif" id="cooking-gif" class="d-none gifs" alt="">
-        <img src="../styling/pics/baking.gif" id="baking-gif" class="d-none gifs" alt="">
-    </div>
+<div class="d-flex justify-content-center align-items-center">
+    <img src="../styling/pics/cooking pot pixel.gif" v-show="showCookingGif" class="gifs" alt="">
+    <img src="../styling/pics/baking.gif" v-show="showBakingGif" class="gifs" alt="">
+</div>
+</div>
 
-    <script>
-        displayCurrentQuestion()
-    </script>
+<!-- <script>
+    displayCurrentQuestion()
+</script> -->
 
+<!-- Vue.js -->
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../scripts/quiz_vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
