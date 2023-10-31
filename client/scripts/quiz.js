@@ -36,7 +36,7 @@ let preparationQuestions = [
 
 let questionKeys = {
     'Which course': 'type',
-    'Maximum Preparation time (in mins)': 'maxReadyTime',
+    'Max Prep time (in mins)': 'maxReadyTime',
     'Cuisine': 'cuisine',
     'Choice of Protein': 'query',
     'Choice of Vegetable': 'query'
