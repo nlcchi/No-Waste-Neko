@@ -95,6 +95,7 @@ function displayCurrentQuestion() {
                 choiceButton.style = "width:200px; height:200px"
             }
             let img_elem = document.createElement('img');
+            img_elem.style="width:100px; height:100px"
             img_elem.src = `../styling/pics/quiz_icons/${choice}.png`
             innerDiv.appendChild(img_elem)
         }
