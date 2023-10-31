@@ -9,7 +9,7 @@ class PreferenceDAO {
         $conn = $connMgr->connect();
         
         // prepare select
-        $sql = "SELECT username, diet, intolerence  FROM userpreference WHERE username = :username";
+        $sql = "SELECT username, diet, intolerance  FROM userpreference WHERE username = :username";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
             
@@ -23,14 +23,14 @@ class PreferenceDAO {
                     $diet[] = $row["diet"];
                 }
 
-                if ($row["intolerence"] != ""){
-                    $intolerance[] = $row["intolerence"];
+                if ($row["intolerance"] != ""){
+                    $intolerance[] = $row["intolerance"];
                 }                
             }
 
             $preference = array (
                 "diet" => $diet,
-                "intolerence" => $intolerance,
+                "intolerance" => $intolerance,
             );
             
         }
@@ -53,7 +53,7 @@ class PreferenceDAO {
         $conn = $connMgr->connect();
         
         // prepare insert
-        $sql = "INSERT INTO userpreference (username, diet, intolerence) VALUES (:username, :diet, :intolerence)";
+        $sql = "INSERT INTO userpreference (username, diet, intolerance) VALUES (:username, :diet, :intolerance)";
         $stmt = $conn->prepare($sql);
         
         $username = $preference->getUsername();
@@ -62,7 +62,7 @@ class PreferenceDAO {
 
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);
-        $stmt->bindParam(":intolerence", $intolerance, PDO::PARAM_STR);
+        $stmt->bindParam(":intolerance", $intolerance, PDO::PARAM_STR);
         
 
         $result = $stmt->execute();
@@ -85,7 +85,7 @@ class PreferenceDAO {
         $conn = $connMgr->connect();
 
         // prepare insert
-        $sql = "DELETE FROM userpreference WHERE username = :username AND diet = :diet AND intolerence = :intolerence";
+        $sql = "DELETE FROM userpreference WHERE username = :username AND diet = :diet AND intolerance = :intolerance";
         $stmt = $conn->prepare($sql);
         
         $username = $preference->getUsername();
@@ -94,7 +94,7 @@ class PreferenceDAO {
 
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);
-        $stmt->bindParam(":intolerence", $intolerance, PDO::PARAM_STR);        
+        $stmt->bindParam(":intolerance", $intolerance, PDO::PARAM_STR);        
 
         $result = $stmt->execute();
         
