@@ -1,4 +1,4 @@
-/*THINGS TO DO
+'/'/*THINGS TO DO
 1. finalise questions
 2. add code to add picture for each choice
 3. fix the add of design for each choice
@@ -21,7 +21,7 @@ let vegetableQuestions = [
 
 let preparationQuestions = [
     { 
-        question: 'Maximum Preparation time (in mins)', 
+        question: 'Max Prep time (in mins)', 
         choices: ['15','30','45', '60', '90', '120']
     },
     { 
@@ -65,7 +65,12 @@ function displayCurrentQuestion() {
 
         // Create a col for each option for phone responsiveness
         var choiceButtonCol = document.createElement('div')
-        choiceButtonCol.classList.add('col', 'col-sm-12', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        if(currentQuestionIndex==1){
+            choiceButtonCol.classList.add('col', 'col-6', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        }
+        else{
+            choiceButtonCol.classList.add('col', 'col-12', 'col-md', 'd-flex', 'justify-content-center', 'align-items-center')
+        }
         
 
         var choiceButton = document.createElement('button');
