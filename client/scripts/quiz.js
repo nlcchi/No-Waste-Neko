@@ -121,8 +121,12 @@ function displayChoices(choice, currentQuestion) {
     if (currentQuestion.question === 'Which course') {
         if (choice === 'Main course' || choice === 'Appetizer') {
             questions = questions.concat(preparationQuestions, vegetableQuestions);
+            document.getElementById('cooking-gif').classList.remove('d-none')
+            document.getElementById('cooking-gif').classList.add('d-inline')
         } else if (choice === 'Dessert') {
             questions = questions.concat(preparationQuestions.slice(0, 1));
+            document.getElementById('baking-gif').classList.remove('d-none')
+            document.getElementById('baking-gif').classList.add('d-inline')
         }
     }
 
