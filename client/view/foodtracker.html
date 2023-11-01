@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>No Waste Neko</title>
+    <!-- Font API -->
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Default styling -->
+    <link rel="stylesheet" href="../styling/default.css">
+
+    <!-- redirect if not logged in -->
+    <!-- <script src="../scripts/redirect.js"></script> -->
+
+    <style>
+        .card-body{
+            background-color:rgb(199,212,232);
+        }
+    </style>
+  </head>
+  <body id="foodtracker">
+      <div id="h1" class="d-flex justify-content-center mt-3">
+          <h1 class="border border-light bg-light rounded-pill w-50 text-center p-3">What's in your fridge?</h1>
+      </div>
+
+      <div class="container justify-content-center d-flex mt-5 sticky-top">
+        <div class="btn-group border">
+            <button class="btn btn-secondary" type="button">
+                Sort by
+            </button>
+            <select class="form-select" v-model="selectedFilter">
+              <option value="expired">Expired</option>
+              <option value="nonExpired">Non-Expired</option>
+              <option value="all">All Items</option>
+          </select>
+        </div>
+
+        <!-- Home page -->
+        <div id="home-btn" class="ms-3">
+            <a class="btn btn-warning" href="homepage.html" role="button">Home</a>
+        </div>
+      </div>
+    
+      <!-- Front food row -->
+      <div class="row mx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5" id="front-row">
+        <div v-for="ingredient in filteredIngredients" :key="ingredient.id" class="col mb-3">
+          <div class="card">
+            <div class="card-body" :class="getCardClass(ingredient)">
+              <h5 class="card-title">{{ ingredient.productName }}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">{{ ingredient.productCat }}</h6>
+              <ul>
+                <li>Expiration Date: {{ ingredient.expiryDate }}</li>
+                <li>Days Till Expiry: <span :style="getDaysStyle(ingredient)">{{ getDaysText(ingredient) }}</span></li>
+              </ul>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" @click="removeItem(ingredient)">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Add new item button -->
+      <div class="d-flex justify-content-center sticky-bottom ">
+          <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#addItem">Add New Item</button>
+      </div>
+    
+      <!-- Add new item popup -->
+      <div class="modal fade" id="addItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center" id="addItemHeader">Add New Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- Camera feed -->
+                  <video autoplay="true" id="videoElement" width="320" height="240"></video>
+                  
+                  <!-- Options -->
+                  <form id="addItemForm">
+                      <div class="mb-3">
+                          <label for="Name" class="form-label">Product Name</label>
+                          <input type="text" class="form-control" id="Name" placeholder="Product Name">
+                          <button type="button" data-input="Name" class="btn btn-light captureImageBtn">Capture Image</button>
+                      </div>
+                      <div class="mb-3">
+                          <label for="Exp" class="form-label">Expiration Date</label>
+                          <input type="date" class="form-control" id="Exp">
+                      </div>
+                  <div class="mb-3">
+                      <div class="mb-3">
+                          <label for="Category" class="form-label">Product Category</label>
+                          <select class="form-select" id="Category">
+                            <option>--Please Select One--</option>
+                            <option value="meat">Meat</option>
+                            <option value="meatNP">Non-packaged Meat [To store in freezer]</option>
+                            <option value="Vprotein">Vegan Protein</option>
+                            <option value="vegetable">Vegetables</option>
+                            <option value="vegetableNP">Non-packaged Vegetables [To store in fridge]</option>
+                            <option value="fruit">Fruits</option>
+                            <option value="carb">Carbs</option>
+                            <option value="dairy">dairy products</option>
+                            <option value="beverage">Beverages</option>
+                          </select>
+                        </div>
+                  </div>
+                  <!-- Add more form inputs as needed -->
+                  
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- vue cdn -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../scripts/foodtracker_vue.js"></script>
+    <!-- Include Tesseract.js -->
+    <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- Include your custom JS -->
+    <script src="../scripts/camera.js"></script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>No Waste Neko</title>
+
+    <!-- Font API -->
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Animate.CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Default styling -->
+    <link rel="stylesheet" href="../styling/default.css">
+
+    <!-- redirect if not logged in -->
+    <!-- <script src="../scripts/redirect.js"></script> -->
+
+    <style>
+      .icons{
+        width:110px;
+        height:110px
+      }
+
+      #funfact{
+        font-size:15px;
+      }
+
+
+       .overlay {
+       /* position: fixed; */
+       bottom: 0;
+       right: 0;
+       left: 0;
+       top: 0;
+       height: 100vh
+       }
+
+       @media (max-width: 767px) {
+          .bottom-segment, .buttons-segment, .funfact-segment{
+            height:auto;
+          }
+        }
+        @media (min-width: 768px) {
+            .bottom-segment{
+        height: 50vh;
+        bottom:0;
+       }
+
+      .buttons-segment{
+        height: 35vh;
+       }
+
+      .funfact-segment{
+        height: 20vh;
+      }
+    }
+    /* colour palette */
+    /* --chestnut: #954639ff;
+--white: #FEFEFEff;
+--brown-sugar: #B96E4Eff;
+--silver: #B9B3B3ff;
+--chestnut-2: #944D3Cff;
+--reseda-green: #6E7E5Bff;
+--brown-sugar-2: #A8745Cff;
+--wheat: #EAD5AAff;
+--chestnut-3: #954639ff;
+--reseda-green-2: #72815Fff; */
+
+    /* button colour */
+    .btn{
+      background-color:rgb(255, 251, 242); 
+      border: 3px #954639ff dashed;
+
+    }
+
+    #foodtracker-btn:hover{
+      background-color:rgb(10, 135, 144);
+      border:3px rgb(255, 251, 242) dashed;
+      color:white;
+    }
+
+    #quiz-start-btn:hover{
+      background-color: #D97742ff;
+      border:3px rgb(255, 251, 242) dashed;
+      color:white;
+    }
+
+    #saved-recipe-btn:hover{
+      background-color: #954639ff;
+      border:3px rgb(255, 251, 242) dashed;
+      color:white;
+    }
+
+
+          
+    </style>
+  </head>
+  
+  <body class="non-recipe">
+    <div class="overlay" id="main">
+      <div class="container text-end">
+        <a type="button" class="btn btn-warning m-1" @click="logout()">logout</a>
+      </div>
+
+        <!-- First 3 btns -->
+        <div class="buttons-segment container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <a type="button" id="foodtracker-btn" class="btn btn-lg d-flex flex-column justify-content-center align-items-center m-3" @click="redirectToFridge()" >
+                        <div class="d-flex flex-column justify-content-center align-items-center" id="fridge">
+                            Show my fridge!
+                            <img src="../styling/pics/fridge.png" class="icons">
+                        </div>
+                      </a>
+                </div>
+    
+                <div class="col-12 col-md-4">
+                    <a type="button" id="quiz-start-btn" class="btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToQuiz()">
+                     <div class="d-flex flex-column justify-content-center align-items-center">
+                            Give me a recipe!
+                            <img src="../styling/pics/chef hat.png" class="icons">
+                        </div>
+                      </a>
+                </div>
+    
+                <div class="col-12 col-md-4">
+                    <a type="button" id="saved-recipe-btn" class="btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToSaved()">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            Saved Recipe Book
+                            <img src="../styling/pics/book.png" class="icons">
+                        </div>
+                      </a>
+                </div>
+            </div>  
+        </div>
+    
+        <!-- middle fun fact -->
+        <!-- align-items-center w-75 h-25 -->
+        <div class="funfact-segment container d-flex  w-75"> 
+            <h4 class="text-center my-auto bg-light rounded p-2" id="funfact"></h4>
+        </div>
+    
+        <!-- Bottom: my profile, welcome back, chef cat -->
+        <!-- previusly align-items-center h-100  -->
+        <div class="bottom-segment container d-flex justify-content-center h-25">
+            <div class="row">
+                <div class="col-md-3 d-flex justify-content-center align-items-end">
+                    <a type="button" class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile
+
+                    </a>
+                </div>
+    
+    
+                <div class="col-md-6 d-flex justify-content-center align-items-end">
+                    <h4 class="text-center bg-light rounded-pill w-75 p-3">Welcome back, <span id="user"></span></h4>
+                </div>
+    
+                <div class="col-md-3 d-flex align-items-end">
+                    <img src="../styling/pics/cat-chef.png" class="img-fluid col-sm-3" style="width:410px; height:300px" alt="">
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- vue cdn -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../scripts/homepage_vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
+

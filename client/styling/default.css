@@ -1,0 +1,43 @@
+body{
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center;
+    background-size: cover;
+    font-family: 'Public Pixel', sans-serif;
+    background-attachment: fixed;
+}
+.non-recipe{
+    background-image: url('pics/kitchen\ background.png'); 
+}
+
+#new_recipes{
+    background-image: url('pics/dining\ room\ bg.png');
+}
+
+#saved_recipes{
+    /* background-image: url('pics/dining\ room\ bg.png'); */
+    background-image: url('pics/book-bg.png');
+}
+
+#foodtracker{
+    background-image: url("pics/foodtracker\ bg.jpg")
+}
+
+.icons{
+    width:110px;
+    height:110px
+}
+
+@media (max-width: 767px) {
+    h2 {
+        font-size: 18px;
+    }
+    span {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    span {
+        font-size: 20px;
+    }
+}
