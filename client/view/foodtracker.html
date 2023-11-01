@@ -82,20 +82,20 @@
                   <video autoplay="true" id="videoElement" width="320" height="240"></video>
                   
                   <!-- Options -->
-                  <form id="addItemForm">
+                  <form id="addItemForm" @submit.prevent="handleSubmit">
                       <div class="mb-3">
                           <label for="Name" class="form-label">Product Name</label>
-                          <input type="text" class="form-control" id="Name" placeholder="Product Name">
+                          <input type="text" class="form-control" id="Name" placeholder="Product Name" v-model="form.productName">
                           <button type="button" data-input="Name" class="btn btn-light captureImageBtn">Capture Image</button>
                       </div>
                       <div class="mb-3">
-                          <label for="Exp" class="form-label">Expiration Date</label>
-                          <input type="date" class="form-control" id="Exp">
+                          <label for="Exp" class="form-label" v-model="form.expiryDate">Expiration Date</label>
+                          <input type="date" class="form-control" id="Exp" v-model="form.expiryDate">
                       </div>
                   <div class="mb-3">
                       <div class="mb-3">
                           <label for="Category" class="form-label">Product Category</label>
-                          <select class="form-select" id="Category">
+                          <select class="form-select" id="Category" v-model="form.productCat">
                             <option>--Please Select One--</option>
                             <option value="meat">Meat</option>
                             <option value="meatNP">Non-packaged Meat [To store in freezer]</option>
@@ -115,7 +115,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <input type="submit" form="addItemForm" class="btn btn-primary" value="Submit">
               </div>
             </div>
           </div>

@@ -6,6 +6,11 @@ const main = Vue.createApp({
             ingredients: [],
             filter: 'all',
             selectedFilter: 'all', // Default value
+            form: {
+                productName: '',
+                productCat: '',
+                expiryDate: '',
+            },
         };
     },
     watch: {
@@ -101,6 +106,24 @@ const main = Vue.createApp({
                 console.log(error);
             });
         },
+
+        handleSubmit() {
+          console.log('Form submitted!', this.form);
+          // Do something with the form data here
+            var user = sessionStorage.getItem("username");
+            let url = "../../backend/add_fridge.php?username="+user+"&productName="+this.form.productName+"&productCat="+this.form.productCat+"&expiryDate="+this.form.expiryDate;
+            axios.get(url).then(response =>{
+                var data = response.data;
+                console.log(data);
+                window.location.reload();
+            }, error => {
+                console.log(error);
+            }, this.form = {
+                productName: '',
+                productCat: '',
+                expiryDate: '',
+            });
+        }
     },
 
     // Lifecycle Hook
