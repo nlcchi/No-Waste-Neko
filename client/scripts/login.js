@@ -11,6 +11,7 @@ function validate_form() {
         .then(response => {
             console.log(response)
             window.location.href = "../view/homepage.html"
+            sessionStorage.setItem("username", username);
             exit()
         })
 

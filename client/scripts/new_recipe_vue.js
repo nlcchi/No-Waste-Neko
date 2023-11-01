@@ -28,7 +28,7 @@ const main = Vue.createApp({
             } else {
                 displayImage = '../styling/pics/logo.png'; 
             }
-            console.log(displayImage);
+            // console.log(displayImage);
             let recipe_card = `
             <div class='col col-lg-4 col-md-6'>
                 <div class="card m-4" style="width: 18rem;">
@@ -61,6 +61,7 @@ const main = Vue.createApp({
         let url = "../../backend/get_preference.php?username="+sessionStorage.getItem("username");
         axios.get(url).then(response =>{
             let answers = JSON.parse(sessionStorage.getItem("answers"));
+            console.log(answers);
 
            var preference = response.data.data;
            
@@ -75,28 +76,27 @@ const main = Vue.createApp({
 
             let intolerance = preference.intolerance;
             spoonurl += '&intolerances=' + intolerance.join(',');
-
-            shown_recipes_row = document.getElementById('shown-recipes-row');
-
+            
             axios.get(spoonurl).then(response => {
+                shown_recipes_row = document.getElementById('recipes-row');
                 let recipes = response.data.results;
                 // console.log(recipes);
 
                 // Hide loading screen when the last recipe is loaded
                 if (recipes.length > 0) {
-                    hideLoadingScreen();
+                    this.hideLoadingScreen();
                 }
                 for (recipe of recipes) {
                     // console.log(recipe);
                     axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
                         // console.log(response.data);
                         recipe = response.data;
-                        shown_recipes_row.innerHTML += createRecipeCard(recipe);
+                        shown_recipes_row.innerHTML += this.createRecipeCard(recipe);
 
                     }).catch((error) => {
                         console.log(error);
                         console.log("Hiding loading screen...");
-                        hideLoadingScreen();
+                        this.hideLoadingScreen();
                         console.log("Loading screen should be hidden now");
 
                     });
@@ -104,7 +104,7 @@ const main = Vue.createApp({
             }).catch((error) => {
                 console.log(error);
                 console.log("Hiding loading screen...");
-                hideLoadingScreen();
+                this.hideLoadingScreen();
                 console.log("Loading screen should be hidden now");
             });
         }).catch(error => {
@@ -113,4 +113,4 @@ const main = Vue.createApp({
     },
 })
 
-main.mount('#main');
+main.mount('#new_recipes');
