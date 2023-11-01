@@ -108,20 +108,20 @@ const main = Vue.createApp({
         },
 
         handleSubmit() {
-          console.log('Form submitted!', this.form);
-          // Do something with the form data here
+            console.log('Form submitted!', this.form);
             var user = sessionStorage.getItem("username");
-            let url = "../../backend/add_fridge.php?username="+user+"&productName="+this.form.productName+"&productCat="+this.form.productCat+"&expiryDate="+this.form.expiryDate;
-            axios.get(url).then(response =>{
+            let url = "../../backend/add_fridge.php";
+            axios.post(url, {
+                username: user,
+                productName: this.form.productName,
+                productCat: this.form.productCat,
+                expiryDate: this.form.expiryDate
+            }).then(response => {
                 var data = response.data;
                 console.log(data);
                 window.location.reload();
-            }, error => {
+            }).catch(error => {
                 console.log(error);
-            }, this.form = {
-                productName: '',
-                productCat: '',
-                expiryDate: '',
             });
         }
     },
