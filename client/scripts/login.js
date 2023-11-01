@@ -5,7 +5,7 @@ function validate_form() {
     const username = document.getElementById("username").value
     const password = document.getElementById("password").value
 
-    let api_endpoint_url = "http://localhost/proj/backend/process_login.php?username=" + username + "&password=" + password
+    let api_endpoint_url = "../../backend/process_login.php?username=" + username + "&password=" + password
 
     axios.get(api_endpoint_url)
         .then(response => {
