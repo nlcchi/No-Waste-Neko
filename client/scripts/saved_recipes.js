@@ -16,12 +16,12 @@ const app = Vue.createApp({
     },
     methods: {
         removecard(recipeName,recipeURL) {
-            // var username="<?php echo $_SESSION['username']; ?>";
-            username="user"
+            var username= sessionStorage.getItem('username');
+            // username="user"
             console.log(recipeName,recipeURL);
 
             axios
-            .get(`http://localhost/is216/No-Waste-Neko/backend/del_recipe.php?username=${username}&recipeName=${recipeName}&recipeURL=${recipeURL}`)
+            .delete(`../../backend/del_recipe.php?username=${username}&recipeName=${recipeName}&recipeURL=${recipeURL}`)
             .then((response) =>{
             let updateLoop = this.loop.filter((el) => el.food !== recipeName);
             this.loop = updateLoop
@@ -33,11 +33,11 @@ const app = Vue.createApp({
         },
 
         async onload(){
-            // var username="<?php echo $_SESSION['username']; ?>";
-            username = "user"
-            console.log("loaded");
+            var username= sessionStorage.getItem('username');
+            // username = "user"
+            console.log(username);
             axios
-            .get(`http://localhost/is216/No-Waste-Neko/backend/get_recipes.php?username=${username}`)
+            .get(`../../backend/get_recipes.php?username=${username}`)
             .then((response) =>{
                 
                 for(recipeIndex in response.data.data) {
@@ -45,15 +45,13 @@ const app = Vue.createApp({
                     this.recipes = response.data.data[recipeIndex]
                     this.loop.push({food:this.recipes.recipeName, imgurl:this.recipes.imgURL,serving:this.recipes.servingSize, cookingtime:this.recipes.estCookingTime,fullrecipe:this.recipes.recipeURL})
                 }
+                console.log(response.data.data)
                 
                 
             }).catch((error) => {
                 console.log(error);
             });
  
-        },
-        delete(){
-            console.log("delete");
         },
         
     },
