@@ -2,29 +2,28 @@
 
 require_once 'common.php';
 header('Content-Type: application/json');
-$data = file_get_contents('php://input');
+$json_data = file_get_contents('php://input');
+$data = json_decode($json_data, true);
 
 // Get the data from form processing
-$username = $data->username;
-$recipeName = $data->recipeName;
-$recipeURL = $data->recipeURL;
+$username = $data["username"];
+$recipeName = $data["recipeName"];
+$recipeURL = $data["recipeURL"];
 
-if (isset($_GET['imgURL'])) {
-    $imgURL = $data->imgURL;
+if (isset($data["imgURL"])) {
+    $imgURL = $data["imgURL"];
 } else {
     $imgURL = "";
 }
 
-if (isset($_GET['servingSize'])){
-    $servingSize = int($data->servingSize);
-
+if (isset($data["servingSize"])){
+    $servingSize = (int) $data["servingSize"];
 } else {
     $servingSize = null;
 }
 
-if (isset($_GET['estCookingTime'])){
-    $estCookingTime = int($data->estCookingTime);
-
+if (isset($data["estCookingTime"])){
+    $estCookingTime = (int) $data["estCookingTime"];
 } else {
     $estCookingTime = null;
 }
@@ -35,17 +34,9 @@ $recipe = new Recipe($username, $imgURL, $recipeName, $servingSize, $estCookingT
 $status = $dao->create($recipe);
 
 if($status){
-
-    echo json_encode(
-        array("message" => "Recipe added successfully.")
-    );
-
+    echo json_encode(array("message" => "Recipe added successfully."));
 } else {
-
-    echo json_encode(
-        array("message" => "Oops! Something went wrong.")
-    );
-
+    echo json_encode(array("message" => "Oops! Something went wrong."));
 }
 
 ?>

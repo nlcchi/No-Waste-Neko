@@ -17,7 +17,6 @@ const app = Vue.createApp({
     methods: {
         removecard(recipeName,recipeURL) {
             var username= sessionStorage.getItem('username');
-            // username="user"
             console.log(recipeName,recipeURL);
 
             axios
@@ -29,13 +28,29 @@ const app = Vue.createApp({
             }).catch((error) => {
                 console.log(error);
             });
+        },
 
+        showLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.display = 'flex';
+            } else {
+                console.error('Loading screen element not found!');
+            }        },
+            
+        hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.display = 'none';
+            } else {
+                console.error('Loading screen element not found!');
+            }        
         },
 
         async onload(){
+            this.showLoadingScreen();
             var username= sessionStorage.getItem('username');
-            // username = "user"
-            console.log(username);
+            // console.log(username);
             axios
             .get(`../../backend/get_recipes.php?username=${username}`)
             .then((response) =>{
@@ -45,21 +60,25 @@ const app = Vue.createApp({
                     this.recipes = response.data.data[recipeIndex]
                     this.loop.push({food:this.recipes.recipeName, imgurl:this.recipes.imgURL,serving:this.recipes.servingSize, cookingtime:this.recipes.estCookingTime,fullrecipe:this.recipes.recipeURL})
                 }
-                console.log(response.data.data)
-                
-                
+                // console.log(response.data.data)
+            
+                // Hide loading screen here after recipes are populated
+                this.hideLoadingScreen();
             }).catch((error) => {
                 console.log(error);
+                console.log("Hiding loading screen...");
+                this.hideLoadingScreen();
+                console.log("Loading screen should be hidden now");
             });
  
         },
         
     },
     beforeMount(){
-        
         this.onload();
+
     }
 })
 
-app.mount("#front-row")
+app.mount("#saved_recipes")
 

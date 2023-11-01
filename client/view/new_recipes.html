@@ -79,10 +79,28 @@
           </div>
       </div>
 
-    <div id="recipes-shown" class="container sml">
+      <div id="recipes-shown" class="container sml">
         <div id="recipes-row" class="row">
+            <div v-for="recipe in recipes" :key="recipe.id" class="col col-lg-4 col-md-6">
+              <div class="card m-4" style="width: 18rem;">
+                <img :src="recipe.image || '../styling/pics/logo.png'" class="card-img-top" alt="Recipe image">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ recipe.title.length > 20 ? recipe.title.substring(0, 20) + '...' : recipe.title }}
+                        <button :id="'like-btn-' + recipe.id" class="btn heart-btn" @click="likeRecipe(recipe.id)">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </h5>
+                    <p class="card-text"> 
+                        Serving Size: {{ recipe.servings }}
+                        <br>
+                        Ready in {{ recipe.readyInMinutes }} minutes
+                    </p>
+                    <a :href="recipe.sourceUrl" class="btn btn-primary">Full recipe</a>
+                </div>
+            </div>            </div>
         </div>
-    </div>
+    </div>    
 
     <!-- axios cdn -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

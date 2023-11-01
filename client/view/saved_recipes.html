@@ -13,37 +13,71 @@
 
         <!-- Default styling -->
         <link rel="stylesheet" href="../styling/default.css">
+
+        <style>
+            .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Public Pixel', sans-serif;
+            flex-direction: column; /* This will stack children vertically */
+            }
     
+            .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #000;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px; /* This adds some space between the spinner and the text */
+            }
+    
+            @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
+        </style>
   </head>
   <body id="saved_recipes">
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+        <p> Hang on tight while we get your recipes!</p>
+    </div>
     
-  </body>
-        <div id="h1" class="d-flex justify-content-center mt-3">
-            <h1 class="border border-light bg-light rounded-pill w-50 text-center">Your saved recipes!</h1>
-        </div>
+    <div id="h1" class="d-flex justify-content-center mt-3">
+        <h1 class="border border-light bg-light rounded-pill w-50 text-center">Your saved recipes!</h1>
+    </div>
 
-        <div class="row d-flex">
-            <div class="col d-flex justify-content-around">
-                <!-- Home page -->
-                <div id="home-btn" style=>
-                    <a class="btn btn-primary" href="homepage.html" role="button">Home</a>
-                </div>
+    <div class="row d-flex">
+        <div class="col d-flex justify-content-around">
+            <!-- Home page -->
+            <div id="home-btn" style=>
+                <a class="btn btn-primary" href="homepage.html" role="button">Home</a>
             </div>
         </div>
+    </div>
 
 
-        <!-- Front recipe row -->
-        <div class="row food-row d-flex justify-content-center mb-3 mt-3" id="front-row" >
+    <!-- Front recipe row -->
+    <div class="row food-row d-flex justify-content-center mb-3 mt-3">
         <div class="col-md-4" v-for="x in loop">
             <div class="card" >
                 <img v-bind:src="x.imgurl" alt="">
-                <div class="card-body" >
+                <div class="card-body">
                     <h5 class="card-title"> {{ x.food }}</h5>
                     <ul>
                         <li>Serving Size: {{x.serving}}</li>
                         <li>Estimated Cooking Time: {{x.cookingtime}}mins </li>
                     </ul>
-    
+
                     <div class="d-flex justify-content-center">
                         <!-- Recipe URL button -->
                         <a type="button" class="btn btn-light" target="_blank" v-bind:href='x.fullrecipe'>Full Recipe</a>
@@ -52,13 +86,9 @@
                     </div>
                 </div>
             </div>
-            <!-- -->
         </div>
-        
-        </div>
-        <!--  -->
-
-
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../scripts/saved_recipes.js"></script>
