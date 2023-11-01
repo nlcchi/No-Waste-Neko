@@ -45,29 +45,74 @@ class PreferenceDAO {
         return $preference;
     }
     
-    function create($preference) {
-        $result = true;
+    function createDiet($username, $diet) {
+            
+            // connect to database
+            $connMgr = new ConnectionManager();
+            $conn = $connMgr->connect();
+    
+            // prepare insert
+            $sql = "INSERT INTO userpreference (username, diet, intolerance) VALUES (:username, :diet, '')";
+            $stmt = $conn->prepare($sql);
+    
+            $stmt->bindParam(":username", $username, PDO::PARAM_STR);  
+            $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);  
+            $result = $stmt->execute();
+            
+            if (! $result ){ // encountered error
+                $parameters = [ "username" => $username, "diet" => $diet, ];
+                $connMgr->handleError( $stmt, $sql, $parameters );
+            }
+            
+            // close connections
+            $stmt = null;
+            $conn = null;        
+            
+            return $result;
+    }
 
+    function createIntolerance($username, $intolerance) {
+            
+            // connect to database
+            $connMgr = new ConnectionManager();
+            $conn = $connMgr->connect();
+    
+            // prepare insert
+            $sql = "INSERT INTO userpreference (username, diet, intolerance) VALUES (:username, '', :intolerance)";
+            $stmt = $conn->prepare($sql);
+    
+            $stmt->bindParam(":username", $username, PDO::PARAM_STR);  
+            $stmt->bindParam(":intolerance", $intolerance, PDO::PARAM_STR);  
+            $result = $stmt->execute();
+            
+            if (! $result ){ // encountered error
+                $parameters = [ "username" => $username, "intolerance" => $intolerance, ];
+                $connMgr->handleError( $stmt, $sql, $parameters );
+            }
+            
+            // close connections
+            $stmt = null;
+            $conn = null;        
+            
+            return $result;
+    }
+
+    function deleteIntolerance($username, $intolerance) {
+        
         // connect to database
         $connMgr = new ConnectionManager();
         $conn = $connMgr->connect();
-        
+
         // prepare insert
-        $sql = "INSERT INTO userpreference (username, diet, intolerance) VALUES (:username, :diet, :intolerance)";
+        $sql = "DELETE FROM userpreference WHERE username = :username and intolerance = :intolerance";
         $stmt = $conn->prepare($sql);
-        
-        $username = $preference->getUsername();
-        $diet = $preference->getDiet();
-        $intolerance = $preference->getIntolerence();
 
-        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-        $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);
-        $stmt->bindParam(":intolerance", $intolerance, PDO::PARAM_STR);
-        
-
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);  
+        $stmt->bindParam(":intolerance", $intolerance, PDO::PARAM_STR);  
         $result = $stmt->execute();
+        
         if (! $result ){ // encountered error
-            $parameters = [ "prefrence" => $preference, ];
+            $parameters = [ "username" => $username, "intolerance" => $intolerance, ];
             $connMgr->handleError( $stmt, $sql, $parameters );
         }
         
@@ -78,29 +123,30 @@ class PreferenceDAO {
         return $result;
     }
 
-    function delete($username) {
-        
-        // connect to database
-        $connMgr = new ConnectionManager();
-        $conn = $connMgr->connect();
-
-        // prepare insert
-        $sql = "DELETE FROM userpreference WHERE username = :username;"
-        $stmt = $conn->prepare($sql);
-
-        $stmt->bindParam(":username", $username, PDO::PARAM_STR);    
-        $result = $stmt->execute();
-        
-        if (! $result ){ // encountered error
-            $parameters = [ "preference" => $preference, ];
-            $connMgr->handleError( $stmt, $sql, $parameters );
-        }
-        
-        // close connections
-        $stmt = null;
-        $conn = null;        
-        
-        return $result;
+    function deleteDiet($username, $diet) {
+            
+            // connect to database
+            $connMgr = new ConnectionManager();
+            $conn = $connMgr->connect();
+    
+            // prepare insert
+            $sql = "DELETE FROM userpreference WHERE username = :username and diet = :diet";
+            $stmt = $conn->prepare($sql);
+    
+            $stmt->bindParam(":username", $username, PDO::PARAM_STR);  
+            $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);  
+            $result = $stmt->execute();
+            
+            if (! $result ){ // encountered error
+                $parameters = [ "username" => $username, "diet" => $diet, ];
+                $connMgr->handleError( $stmt, $sql, $parameters );
+            }
+            
+            // close connections
+            $stmt = null;
+            $conn = null;        
+            
+            return $result;
     }
 }
 
