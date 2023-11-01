@@ -4,8 +4,8 @@ const app = Vue.createApp({
     // Data Properties
     data() {
         return {
-            dietReq: ["Halal", "Vegan"], // to be changed after DB
-            intolerances: ["Peanut"], // to be changed after DB
+            dietReq: ['Halal'], // to be changed after DB
+            intolerances: [], // to be changed after DB
         };
     },
 
@@ -45,10 +45,26 @@ const app = Vue.createApp({
                 }
             }
         },
+        getUserPreferences() {
+            var user = sessionStorage.getItem("username");
+            var url = '../../backend/get_preference.php?username=' + user;
+            axios.get(url)
+                .then(response => {
+                    // console.log('response',response)
+                    var data = response.data.data;
+                    console.log(data)
+                    this.dietReq = data.dietReq;
+                    this.intolerances = data.intolerances;
+                })
+                .catch(error => {
+                    console.error('Error');
+                });
+        }
     },
 
     // Lifecycle Hook
     mounted() {
+        this.getUserPreferences();
         this.updateSelectOptions("dietary", this.dietReq);
         this.updateSelectOptions("intolerance", this.intolerances);
     },
