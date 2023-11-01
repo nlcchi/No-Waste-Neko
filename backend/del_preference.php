@@ -4,13 +4,10 @@ require_once 'common.php';
 
 // Get the data from form processing
 $username = $_GET['username'];
-$diet = $_GET['diet'];
-$intolerence = $_GET['intolerence'];
 
 $dao = new PreferenceDAO();
-$preference = new Preference($username, $diet, $intolerence);
 
-$status = $dao->delete($preference);
+$status = $dao->delete($username);
 
 if($status){
 
