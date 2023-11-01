@@ -45,12 +45,18 @@
         
         }
 
-        @media screen and (max-width: 768px) {
+        /* @media screen and (max-width: 768px) {
             #gif-container{
                 order:-1
             }
-        }
-  
+        } */
+
+        /* #gif-container {
+            position: fixed; 
+            bottom: 0;      
+            left: 0;        
+            width: 100%;    
+        } */
     </style>
 
 </head>
@@ -80,7 +86,7 @@
 </div>
 </div>
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="d-flex justify-content-center align-items-center" id="gif-container">
     <img src="../styling/pics/cooking pot pixel.gif" v-show="showCookingGif" class="gifs" alt="">
     <img src="../styling/pics/baking.gif" v-show="showBakingGif" class="gifs" alt="">
 </div>

@@ -1,13 +1,15 @@
 <?php
 require_once "common.php";
+header('Content-Type: application/json');
 
     $errors = [];
     $response = array();
 
+
     // Get the data from form processing
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-    $c_password = $_GET['c_password'];
+    $data = file_get_contents('php://input');
+    $username = $data->username;
+    $password = $data->password;
     
     // Check if username is already taken
     $dao = new UserDAO();
