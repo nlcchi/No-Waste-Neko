@@ -1,77 +1,67 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>No Waste Neko</title>
+    <title>Foodtracker</title>
         <!-- Font API -->
         <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
 
-        <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-    <!-- redirect if not logged in -->
-    <!-- <script src="../scripts/redirect.js"></script> -->
-
-    <link rel="stylesheet" href="../styling/default.css">
-
-
-    <style>
-    /* Haven't added the Back and Next pages because dk how that works */
         
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-
-    </style>
-</head>
-
-<body id="saved_recipes">
-    <div id="h1" class="d-flex justify-content-center mt-3">
-        <h2 class="border border-light bg-light rounded-pill w-50 text-center">Your saved recipes!</h2>
-    </div>
-
-    <div class="row d-flex">
-        <div class="col d-flex justify-content-center">
-            <!-- Home page -->
-            <div id="home-btn">
-                <a class="btn btn-warning" href="homepage.html" role="button">Home</a>
-            </div>
+        <!-- Default styling -->
+        <link rel="stylesheet" href="../styling/default.css">
+    
+  </head>
+  <body id="saved_recipes">
+    
+  </body>
+        <div id="h1" class="d-flex justify-content-center mt-3">
+            <h1 class="border border-light bg-light rounded-pill w-50 text-center">Your saved recipes!</h1>
         </div>
-    </div>
 
-
-    <!-- Front recipe row -->
-    <!-- food-row justify-content-center-->
-    <div class="row d-flex justify-content-center mt-3 mb-3 mx-3">
-
-        <div class="col-3 mt-3 d-flex justify-content-center">
-            <!-- style="width: 18rem;"  -->
-            <div class="card" style="width: 18rem;" >
-                <img src="../styling/pics/food display.jpeg" alt="">
-                <div class="card-body" >
-                    <h5 class="card-title">Teriyaki Salmon Bowl</h5>
-                    <ul>
-                        <li>Serving Size: </li>
-                        <li>Estimated Cooking Time: 45mins </li>
-                    </ul>
-
-                    <div class="d-flex justify-content-center">
-                        <!-- Recipe URL button -->
-                        <a type="button" class="btn btn-secondary" href="https://www.eatwell101.com/teriyaki-salmon-bowl-recipe">Full Recipe</a>
-                        <!-- Remove button -->
-                        <button type="button" class="btn btn-danger">Remove</button>
-                    </div>
+        <div class="row d-flex">
+            <div class="col d-flex justify-content-around">
+                <!-- Home page -->
+                <div id="home-btn" style=>
+                    <a class="btn btn-primary" href="homepage.html" role="button">Home</a>
                 </div>
             </div>
         </div>
 
-    </div>
 
+        <!-- Front recipe row -->
+        <div class="row food-row d-flex justify-content-center mb-3 mt-3" id="front-row" >
+        <div class="col-md-4" v-for="x in loop">
+            <div class="card" >
+                <img v-bind:src="x.imgurl" alt="">
+                <div class="card-body" >
+                    <h5 class="card-title"> {{ x.food }}</h5>
+                    <ul>
+                        <li>Serving Size: {{x.serving}}</li>
+                        <li>Estimated Cooking Time: {{x.cookingtime}}mins </li>
+                    </ul>
     
+                    <div class="d-flex justify-content-center">
+                        <!-- Recipe URL button -->
+                        <a type="button" class="btn btn-light" target="_blank" v-bind:href='x.fullrecipe'>Full Recipe</a>
+                        <!-- Remove button -->
+                        <button type="button" class="btn btn-danger" v-on:click="removecard(x.food,x.fullrecipe)">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+        </div>
+        
+        </div>
+        <!--  -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../scripts/saved_recipes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    
-</body>
+  </body>
 </html>
