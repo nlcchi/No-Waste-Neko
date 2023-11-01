@@ -34,6 +34,14 @@ const main = Vue.createApp({
     },
     // Methods
     methods: {
+        showLoadingScreen() {
+            document.getElementById('loading-screen').style.display = 'flex';
+        },
+            
+        hideLoadingScreen() {
+            document.getElementById('loading-screen').style.display = 'none';
+        },
+
         updateFilter(filter) {
             // console.log('changing filter to:', filter); 
             this.filter = filter;
@@ -128,6 +136,8 @@ const main = Vue.createApp({
 
     // Lifecycle Hook
     mounted() {
+        this.showLoadingScreen();
+
         var user = sessionStorage.getItem("username");
         let url = "../../backend/get_fridge.php?username="+user;
         // console.log(url);
@@ -136,12 +146,20 @@ const main = Vue.createApp({
             //    console.log(data.data);
             this.ingredients = data.data;
             // console.log(this.ingredients);
+
+            // Hide loading screen when the last ingredient is loaded
+            if (this.ingredients.length > 0) {
+                this.hideLoadingScreen();
+            }
             
             this.sortIngredients();
             // console.log(this.filter);
             this.displayItems(this.filter);
         }).catch(error => {
             console.log(error);
+            console.log("Hiding loading screen...");
+            this.hideLoadingScreen();
+            console.log("Loading screen should be hidden now");
         });
         // console.log(this.ingredients, this.filter);
     },

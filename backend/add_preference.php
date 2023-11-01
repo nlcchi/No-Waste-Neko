@@ -1,9 +1,13 @@
 <?php
 
 require_once 'common.php';
+header('Content-Type: application/json');
+$data = file_get_contents('php://input');
 
 // Get the data from form processing
-$username = $_GET['username'];
+$username = $data->username;
+$diet = $data->diet;
+$intolerence = $data->intolerence;
 
 if (isset($_GET['diet'])) {
     $diet = $_GET['diet'];

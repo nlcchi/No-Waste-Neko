@@ -33,9 +33,13 @@ function add_user() {
     const c_password = document.getElementById("c_password").value
 
 
-    let api_endpoint_url = "http://localhost/proj/backend/process_signup.php?username=" + username + "&password=" + password + "&c_password=" + c_password
+    let api_endpoint_url = "../../backend/process_signup.php"
 
-    axios.get(api_endpoint_url)
+    axios.get(api_endpoint_url, {
+        username,
+        password,
+        c_password
+    })
         .then((response) => {
             console.log('Signup successful:', response.data);
             window.location.href = "../view/loginpage.html";
@@ -50,3 +54,4 @@ function add_user() {
     console.log("=== [END] add_user() ===")
 
 }
+

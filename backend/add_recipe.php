@@ -1,37 +1,32 @@
 <?php
 
 require_once 'common.php';
+header('Content-Type: application/json');
+$data = file_get_contents('php://input');
 
 // Get the data from form processing
-$username = $_GET['username'];
-
-if (!isset($_GET['recipeName']) || !isset($_GET['recipeURL'])) {
-    echo json_encode(
-        array("message" => "Need recipe name and URL.")
-    );
-    
-    exit();
-}
-
-$recipeName = $_GET['recipeName'];
-$recipeURL = $_GET['recipeURL'];
+$username = $data->username;
+$recipeName = $data->recipeName;
+$recipeURL = $data->recipeURL;
 
 if (isset($_GET['imgURL'])) {
-    $imgURL = $_GET['imgURL'];
+    $imgURL = $data->imgURL;
 } else {
     $imgURL = "";
 }
 
 if (isset($_GET['servingSize'])){
-    $servingSize = $_GET['servingSize'];
+    $servingSize = int($data->servingSize);
+
 } else {
-    $servingSize = "";
+    $servingSize = null;
 }
 
 if (isset($_GET['estCookingTime'])){
-    $estCookingTime = $_GET['estCookingTime'];
+    $estCookingTime = int($data->estCookingTime);
+
 } else {
-    $estCookingTime = "";
+    $estCookingTime = null;
 }
 
 $dao = new RecipeDAO();
