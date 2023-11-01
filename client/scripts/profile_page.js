@@ -4,7 +4,7 @@ const app = Vue.createApp({
     // Data Properties
     data() {
         return {
-            dietReq: ['Halal'], // to be changed after DB
+            dietReq: [], // to be changed after DB
             intolerances: [], // to be changed after DB
         };
     },
@@ -53,8 +53,21 @@ const app = Vue.createApp({
                     // console.log('response',response)
                     var data = response.data.data;
                     console.log(data)
-                    this.dietReq = data.dietReq;
-                    this.intolerances = data.intolerances;
+                    // this.dietReq = data.dietReq;
+                    // this.intolerances = data.intolerances;
+                    // console.log(this.dietReq[0])
+                    this.dietReq = [];
+                    this.intolerances = [];
+
+                    // Iterate over the data.diet array and populate this.dietReq
+                    for (let i = 0; i < data.diet.length; i++) {
+                        this.dietReq.push(data.diet[i]);
+                    }
+
+                    // Iterate over the data.intolerance array and populate this.intolerances
+                    for (let i = 0; i < data.intolerance.length; i++) {
+                        this.intolerances.push(data.intolerance[i]);
+                    }
                 })
                 .catch(error => {
                     console.error('Error');
