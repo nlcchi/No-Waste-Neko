@@ -78,28 +78,21 @@ class PreferenceDAO {
         return $result;
     }
 
-    function delete($preference) {
+    function delete($username) {
         
         // connect to database
         $connMgr = new ConnectionManager();
         $conn = $connMgr->connect();
 
         // prepare insert
-        $sql = "DELETE FROM userpreference WHERE username = :username AND diet = :diet AND intolerance = :intolerance";
+        $sql = "DELETE FROM userpreference WHERE username = :username;"
         $stmt = $conn->prepare($sql);
-        
-        $username = $preference->getUsername();
-        $diet = $preference->getDiet();
-        $intolerance = $preference->getIntolerence();
 
-        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-        $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);
-        $stmt->bindParam(":intolerance", $intolerance, PDO::PARAM_STR);        
-
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);    
         $result = $stmt->execute();
         
         if (! $result ){ // encountered error
-            $parameters = [ "prefrence" => $preference, ];
+            $parameters = [ "preference" => $preference, ];
             $connMgr->handleError( $stmt, $sql, $parameters );
         }
         
