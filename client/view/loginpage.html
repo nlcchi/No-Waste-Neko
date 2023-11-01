@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="../styling/loginpage.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <form name="login_form">
+            <div class=" input-group">
+                <label for="username">Username/Email:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="button" class="btn-login" onclick="validate_form()">Login</button>
+        </form>
+
+        <div class="signup-login-buttons">
+            <a class="btn-signup" href="signuppage.html">Sign Up</a>
+        </div>
+    </div>
+
+    <script src="../scripts/login.js"></script>
+
+</body>
+
+</html>
