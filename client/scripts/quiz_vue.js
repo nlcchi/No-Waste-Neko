@@ -49,7 +49,7 @@ const main = Vue.createApp({
         return this.questions[this.currentQuestionIndex];
       },
       buttonStyle() {
-        if (this.currentQuestion.question === 'Choice of Vegetable') {
+        if (this.currentQuestion.question === 'Max Prep time (in mins)') {
           return "width:150px; height:150px";
         } else if (this.currentQuestion.question === 'Which course') {
           return "width:300px; height:250px";
