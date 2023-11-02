@@ -12,24 +12,57 @@ const app = Vue.createApp({
     // Methods
     methods: {
         saveChanges() {
-            console.log("saveChanges");
-            const selectedDietary = document.getElementById("dietary").options;
-            const newDietReq = [];
-            for (let i = 0; i < selectedDietary.length; i++) {
-                if (selectedDietary[i].selected) {
-                    newDietReq.push(selectedDietary[i].value);
-                }
-            }
-            this.dietReq = newDietReq;
+            // console.log("saveChanges");
+            // const selectedDietary = document.getElementById("dietary").options;
+            // const newDietReq = [];
+            // for (let i = 0; i < selectedDietary.length; i++) {
+            //     if (selectedDietary[i].selected) {
+            //         newDietReq.push(selectedDietary[i].value);
+            //     }
+            // }
 
-            const selectedIntolerance = document.getElementById("intolerance").options;
-            const newIntolerances = [];
-            for (let i = 0; i < selectedIntolerance.length; i++) {
-                if (selectedIntolerance[i].selected) {
-                    newIntolerances.push(selectedIntolerance[i].value);
-                }
-            }
-            this.intolerances = newIntolerances;
+            // console.log(newDietReq)
+
+            // const selectedIntolerance = document.getElementById("intolerance").options;
+            // const newIntolerances = [];
+            // for (let i = 0; i < selectedIntolerance.length; i++) {
+            //     if (selectedIntolerance[i].selected) {
+            //         newIntolerances.push(selectedIntolerance[i].value);
+            //     }
+            // }
+
+            // console.log(newIntolerances)
+
+            var user = sessionStorage.getItem("username");
+            var url1 = '../../backend/del_preference.php?username=' + user;
+            axios.post(url1)
+            .then(response => {
+                // this.dietReq = newDietReq;
+                // this.intolerances = newIntolerances;
+                var newDietReq = this.dietReq;
+                var newIntolerances = this.intolerances;
+                console.log('deleted',response.data)
+
+                // var url2 = '../../backend/add_preference.php?username=' + user;
+                axios.post('../../backend/add_preference.php', {
+                    username: user,
+                    diet: newDietReq,
+                    intolerance: newIntolerances
+                })
+                .then(response => {
+                    this.dietReq = newDietReq;
+                    this.intolerances = newIntolerances;
+                    console.log('added',response.data)
+                })
+                .catch(error => {
+                    console.error('adding error',error);
+                });
+
+
+            })
+            .catch(error => {
+                console.error('Error removing preferences',error);
+            });
         },
 
         updateSelectOptions(selectId, selectedValues) {

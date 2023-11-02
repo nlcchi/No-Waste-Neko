@@ -7,7 +7,7 @@ $data = file_get_contents('php://input');
 // Get the data from form processing
 $username = $data->username;
 $diet = $data->diet;
-$intolerence = $data->intolerence;
+$intolerance = $data->intolerance;
 
 if (isset($_GET['diet'])) {
     $diet = $_GET['diet'];
@@ -16,12 +16,12 @@ if (isset($_GET['diet'])) {
 }
 
 if (isset($_GET['preference'])){
-    $intolerence = $_GET['intolerence'];
+    $intolerance = $_GET['intolerance'];
 } else {
-    $intolerence = "";
+    $intolerance = "";
 }
 
-if ($diet == "" && $intolerence == "") {
+if ($diet == "" && $intolerance == "") {
     echo json_encode(
         array("message" => "No input.")
     );
@@ -31,7 +31,7 @@ if ($diet == "" && $intolerence == "") {
 
 // Check if username is already taken
 $dao = new PreferenceDAO();
-$preference = new Preference($username, $diet, $intolerence);
+$preference = new Preference($username, $diet, $intolerance);
 
 $status = $dao->create($preference);
 
