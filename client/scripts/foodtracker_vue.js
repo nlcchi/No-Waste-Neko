@@ -70,12 +70,10 @@ const main = Vue.createApp({
             let ExpDate = new Date(year, month, day);
             var tdy = new Date();
             var diffInDays = Math.ceil((ExpDate.getTime() - tdy.getTime()) / (1000 * 3600 * 24));
-            // console.log(expiryDate, diffInDays);
             return diffInDays;
         },
 
         getCardClass(ingredient) {
-        // Logic to return the appropriate class based on ingredient's expiry date
             if (this.getDaysTillExpiry(ingredient.expiryDate) <= 0) {
                 return 'bg-danger-subtle';
             } else if (this.getDaysTillExpiry(ingredient.expiryDate) <= 7) {
@@ -85,7 +83,6 @@ const main = Vue.createApp({
         },
 
         getDaysStyle(ingredient) {
-        // Logic to return the appropriate style based on ingredient's expiry date
             if (this.getDaysTillExpiry(ingredient.expiryDate) <= 7) {
                 return 'color: red;';
             }
@@ -93,7 +90,6 @@ const main = Vue.createApp({
         },
 
         getDaysText(ingredient) {
-        // Logic to return the appropriate text based on ingredient's expiry date
             if (this.getDaysTillExpiry(ingredient.expiryDate) <= 0) {
                 return 'Expired!';
             } else {
@@ -102,17 +98,16 @@ const main = Vue.createApp({
         },
 
         removeItem(ingredient) {
-        // Logic to remove the item
-        console.log('Removing item:', ingredient);
-        var user = sessionStorage.getItem("username");
-        let url = "../../backend/del_fridge.php?username="+user+"&productName="+ingredient.productName+"&productCat="+ingredient.productCat+"&expiryDate="+ingredient.expiryDate;
-        axios.get(url).then(response =>{
-              var data = response.data;
-                console.log(data);
-                window.location.reload();
-            }).catch(error => {
-                console.log(error);
-            });
+            // console.log('Removing item:', ingredient);
+            var user = sessionStorage.getItem("username");
+            let url = "../../backend/del_fridge.php?username="+user+"&productName="+ingredient.productName+"&productCat="+ingredient.productCat+"&expiryDate="+ingredient.expiryDate;
+            axios.get(url).then(response =>{
+                var data = response.data;
+                    console.log(data);
+                    window.location.reload();
+                }).catch(error => {
+                    console.log(error);
+                });
         },
 
         handleSubmit() {
@@ -145,7 +140,6 @@ const main = Vue.createApp({
             var data = response.data;
             //    console.log(data.data);
             this.ingredients = data.data;
-            // console.log(this.ingredients);
 
             // Hide loading screen when the last ingredient is loaded
             if (this.ingredients.length > 0) {
@@ -153,7 +147,6 @@ const main = Vue.createApp({
             }
             
             this.sortIngredients();
-            // console.log(this.filter);
             this.displayItems(this.filter);
         }).catch(error => {
             console.log(error);
@@ -161,7 +154,6 @@ const main = Vue.createApp({
             this.hideLoadingScreen();
             console.log("Loading screen should be hidden now");
         });
-        // console.log(this.ingredients, this.filter);
     },
 })
 

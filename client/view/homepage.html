@@ -30,7 +30,6 @@
         font-size:15px;
       }
 
-
        .overlay {
        /* position: fixed; */
        bottom: 0;
@@ -45,59 +44,58 @@
             height:auto;
           }
         }
+
         @media (min-width: 768px) {
             .bottom-segment{
-        height: 50vh;
-        bottom:0;
-       }
+            height: 50vh;
+            bottom:0;
+          }
 
-      .buttons-segment{
-        height: 35vh;
-       }
+          .buttons-segment{
+            height: 35vh;
+          }
 
-      .funfact-segment{
-        height: 20vh;
-      }
-    }
-    /* colour palette */
-    /* --chestnut: #954639ff;
---white: #FEFEFEff;
---brown-sugar: #B96E4Eff;
---silver: #B9B3B3ff;
---chestnut-2: #944D3Cff;
---reseda-green: #6E7E5Bff;
---brown-sugar-2: #A8745Cff;
---wheat: #EAD5AAff;
---chestnut-3: #954639ff;
---reseda-green-2: #72815Fff; */
+          .funfact-segment{
+            height: 20vh;
+          }
+        }
 
-    /* button colour */
-    .btn{
-      background-color:rgb(255, 251, 242); 
-      border: 3px #954639ff dashed;
+        /* colour palette */
+        /* --chestnut: #954639ff;
+        --white: #FEFEFEff;
+        --brown-sugar: #B96E4Eff;
+        --silver: #B9B3B3ff;
+        --chestnut-2: #944D3Cff;
+        --reseda-green: #6E7E5Bff;
+        --brown-sugar-2: #A8745Cff;
+        --wheat: #EAD5AAff;
+        --chestnut-3: #954639ff;
+        --reseda-green-2: #72815Fff; */
 
-    }
+        /* button colour */
+        .btn{
+          background-color:rgb(255, 251, 242); 
+          border: 3px #954639ff dashed;
 
-    #foodtracker-btn:hover{
-      background-color:rgb(10, 135, 144);
-      border:3px rgb(255, 251, 242) dashed;
-      color:white;
-    }
+        }
 
-    #quiz-start-btn:hover{
-      background-color: #D97742ff;
-      border:3px rgb(255, 251, 242) dashed;
-      color:white;
-    }
+        #foodtracker-btn:hover{
+          background-color:rgb(10, 135, 144);
+          border:3px rgb(255, 251, 242) dashed;
+          color:white;
+        }
 
-    #saved-recipe-btn:hover{
-      background-color: #954639ff;
-      border:3px rgb(255, 251, 242) dashed;
-      color:white;
-    }
+        #quiz-start-btn:hover{
+          background-color: #D97742ff;
+          border:3px rgb(255, 251, 242) dashed;
+          color:white;
+        }
 
-
-          
+        #saved-recipe-btn:hover{
+          background-color: #954639ff;
+          border:3px rgb(255, 251, 242) dashed;
+          color:white;
+        }
     </style>
   </head>
   
@@ -140,14 +138,12 @@
         </div>
     
         <!-- middle fun fact -->
-        <!-- align-items-center w-75 h-25 -->
         <div class="funfact-segment container w-75 text-center my-auto bg-light rounded"> 
             <h2>Food for Thought:</h2>
             <h3 id="funfact"></h3>
         </div>
     
         <!-- Bottom: my profile, welcome back, chef cat -->
-        <!-- previusly align-items-center h-100  -->
         <div class="bottom-segment container d-flex justify-content-center h-25">
             <div class="row">
                 <div class="col-md-3 d-flex justify-content-center align-items-end">
@@ -155,8 +151,7 @@
 
                     </a>
                 </div>
-    
-    
+
                 <div class="col-md-6 d-flex justify-content-center align-items-end">
                     <h4 class="text-center bg-light rounded-pill w-75 p-3">Welcome back, <span id="user"></span></h4>
                 </div>
@@ -166,7 +161,6 @@
                 </div>
             </div>
         </div>
-    
     </div>
 
     <!-- axios cdn -->

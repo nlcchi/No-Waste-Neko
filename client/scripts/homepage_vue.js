@@ -13,15 +13,12 @@ const main = Vue.createApp({
             let expiring = [];
 
             for (const ingredient of this.ingredients) {
-                // console.log(ingredient.expiryDate);
                 var exp = (ingredient.expiryDate).split('-');
                 var year = exp[0];
                 var month = exp[1] - 1;
                 var day = exp[2];
                 let ExpDate = new Date(year, month, day);
-                // console.log(ExpDate, typeof(ExpDate));
                 var tdy = new Date();
-                // console.log(ExpDate.getTime(), tdy.getTime());
                 var diffInDays = Math.ceil((ExpDate.getTime() - tdy.getTime()) / (1000 * 3600 * 24));
                 // console.log(diffInDays)
 
