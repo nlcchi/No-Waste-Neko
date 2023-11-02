@@ -20,7 +20,6 @@ const main = Vue.createApp({
             console.log("Liking recipe with id " + recipe_id);
             let like_btn = document.getElementById(`like-btn-${recipe_id}`);
             like_btn.classList.add('liked');
-            // like_btn.innerHTML = '<i class="fas fa-heart"></i>';
             like_btn.disabled = true;
 
             let spoonurl = `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=68cde3b31a3a4afe83e42bad147fea8c&includeNutrition=false`;

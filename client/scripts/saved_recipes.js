@@ -1,7 +1,6 @@
 
 
 const app = Vue.createApp({
-    
     data() {
         return {
             cardtitle: "",
@@ -14,6 +13,7 @@ const app = Vue.createApp({
             loop:[]
         }
     },
+
     methods: {
         removecard(recipeName,recipeURL) {
             var username= sessionStorage.getItem('username');
@@ -50,7 +50,7 @@ const app = Vue.createApp({
         async onload(){
             this.showLoadingScreen();
             var username= sessionStorage.getItem('username');
-            // console.log(username);
+            console.log(username);
             axios
             .get(`../../backend/get_recipes.php?username=${username}`)
             .then((response) =>{
@@ -61,6 +61,7 @@ const app = Vue.createApp({
                     this.loop.push({food:this.recipes.recipeName, imgurl:this.recipes.imgURL,serving:this.recipes.servingSize, cookingtime:this.recipes.estCookingTime,fullrecipe:this.recipes.recipeURL})
                 }
                 // console.log(response.data.data)
+                console.log(this.loop);
             
                 // Hide loading screen here after recipes are populated
                 this.hideLoadingScreen();

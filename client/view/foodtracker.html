@@ -20,6 +20,7 @@
         .card-body{
             background-color:rgb(199,212,232);
         }
+
         .loading-screen {
         position: fixed;
         top: 0;
@@ -51,6 +52,7 @@
         }
     </style>
   </head>
+
   <body id="foodtracker">
       <div id="loading-screen" class="loading-screen">
           <div class="spinner"></div>
@@ -105,56 +107,53 @@
     
       <!-- Add new item popup -->
       <div class="modal fade" id="addItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-center" id="addItemHeader">Add New Item</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <!-- Camera feed -->
-                  <video autoplay="true" id="videoElement" width="320" height="240"></video>
-                  
-                  <!-- Options -->
-                  <form id="addItemForm" @submit.prevent="handleSubmit">
-                      <div class="mb-3">
-                          <label for="Name" class="form-label">Product Name</label>
-                          <input type="text" class="form-control" id="Name" placeholder="Product Name" v-model="form.productName">
-                          <button type="button" data-input="Name" class="btn btn-light captureImageBtn">Capture Image</button>
-                      </div>
-                      <div class="mb-3">
-                          <label for="Exp" class="form-label" v-model="form.expiryDate">Expiration Date</label>
-                          <input type="date" class="form-control" id="Exp" v-model="form.expiryDate">
-                      </div>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="addItemHeader">Add New Item</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Camera feed -->
+              <video autoplay="true" id="videoElement" width="320" height="240"></video>
+              
+              <!-- Options -->
+              <form id="addItemForm" @submit.prevent="handleSubmit">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Product Name" v-model="form.productName">
+                    <button type="button" data-input="Name" class="btn btn-light captureImageBtn">Capture Image</button>
+                </div>
+                <div class="mb-3">
+                    <label for="Exp" class="form-label" v-model="form.expiryDate">Expiration Date</label>
+                    <input type="date" class="form-control" id="Exp" v-model="form.expiryDate">
+                </div>
+                <div class="mb-3">
                   <div class="mb-3">
-                      <div class="mb-3">
-                          <label for="Category" class="form-label">Product Category</label>
-                          <select class="form-select" id="Category" v-model="form.productCat">
-                            <option>--Please Select One--</option>
-                            <option value="meat">Meat</option>
-                            <option value="meatNP">Non-packaged Meat [To store in freezer]</option>
-                            <option value="Vprotein">Vegan Protein</option>
-                            <option value="vegetable">Vegetables</option>
-                            <option value="vegetableNP">Non-packaged Vegetables [To store in fridge]</option>
-                            <option value="fruit">Fruits</option>
-                            <option value="carb">Carbs</option>
-                            <option value="dairy">dairy products</option>
-                            <option value="beverage">Beverages</option>
-                          </select>
-                        </div>
+                    <label for="Category" class="form-label">Product Category</label>
+                    <select class="form-select" id="Category" v-model="form.productCat">
+                      <option>--Please Select One--</option>
+                      <option value="meat">Meat</option>
+                      <option value="meatNP">Non-packaged Meat [To store in freezer]</option>
+                      <option value="Vprotein">Vegan Protein</option>
+                      <option value="vegetable">Vegetables</option>
+                      <option value="vegetableNP">Non-packaged Vegetables [To store in fridge]</option>
+                      <option value="fruit">Fruits</option>
+                      <option value="carb">Carbs</option>
+                      <option value="dairy">dairy products</option>
+                      <option value="beverage">Beverages</option>
+                    </select>
                   </div>
-                  <!-- Add more form inputs as needed -->
-                  
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                <input type="submit" form="addItemForm" class="btn btn-primary" value="Submit">
-              </div>
+                </div>                  
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <input type="submit" form="addItemForm" class="btn btn-primary" value="Add item">
             </div>
           </div>
         </div>
+      </div>
 
     <!-- axios cdn -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
