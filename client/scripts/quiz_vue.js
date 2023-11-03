@@ -54,7 +54,7 @@ const main = Vue.createApp({
         } else if (this.currentQuestion.question === 'Which course') {
           return "width:300px; height:250px";
         } else {
-          return "width:200px; height:200px";
+          return "width:195px; height:195px";
         }
       },
       currentChoices() {
@@ -63,6 +63,10 @@ const main = Vue.createApp({
         }
         return [];
       },
+      isTimeQuestion() {
+        const timeQuestions = ['Max Prep time (in mins)'];
+        return timeQuestions.includes(this.currentQuestion.question);
+    },
     },
 
     // Methods
