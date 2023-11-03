@@ -27,17 +27,22 @@ body{
     height:110px
 }
 
+.header{
+    background-color:rgb(255, 251, 242); 
+    border: 3px #954639ff solid;
+}
+
 @media (max-width: 767px) {
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
-    span {
-        font-size: 16px;
+    body {
+        font-size: 1px;
     }
 }
 
 @media (min-width: 768px) {
-    span {
+    body {
         font-size: 20px;
     }
 }
