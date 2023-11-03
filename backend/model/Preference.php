@@ -1,9 +1,9 @@
 <?php
 
 class Preference {
-    private $username;
-    private $diet;
-    private $intolerance;
+    public $username;
+    public $diet;
+    public $intolerance;
 
 
     function __construct($username, $diet, $intolerance) {

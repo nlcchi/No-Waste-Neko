@@ -2,8 +2,12 @@
 
 require_once 'common.php';
 header('Content-Type: application/json');
-$data = file_get_contents('php://input');
+$data = json_decode(file_get_contents('php://input')); 
 
+if (!$data) {
+    echo json_encode(array("message" => "No input."));
+    exit();
+}
 // Get the data from form processing
 $username = $data->username;
 $diet = $data->diet;
