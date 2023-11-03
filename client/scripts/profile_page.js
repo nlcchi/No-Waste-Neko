@@ -28,7 +28,7 @@ const app = Vue.createApp({
                     newDietReq.push(selectedDietary[i].value);
                 }
             }
-
+            console.log(newDietReq)
             const selectedIntolerance = document.getElementById("intolerance").options;
             for (let i = 0; i < selectedIntolerance.length; i++) {
                 if (selectedIntolerance[i].selected) {
@@ -42,28 +42,25 @@ const app = Vue.createApp({
                 intolerance: newIntolerances
             };
 
+            //clear db
             var url1 = '../../backend/del_preference.php?username=' + user;
             axios.post(url1)
             .then(response => {
-                console.log('deleted', response.data);
+                //console.log('deleted', response.data);
 
             })
             .catch(error => {
                 console.error('Error removing preferences', error);
             });
             
+            //add to db
             var url2 = '../../backend/add_preference.php';
-                axios.post(url2, 
-                    {
-                        username: user,
-                        diet: newDietReq,
-                        intolerance: newIntolerances
-                    },{
+                axios.post(url2, newData,{
                     headers: {
                         'Content-Type': 'application/json'
                 }})
                 .then(response => {
-                    console.log(newData,newDietReq,newIntolerances)
+                    console.log(newData,'hi',newDietReq,newIntolerances)
                     this.dietReq = newDietReq;
                     this.intolerances = newIntolerances;
                     console.log('added', response.data);
@@ -111,7 +108,7 @@ const app = Vue.createApp({
                     }
                 })
                 .catch(error => {
-                    console.error('Error');
+                    console.error('Error',error);
                 });
         }
     },
