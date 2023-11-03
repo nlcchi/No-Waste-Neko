@@ -22,25 +22,33 @@ const app = Vue.createApp({
             var newIntolerances = this.intolerances;
 
             //add new preferences
-            const selectedDietary = document.getElementById("dietary").options;
+            var selectedDietary = document.getElementById("dietary").options;
             for (let i = 0; i < selectedDietary.length; i++) {
                 if (selectedDietary[i].selected) {
                     newDietReq.push(selectedDietary[i].value);
                 }
             }
             console.log(newDietReq)
-            const selectedIntolerance = document.getElementById("intolerance").options;
+            var selectedIntolerance = document.getElementById("intolerance").options;
             for (let i = 0; i < selectedIntolerance.length; i++) {
                 if (selectedIntolerance[i].selected) {
                     newIntolerances.push(selectedIntolerance[i].value);
                 }
             }
-            
+
+            //convert proxy array to normal array
+            newIntolerances = JSON.parse(JSON.stringify(newIntolerances))
+            newDietReq = JSON.parse(JSON.stringify(newDietReq))
+            console.log('new',newIntolerances)
+
             var newData = {
                 username: user,
                 diet: newDietReq,
                 intolerance: newIntolerances
             };
+
+            // newData = JSON.parse(JSON.stringify(newData))
+            console.log('newdata',newData)
 
             //clear db
             var url1 = '../../backend/del_preference.php?username=' + user;

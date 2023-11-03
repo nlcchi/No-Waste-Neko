@@ -58,7 +58,7 @@ class PreferenceDAO {
         
         $username = $preference->getUsername();
         $diet = $preference->getDiet();
-        $intolerance = $preference->getIntolerence();
+        $intolerance = $preference->getIntolerance();
 
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         $stmt->bindParam(":diet", $diet, PDO::PARAM_STR);
