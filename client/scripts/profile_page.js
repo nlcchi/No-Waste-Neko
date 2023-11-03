@@ -41,14 +41,14 @@ const app = Vue.createApp({
             newDietReq = JSON.parse(JSON.stringify(newDietReq))
             console.log('new',newIntolerances)
 
-            var newData = {
-                username: user,
-                diet: newDietReq,
-                intolerance: newIntolerances
-            };
+            // var newData = {
+            //     username: user,
+            //     diet: newDietReq,
+            //     intolerance: newIntolerances
+            // };
 
             // newData = JSON.parse(JSON.stringify(newData))
-            console.log('newdata',newData)
+            // console.log('newdata',newData)
 
             //clear db
             var url1 = '../../backend/del_preference.php?username=' + user;
@@ -61,21 +61,51 @@ const app = Vue.createApp({
                 console.error('Error removing preferences', error);
             });
             
-            //add to db
-            var url2 = '../../backend/add_preference.php';
-                axios.post(url2, newData,{
-                    headers: {
-                        'Content-Type': 'application/json'
-                }})
-                .then(response => {
-                    console.log(newData,'hi',newDietReq,newIntolerances)
-                    this.dietReq = newDietReq;
-                    this.intolerances = newIntolerances;
-                    console.log('added', response.data);
-                })
-                .catch(error => {
-                    console.error('adding error', error);
-                });
+            //iterate to add to diet
+            for (let i = 0; i < newDietReq.length; i++) {
+                var dietData = {
+                    username: user,
+                    diet: newDietReq[i],
+                    intolerance: ''
+                };
+                var url2 = '../../backend/add_preference.php';
+                    axios.post(url2, dietData,{
+                        headers: {
+                            'Content-Type': 'application/json'
+                    }})
+                    .then(response => {
+                        console.log(dietData,'hi',newDietReq,newIntolerances)
+                        this.dietReq = newDietReq;
+                        this.intolerances = newIntolerances;
+                        console.log('added', response.data);
+                    })
+                    .catch(error => {
+                        console.error('adding error', error);
+                    });
+            }
+
+            //iterate to add to intolerances
+            for (let i = 0; i < newDietReq.length; i++) {
+                var intoleranceData = {
+                    username: user,
+                    diet: '',
+                    intolerance: newIntolerances[i]
+                };
+                var url2 = '../../backend/add_preference.php';
+                    axios.post(url2, intoleranceData,{
+                        headers: {
+                            'Content-Type': 'application/json'
+                    }})
+                    .then(response => {
+                        console.log(intoleranceData,'hi',newDietReq,newIntolerances)
+                        this.dietReq = newDietReq;
+                        this.intolerances = newIntolerances;
+                        console.log('added', response.data);
+                    })
+                    .catch(error => {
+                        console.error('adding error', error);
+                    });
+            }
         },
 
         updateSelectOptions(selectId, selectedValues) {
@@ -104,7 +134,7 @@ const app = Vue.createApp({
                     // console.log(this.dietReq[0])
                     this.dietReq = [];
                     this.intolerances = [];
-
+                    // console.log(data.diet,'arraybug')
                     // Iterate over the data.diet array and populate this.dietReq
                     for (let i = 0; i < data.diet.length; i++) {
                         this.dietReq.push(data.diet[i]);
@@ -120,8 +150,7 @@ const app = Vue.createApp({
                 });
         }
     },
-    //test
-    //twdsau
+
     // Lifecycle Hook
     mounted() {
         this.getUserPreferences();
