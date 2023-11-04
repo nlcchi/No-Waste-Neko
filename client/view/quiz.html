@@ -22,10 +22,6 @@
 
     <style>
 
-        h2{
-            background-color:rgb(255, 251, 242); 
-            border: 3px #954639ff solid;
-        }
         .btn{
             background-color:rgb(255, 251, 242); 
             border: 3px #954639ff dashed;
@@ -50,7 +46,7 @@
 <body class="non-recipe">
     <div id="main" class="container">
         <div class="d-flex justify-content-center align-items-center mt-4">
-            <h2 class="text-center bg-light rounded-pill w-75 animate__animated animate__fadeInDown p-3" 
+            <h2 class="header text-center bg-light rounded-pill w-75 p-3 animate__animated animate__fadeInDown" 
             v-if="currentQuestion">
             {{ currentQuestion.question }}
         </h2>
@@ -58,9 +54,10 @@
     
     <div class="d-flex justify-content-center align-items-center mt-5">
         <div class="row" style="max-width:100%">
+
             <div v-for="choice in currentChoices" :key="choice" 
-                class="col col-12 col-md d-flex justify-content-center align-items-center" 
-                :class="{ 'col-6': isVegetableQuestion }">
+                class="col col-md d-flex justify-content-center align-items-center" 
+                :class="{ 'col-6': isTimeQuestion, 'col-12': !isTimeQuestion }">
                 <button class="btn btn-lg my-3 animate__animated animate__fadeInUp" 
                     :style="buttonStyle"
                     @click="selectChoice(choice)">
