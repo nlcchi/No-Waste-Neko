@@ -13,11 +13,6 @@ const main = Vue.createApp({
             },
         };
     },
-    watch: {
-        selectedFilter(newFilter) {
-            this.displayItems(newFilter);
-        },
-    },
     // Computed Properties
     computed: {
       filteredIngredients() {
