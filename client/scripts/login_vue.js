@@ -33,7 +33,7 @@ const main = Vue.createApp({
             this.showLoadingScreen();
             // console.log("form submitted", this.form);
 
-            let api_endpoint_url = "../../backend/process_login.php?username=" + this.form.username + "&password=" + this.form.password
+            let api_endpoint_url = "../../backend/api/process_login.php?username=" + this.form.username + "&password=" + this.form.password
 
             axios.get(api_endpoint_url)
                 .then(response => {

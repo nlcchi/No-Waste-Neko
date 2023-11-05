@@ -69,7 +69,7 @@ const main = Vue.createApp({
     // Lifecycle Hook
     mounted() {
         var user = sessionStorage.getItem("username");
-        let url = "../../backend/get_fridge.php?username="+user;
+        let url = "../../backend/api/get_fridge.php?username="+user;
         // console.log(url);
         axios.get(url).then(response => {
             var data = response.data;

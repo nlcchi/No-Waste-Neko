@@ -100,7 +100,7 @@ const main = Vue.createApp({
         removeItem(ingredient) {
             // console.log('Removing item:', ingredient);
             var user = sessionStorage.getItem("username");
-            let url = "../../backend/del_fridge.php?username="+user+"&productName="+ingredient.productName+"&productCat="+ingredient.productCat+"&expiryDate="+ingredient.expiryDate;
+            let url = "../../backend/api/del_fridge.php?username="+user+"&productName="+ingredient.productName+"&productCat="+ingredient.productCat+"&expiryDate="+ingredient.expiryDate;
             axios.get(url).then(response =>{
                 var data = response.data;
                     console.log(data);
@@ -113,7 +113,7 @@ const main = Vue.createApp({
         handleSubmit() {
             console.log('Form submitted!', this.form);
             var user = sessionStorage.getItem("username");
-            let url = "../../backend/add_fridge.php";
+            let url = "../../backend/api/add_fridge.php";
             axios.post(url, {
                 username: user,
                 productName: this.form.productName,
@@ -134,7 +134,7 @@ const main = Vue.createApp({
         this.showLoadingScreen();
 
         var user = sessionStorage.getItem("username");
-        let url = "../../backend/get_fridge.php?username="+user;
+        let url = "../../backend/api/get_fridge.php?username="+user;
         // console.log(url);
         axios.get(url).then(response => {
             var data = response.data;

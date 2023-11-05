@@ -33,7 +33,7 @@ const main = Vue.createApp({
 
         addRecipe(recipe) {
             console.log("Adding recipe to database");
-            let url = "../../backend/add_recipe.php?username="
+            let url = "../../backend/api/add_recipe.php?username="
             axios.post(url, {
                 username: sessionStorage.getItem("username"),
                 imgURL: recipe.image,
@@ -54,7 +54,7 @@ const main = Vue.createApp({
     mounted() {
         this.showLoadingScreen();
         
-        let url = "../../backend/get_preference.php?username="+sessionStorage.getItem("username");
+        let url = "../../backend/api/get_preference.php?username="+sessionStorage.getItem("username");
         axios.get(url).then(response =>{
             let answers = JSON.parse(sessionStorage.getItem("answers"));
             console.log(answers);

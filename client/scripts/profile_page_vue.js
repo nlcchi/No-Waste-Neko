@@ -46,7 +46,7 @@ const app = Vue.createApp({
                         diet: this.dietReq[i],
                         intolerance: ''
                     };
-                    var url2 = '../../backend/add_preference.php';
+                    var url2 = '../../backend/api/add_preference.php';
                         axios.post(url2, dietData,{
                             headers: {
                                 'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ const app = Vue.createApp({
                         diet: '',
                         intolerance: this.intolerances[i]
                     };
-                    var url3 = '../../backend/add_preference.php';
+                    var url3 = '../../backend/api/add_preference.php';
                         axios.post(url3, intoleranceData,{
                             headers: {
                                 'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ const app = Vue.createApp({
             var user = sessionStorage.getItem("username");
 
             //clear db
-            var url1 = '../../backend/del_preference.php?username=' + user;
+            var url1 = '../../backend/api/del_preference.php?username=' + user;
             axios.post(url1)
             .then(response => {
                 console.log('deleted', response.data);
@@ -124,7 +124,7 @@ const app = Vue.createApp({
 
         getUserPreferences() {
             var user = sessionStorage.getItem("username");
-            var url = '../../backend/get_preference.php?username=' + user;
+            var url = '../../backend/api/get_preference.php?username=' + user;
             axios.get(url)
                 .then(response => {
                     // console.log('response',response)

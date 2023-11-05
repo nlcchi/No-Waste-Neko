@@ -20,7 +20,7 @@ const app = Vue.createApp({
             console.log(recipeName,recipeURL);
 
             axios
-            .delete(`../../backend/del_recipe.php?username=${username}&recipeName=${recipeName}&recipeURL=${recipeURL}`)
+            .delete(`../../backend/api/del_recipe.php?username=${username}&recipeName=${recipeName}&recipeURL=${recipeURL}`)
             .then((response) =>{
             let updateLoop = this.loop.filter((el) => el.food !== recipeName);
             this.loop = updateLoop
@@ -52,7 +52,7 @@ const app = Vue.createApp({
             var username= sessionStorage.getItem('username');
             console.log(username);
             axios
-            .get(`../../backend/get_recipes.php?username=${username}`)
+            .get(`../../backend/api/get_recipes.php?username=${username}`)
             .then((response) =>{
                 
                 for(recipeIndex in response.data.data) {

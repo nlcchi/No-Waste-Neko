@@ -16,7 +16,7 @@ const main = Vue.createApp({
             console.log("=== [START] add_user() ===")
         
         
-            let api_endpoint_url = "../../backend/process_signup.php"
+            let api_endpoint_url = "../../backend/api/process_signup.php"
         
             axios.post(api_endpoint_url, {
                 username: this.form.username,
