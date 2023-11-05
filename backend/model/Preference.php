@@ -1,15 +1,15 @@
 <?php
 
 class Preference {
-    private $username;
-    private $diet;
-    private $intolerence;
+    public $username;
+    public $diet;
+    public $intolerance;
 
 
-    function __construct($username, $diet, $intolerence) {
+    function __construct($username, $diet, $intolerance) {
         $this->username = $username;
         $this->diet = $diet;
-        $this->intolerence = $intolerence;
+        $this->intolerance = $intolerance;
     }
 
     public function getUsername(){
@@ -24,11 +24,11 @@ class Preference {
         $this->diet = $diet;
     }
 
-    public function getIntolerence(){
-        return $this->intolerence;
+    public function getIntolerance(){
+        return $this->intolerance;
     }
 
-    public function setIntolerence($intolerence){
-        $this->intolerence = $intolerence;
+    public function setIntolerance($intolerance){
+        $this->intolerance = $intolerance;
     }
 }
