@@ -73,10 +73,22 @@
           }
       }
 
+      #funfact{
+        line-height:22px;
+        font-weight:100
+      }
+
         /* button colour */
       .btn{
           background-color:rgb(255, 251, 242); 
-          border: 3px #954639ff dashed;
+          border: 5px #954639ff dashed;
+
+      }
+
+      #logout:hover{
+        background-color:red;
+        border:3px rgb(255, 251, 242) dashed;
+        color:white
 
       }
 
@@ -97,6 +109,7 @@
           border:3px rgb(255, 251, 242) dashed;
           color:white;
       }
+      
 
 
     </style>
@@ -121,7 +134,7 @@
           <!-- </div> -->
           <!-- <div class="col-4 border border-info"> -->
             <button type="button" class="col btn" data-bs-toggle="modal" data-bs-target="#factModal">
-              <img src="../styling/pics/fact.png">
+              <img src="../styling/pics/food for thought.png">
               Fact
             </button>
 
@@ -152,11 +165,11 @@
       </div>
 
       <div v-if="!isSmallScreen" id="logout-container" class="container text-end">
-        <a type="button" class="btn m-1" @click="logout()">logout</a>
+        <a type="button" id="logout" class="btn m-1" @click="logout()">Logout</a>
       </div>
 
         <!-- First 3 btns -->
-      <div class="buttons-segment container-fluid d-flex justify-content-center align-items-center mb-5">
+      <div class="buttons-segment container-fluid d-flex justify-content-center align-items-center mb-5 animate__animated animate__fadeInDown">
             <div class="row d-flex">
                 <div class="col-12 col-md-4">
                     <a type="button" id="foodtracker-btn" class="btn btn-lg d-flex flex-column justify-content-center align-items-center m-3" @click="redirectToFridge()" >
@@ -189,17 +202,20 @@
     
         <!-- middle fun fact -->
         <div v-if="!isSmallScreen" class="funfact-segment container-fluid d-flex justify-content-center align-items-center" style="height:auto"> 
-          <div class="text-center my-auto bg-light rounded w-75">
-            <h2>Food for Thought:</h2>
-            <h3 id="funfact">{{funfact}}</h3>
+          <div class="text-center my-auto bg-light rounded w-75 shadow-lg animate__animated animate__zoomIn animate__delay-0.5s" style=" border: 3px #954639ff solid">
+            <h2>Food for Thought:
+              <img src="../styling/pics/food for thought.png" style="width:80px; height:80px">
+            </h2>
+            <h3 id="funfact" class="m-2">{{funfact}}</h3>
           </div>
         </div>
     
         <!-- Bottom: my profile, welcome back, chef cat -->
-        <div v-if="!isSmallScreen" class="bottom-segment container-fluid d-flex justify-content-center h-25">
+        <div v-if="!isSmallScreen" class="bottom-segment container-fluid d-flex justify-content-center h-25 animate__animated animate__fadeInUp">
             <div class="row">
                 <div class="col-md-3 d-flex justify-content-center align-items-end">
                     <a type="button" class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile
+                      <img src="../styling/pics/profile.png" style="width:30px; height:30px">
                     </a>
                 </div>
 
