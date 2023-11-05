@@ -9,25 +9,29 @@
 </head>
 
 <body>
-    <div class="signup-container">
+    <div class="signup-container" id="main">
         <h2>Sign Up</h2>
-        <form name="signup_form">
+        <form name="signup_form" @submit.prevent="add_user">
             <div class="input-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" v-model="form.username" required>
             </div>
             <div class="input-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" v-model="form.password" required>
             </div>
             <div class="input-group">
                 <label for="c_password">Confirm Password:</label>
-                <input type="password" id="c_password" name="c_password" required>
+                <input type="password" id="c_password" name="c_password" v-model="form.c_password" required>
             </div>
-            <button type="button" class="btn" onclick="add_user()">Sign Up</button>
+            <input type="submit" value="Sign up" id="login-button" class="btn">
         </form>
     </div>
 
-    <script src="../scripts/login.js"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- vue cdn -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../scripts/signup_vue.js"></script>
 </body>
 </html>
