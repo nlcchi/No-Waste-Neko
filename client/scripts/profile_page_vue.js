@@ -7,6 +7,7 @@ const app = Vue.createApp({
             dietReq: [], // to be changed after DB
             intolerances: [], // to be changed after DB
             isCleared: false,
+            userName: sessionStorage.getItem("username")
         };
     },
     
