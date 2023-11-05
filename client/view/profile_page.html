@@ -39,19 +39,31 @@
             background-color:rgb(245,215,190);
             margin: auto;
             padding: 30px;
+            border: 3px solid rgb(197, 121, 89)
         }
         #name{
             background-color:rgb(184,111,80);
             padding: 2px;
+            color:white;
         }
         .info{
             border: 3px solid rgb(184,111,80);
-            background-color:beige
+            background-color:beige;
+            margin:20px;
 
         }
         .card-body{
             background-color:rgb(199,212,232);
         }
+
+        @media (max-width: 767px) {
+            body{
+                font-size:16px;
+            }
+
+      }
+
+        
 
         .loading-screen {
         position: fixed;
@@ -104,14 +116,16 @@
 
     <!-- User profile info -->
     <!-- d-block mx-auto h-75 -->
-    <div class="container d-block h-75 mx-auto" id="profile">
+    <div class="container d-block h-75 mx-auto rounded-3" id="profile">
 
         <img src="../styling/pics/cat-chef.png" class="mx-auto d-block" alt="">
+
+        <h4 class="header text-center rounded-pill w-50 p-3 mx-auto" id="name">{{userName}}</h4>
         
         <div class="row">
             <div class="col info">
                 <!-- Multi-select checkboxes -->
-                <h3 id="dietary_requirements">Diet:</h3>
+                <h4 id="dietary_requirements">Diet:</h4>
                 <ul>
                     <!-- Examples of diet: vegan -->
                     <!-- Halal -> exclude ingredietns (pork, lard); set alcohol to 0 -->
@@ -121,7 +135,7 @@
                 
             </div>
             <div class="col info">
-                <h3>Intolerance:</h3>
+                <h4>Intolerance:</h4>
                 <ul>
                     <!-- 12 allergy options (intolerance) + other (exclude ingredients)  -->
                     <li v-for="intol of intolerances">{{ intol }}</li>
