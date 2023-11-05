@@ -32,6 +32,17 @@ body{
     border: 3px #954639ff solid;
 }
 
+.non-modal{
+    background-color:rgb(255, 251, 242); 
+    border: 5px #954639 dashed;
+
+}
+.non-modal:hover{
+    background-color:rgb(255, 251, 242) ;
+    border: 5px #954639 dashed;
+    color:#954639
+}
+
 @media (max-width: 767px) {
     h2 {
         font-size: 20px;
