@@ -79,11 +79,7 @@
       }
 
         /* button colour */
-      .btn{
-          background-color:rgb(255, 251, 242); 
-          border: 5px #954639ff dashed;
 
-      }
 
       #logout:hover{
         background-color:red;
@@ -127,13 +123,13 @@
       <div v-if="isSmallScreen" id="top-sm-screen" class="container d-flex">
         
           <!-- <div class="border border-info"> -->
-            <a type="button" class="col btn" href="profile_page.html"> 
+            <a type="button" class="col btn non-modal" href="profile_page.html"> 
               <img src="../styling/pics/profile.png">
               My profile
             </a>
           <!-- </div> -->
           <!-- <div class="col-4 border border-info"> -->
-            <button type="button" class="col btn" data-bs-toggle="modal" data-bs-target="#factModal">
+            <button type="button" class="col btn non-modal" data-bs-toggle="modal" data-bs-target="#factModal">
               <img src="../styling/pics/food for thought.png">
               Fact
             </button>
@@ -157,7 +153,7 @@
           <!-- </div> -->
 
           <!-- <div class="col-4 border border-info"> -->
-            <a type="button" class="col btn h-100" @click="logout">
+            <a type="button" class="col btn h-100 non-modal" @click="logout">
               <img src="../styling/pics/logout.png"> Logout
             </a>
           <!-- </div> -->
@@ -165,15 +161,15 @@
       </div>
 
       <div v-if="!isSmallScreen" id="logout-container" class="container text-end">
-        <a type="button" id="logout" class="btn m-1" @click="logout()">Logout</a>
+        <a type="button" id="logout" class="btn m-1 non-modal" @click="logout()">Logout</a>
       </div>
 
         <!-- First 3 btns -->
       <div class="buttons-segment container-fluid d-flex justify-content-center align-items-center mb-5 animate__animated animate__fadeInDown">
             <div class="row d-flex">
                 <div class="col-12 col-md-4">
-                    <a type="button" id="foodtracker-btn" class="btn btn-lg d-flex flex-column justify-content-center align-items-center m-3" @click="redirectToFridge()" >
-                        <div class="d-flex flex-column justify-content-center align-items-center" id="fridge">
+                    <a type="button" id="foodtracker-btn" class="non-modal btn btn-lg d-flex flex-column justify-content-center align-items-center m-3" @click="redirectToFridge()" >
+                        <div class="d-flex flex-column justify-content-center align-items-center " id="fridge">
                             Show my <br> fridge!
                             <img src="../styling/pics/fridge.png" class="icons">
                         </div>
@@ -181,7 +177,7 @@
                 </div>
     
                 <div class="col-12 col-md-4">
-                    <a type="button" id="quiz-start-btn" class="btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToQuiz()">
+                    <a type="button" id="quiz-start-btn" class="non-modal btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToQuiz()">
                      <div class="d-flex flex-column justify-content-center align-items-center">
                             Give me a recipe!
                             <img src="../styling/pics/chef hat.png" class="icons">
@@ -190,7 +186,7 @@
                 </div>
     
                 <div class="col-12 col-md-4">
-                    <a type="button" id="saved-recipe-btn" class="btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToSaved()">
+                    <a type="button" id="saved-recipe-btn" class="non-modal btn btn-lg d-flex flex-column align-items-center m-3" @click="redirectToSaved()">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             Saved Recipe Book
                             <img src="../styling/pics/book.png" class="icons">
@@ -214,7 +210,7 @@
         <div v-if="!isSmallScreen" class="bottom-segment container-fluid d-flex justify-content-center h-25 animate__animated animate__fadeInUp">
             <div class="row">
                 <div class="col-md-3 d-flex justify-content-center align-items-end">
-                    <a type="button" class="btn btn-md bg-light mb-3" href="profile_page.html"> My profile
+                    <a type="button" class="btn btn-md mb-3 non-modal" href="profile_page.html"> My profile
                       <img src="../styling/pics/profile.png" style="width:30px; height:30px">
                     </a>
                 </div>
