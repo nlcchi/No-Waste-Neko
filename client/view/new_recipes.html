@@ -91,11 +91,11 @@
                                     <i class="far fa-heart"></i>
                                 </button>
                             </h5>
-                            <p class="card-text"> 
+                            <h6 class="card-text"> 
                                 Serving Size: {{ recipe.servings }}
                                 <br>
-                                Ready in {{ recipe.readyInMinutes }} minutes
-                            </p>
+                                Estimated Cooking Time: {{ recipe.readyInMinutes }} mins
+                            </h6>
                             <a :href="recipe.sourceUrl" class="btn btn-primary">Full recipe</a>
                         </div>
                     </div>
