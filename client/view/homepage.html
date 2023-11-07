@@ -109,6 +109,14 @@
         display:none
       }
       
+      #cat-chef img {
+        position: absolute; /* Position it absolutely relative to its parent */
+        bottom: 0;         /* Anchor it to the bottom */
+        left: 50%;         /* Center it horizontally */
+        transform: translateX(-50%); /* Offset by half the width to truly center it */
+        width: 150px;      /* Your width */
+        height: 150px;     /* Your height */
+      }
 
 
     </style>
@@ -163,8 +171,18 @@
         
       </div>
 
-      <div v-if="!isSmallScreen" id="logout-container" class="container text-end">
-        <a type="button" id="logout" class="btn m-1 non-modal" @click="logout()">Logout</a>
+      <!-- id="logout-container"  -->
+      <!-- class="container text-end" -->
+      <div v-if="!isSmallScreen" class="container mt-3">
+        <div class="row justify-content-between align-items-center">
+          <a type="button" class="col-2 btn btn-md mb-3 non-modal" href="profile_page.html"> My profile
+            <img src="../styling/pics/profile.png" style="width:30px; height:30px">
+          </a>
+          <!-- <div class="col-md-6 d-flex justify-content-center align-items-end"> -->
+          <h3 class="col header text-center bg-light rounded-pill w-75 p-3">Welcome back, {{userName}}
+          </h3>
+          <a type="button" id="logout" class="col-2 btn m-1 non-modal" @click="logout()">Logout</a>
+        </div>
       </div>
 
         <!-- First 3 btns -->
@@ -211,8 +229,8 @@
     
         <!-- Bottom: my profile, welcome back, chef cat -->
         <div v-if="!isSmallScreen" class="bottom-segment container-fluid d-flex justify-content-center h-25 animate__animated animate__fadeInUp">
-            <div class="row">
-                <div class="col-md-3 d-flex justify-content-center align-items-end">
+            <!-- <div class="row"> -->
+                <!-- <div class="col-md-3 d-flex justify-content-center align-items-end">
                     <a type="button" class="btn btn-md mb-3 non-modal" href="profile_page.html"> My profile
                       <img src="../styling/pics/profile.png" style="width:30px; height:30px">
                     </a>
@@ -221,12 +239,12 @@
                 <div class="col-md-6 d-flex justify-content-center align-items-end">
                     <h3 class="header text-center bg-light rounded-pill w-75 p-3">Welcome back, {{userName}}
                     </h3>
-                </div>
+                </div> -->
     
-                <div class="col-md-3 d-flex align-items-end">
-                    <img src="../styling/pics/cat-chef.png" class="img-fluid col-sm-3" style="width:410px; height:300px" alt="">
+                <div id="cat-chef">
+                    <img src="../styling/pics/cat-chef.png" class="img-fluid" style="width:150x; height:150px" alt="">
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
