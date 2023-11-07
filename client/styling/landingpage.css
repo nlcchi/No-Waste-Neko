@@ -21,11 +21,12 @@ body {
   
   /* This media query applies to screens larger than 768px */
   
-@media screen and (min-width: 768px) {
+/* This will prevent overflow on larger screens */
+/* @media screen and (min-width: 768px) {
     body {
-    overflow: hidden; /* This will prevent overflow on larger screens */
+    overflow: hidden; 
     }
-}
+} */
 
 /* Remove margin and padding for .top-container and .bottom-container */
 
@@ -138,3 +139,36 @@ img {
     width: 70%;
     height: 50%;;
 }
+
+@media (max-width: 768px) { /* Adjust this breakpoint as needed */
+    #logo {
+      width: 100px;
+      height: 80px; /* Smaller size for smaller screens */
+    }
+  
+    .floating-container h1 {
+      /* Smaller font size for smaller screens */
+      font-size: 20em; 
+      /* Ensures text fits within the container */
+      word-wrap: break-word;
+      padding: 0 10px; /* Add padding to keep content from touching the edges */
+    }
+
+    #chef {
+        width: 70px;
+        height: 70px;
+    }
+  }
+  
+  /* Further responsiveness for even smaller screens such as mobile phones */
+  @media (max-width: 480px) {
+    #logo {
+      width: 100px;
+      height: 80px; /* Even smaller size for mobile screens */
+    }
+    
+    /* Further reduce the font size for mobile screens */
+    .floating-container h1 {
+      font-size: 20em; 
+    }
+  }
