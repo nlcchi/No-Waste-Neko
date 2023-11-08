@@ -89,7 +89,7 @@
             <div class="card" >
                 <img v-bind:src="x.imgurl" alt="">
                 <div class="card-body">
-                    <h5 class="card-title"> {{ x.food }}</h5>
+                    <h5 class="card-title"> {{ x.title.length > 17 ? x.title.substring(0, 15) + '...' : x.title }} </h5>
                     <ul>
                         <li><h6>Serving Size: {{x.serving}}</h6></li>
                         <li><h6>Estimated Cooking Time: {{x.cookingtime}}mins</h6></li>
