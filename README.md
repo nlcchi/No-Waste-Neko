@@ -10,6 +10,9 @@ Git Repo: https://github.com/nlcchi/No-Waste-Neko
 If using Github: copy repository and launch landingpage.html
 If launching code from submitted files: launch landingpage.html
 
+# Test Account
+Username: test
+Password: test
 
 # Tech Stacks
 Front end:
