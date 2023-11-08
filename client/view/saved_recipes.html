@@ -85,16 +85,15 @@
 
     <!-- Front recipe row -->
     <div class="row food-row d-flex justify-content-center mb-3 mt-3">
-        <div class="col-md-4" v-for="x in loop">
-            <div class="card" >
+        <div class="col col-lg-4 col-md-6" v-for="x in loop">
+            <div class="card m-4" style="width: 18rem;">
                 <img v-bind:src="x.imgurl" alt="">
                 <div class="card-body">
-                    <h5 class="card-title"> {{ x.title.length > 17 ? x.title.substring(0, 15) + '...' : x.title }} </h5>
-                    <ul>
-                        <li><h6>Serving Size: {{x.serving}}</h6></li>
-                        <li><h6>Estimated Cooking Time: {{x.cookingtime}}mins</h6></li>
-                    </ul>
-
+                    <h5 class="card-title"> {{ x.food.length > 17 ? x.food.substring(0, 15) + '...' : x.food }} </h5>
+                    <h6>Serving Size: {{x.serving}}
+                        <br>
+                        Estimated Cooking Time: {{x.cookingtime}}mins
+                    </h6>
                     <div class="d-flex justify-content-center">
                         <!-- Recipe URL button -->
                         <a type="button" class="btn btn-light" target="_blank" v-bind:href='x.fullrecipe'>Full Recipe</a>
