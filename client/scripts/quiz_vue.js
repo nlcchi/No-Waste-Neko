@@ -11,7 +11,7 @@ const main = Vue.createApp({
             vegetableQuestions: [
                 { 
                     question: 'Choice of Vegetable', 
-                    choices: ['Carrot', 'Broccoli', 'Spinach', 'Peas', 'Corn', 'Skip Question']
+                    choices: ['Carrot', 'Broccoli', 'Spinach', 'Peas', 'Corn', "NVM, Let's Go"]
                 }
             ],
             preparationQuestions: [
