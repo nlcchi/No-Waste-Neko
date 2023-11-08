@@ -11,7 +11,7 @@ const main = Vue.createApp({
             vegetableQuestions: [
                 { 
                     question: 'Choice of Vegetable', 
-                    choices: ['Carrot', 'Broccoli', 'Spinach', 'Peas', 'Corn']
+                    choices: ['Carrot', 'Broccoli', 'Spinach', 'Peas', 'Corn', 'Skip Question']
                 }
             ],
             preparationQuestions: [
@@ -25,15 +25,15 @@ const main = Vue.createApp({
                 },
                 { 
                     question: 'Choice of Protein', 
-                    choices: ['Chicken', 'Pork', 'Beef', 'Fish','Tofu']
+                    choices: ['Chicken', 'Pork', 'Beef', 'Fish','Tofu', 'Egg', 'Skip Question']
                 }
             ],
             questionKeys: {
                 'Which course': 'type',
                 'Max Prep time (in mins)': 'maxReadyTime',
                 'Cuisine': 'cuisine',
-                'Choice of Protein': 'query',
-                'Choice of Vegetable': 'query'
+                'Choice of Protein': 'includeIngredients',
+                'Choice of Vegetable': 'includeIngredients'
             },
             currentQuestionIndex: 0,
             answers: {},
