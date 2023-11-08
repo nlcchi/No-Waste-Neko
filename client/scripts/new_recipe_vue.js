@@ -18,7 +18,7 @@ const main = Vue.createApp({
         },
 
         likeRecipe(recipe_id) {
-            console.log("Liking recipe with id " + recipe_id);
+            // console.log("Liking recipe with id " + recipe_id);
             let like_btn = document.getElementById(`like-btn-${recipe_id}`);
             like_btn.classList.add('liked');
             like_btn.disabled = true;
@@ -28,12 +28,12 @@ const main = Vue.createApp({
                 let recipe = response.data;
                 this.addRecipe(recipe);
             }).catch(error => {
-                console.log(error);
+                // console.log(error);
             });
         },
 
         addRecipe(recipe) {
-            console.log("Adding recipe to database");
+            // console.log("Adding recipe to database");
             let url = "../../backend/api/add_recipe.php?username="
             axios.post(url, {
                 username: sessionStorage.getItem("username"),
@@ -44,9 +44,9 @@ const main = Vue.createApp({
                 recipeURL: recipe.sourceUrl,
             }).then(response =>{
                 var data = response.data;
-                console.log(data);
+                // console.log(data);
             }).catch(error => {
-                console.log(error);
+                // console.log(error);
             });
         },
     },
@@ -73,7 +73,7 @@ const main = Vue.createApp({
             spoonurl += '&intolerances=' + intolerance.join(',');
             
             let answers = JSON.parse(sessionStorage.getItem("answers"));
-            console.log(answers);
+            // console.log(answers);
             spoonurl += '&maxReadyTime=' + answers.maxReadyTime;
             spoonurl += '&type=' + answers.type;
             spoonurl += '&cuisine=' + answers.cuisine;
@@ -87,11 +87,11 @@ const main = Vue.createApp({
                 }
             }
             spoonurl += answers.includeIngredients.join(',');            
-            console.log(spoonurl);
+            // console.log(spoonurl);
             axios.get(spoonurl).then(response => {
-                console.log("getting recipes");
+                // console.log("getting recipes");
                 let recipes = response.data.results;
-                console.log(recipes);
+                // console.log(recipes);
                 if (recipes.length == 0) {
                     this.hideLoadingScreen();
                     var element = document.getElementById('no-recipes');
@@ -114,12 +114,12 @@ const main = Vue.createApp({
                 }
                 
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
                 this.hideLoadingScreen();
             });
             
         }).catch(error => {
-            console.log(error);
+            // console.log(error);
         });
     },
 })

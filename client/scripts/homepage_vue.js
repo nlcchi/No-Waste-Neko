@@ -46,7 +46,7 @@ const main = Vue.createApp({
         
         logout(){
             sessionStorage.clear();
-            console.log("logged out");
+            // console.log("logged out");
             window.location.href = "landingpage.html";
         },
 

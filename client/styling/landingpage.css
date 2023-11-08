@@ -21,14 +21,7 @@ body {
     top: 0;
     height: 100vh;
     width: 100%;
-    /* padding-left: 0;
-    padding-right:0; */
 }
-
-/* img {
-    width: 100%;
-    height: 100%;
-} */
 
 #logo {
     width: 150px;
@@ -96,10 +89,6 @@ body {
     text-align: center;
     padding-bottom: 30px;
     padding-top: 20px;
-    /* Add a border around the sections */
-    /* border: 2px solid #b86f50;  */
-    /* margin: 10px 5px; Adjust margin to control space between sections */
-    /* height: 100%; */
     font-family: 'Public Pixel', sans-serif; 
 }
 
@@ -114,7 +103,6 @@ body {
 .floating-container {
     padding-top: 10px;
     padding-bottom: 10px;
-    /* width: 70%;  */
     height: 30%; 
     position: absolute; 
     background-color: hsla(0, 100%, 100%, 0.8); 

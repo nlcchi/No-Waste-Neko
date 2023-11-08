@@ -8,12 +8,9 @@
   }
 
   .overlay {
-   /* position: fixed; */
-
    /* To bring the bottom segment up in phone screen, see media below */
    display: flex;
    flex-direction: column;
-   /*  */
 
    bottom: 0;
    right: 0;
@@ -22,7 +19,6 @@
    height: 100vh
    }
    
-
 
   @media (max-width: 767px) {
       .bottom-segment, .buttons-segment, .funfact-segment{
@@ -56,9 +52,6 @@
     font-family: monospace;
 
   }
-
-    /* button colour */
-
   
   #foodtracker-btn{
     color:rgb(10, 135, 144);

@@ -16,7 +16,7 @@ const main = Vue.createApp({
 
             let random = Math.floor(Math.random() * funfacts.length);
             let funfact = funfacts[random];
-            console.log(funfact);
+            // console.log(funfact);
             document.getElementById("funfact").innerText += funfact;
         },
 
@@ -29,7 +29,7 @@ const main = Vue.createApp({
         },
 
         validate_form() {
-            console.log("=== [START] validate_form() ===")
+            // console.log("=== [START] validate_form() ===")
             this.showLoadingScreen();
             // console.log("form submitted", this.form);
 
@@ -37,7 +37,7 @@ const main = Vue.createApp({
 
             axios.get(api_endpoint_url)
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     window.location.href = "../view/homepage.html"
                     sessionStorage.setItem("username", this.form.username);
                     this.hideLoadingScreen();
@@ -46,11 +46,10 @@ const main = Vue.createApp({
 
                 .catch(error => {
                     // ERROR
-                    // Something went wrong
-                    console.log(error.message)
+                    // console.log(error.message)
                 })
 
-            console.log("=== [END] validate_form() ===")
+            // console.log("=== [END] validate_form() ===")
         },
         
     },
