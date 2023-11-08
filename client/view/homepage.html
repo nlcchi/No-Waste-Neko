@@ -37,13 +37,11 @@
 
       <div v-if="isSmallScreen" id="top-sm-screen" class="container d-flex">
         
-          <!-- <div class="border border-info"> -->
             <a type="button" class="col btn nav-btn" href="profile_page.html"> 
               <img src="../styling/pics/profile.png">
               My profile
             </a>
-          <!-- </div> -->
-          <!-- <div class="col-4 border border-info"> -->
+
             <button type="button" class="col btn nav-btn" data-bs-toggle="modal" data-bs-target="#factModal">
               <img src="../styling/pics/food for thought.png">
               Fact
@@ -65,18 +63,12 @@
                 </div>
               </div>
             </div>
-          <!-- </div> -->
 
-          <!-- <div class="col-4 border border-info"> -->
             <a type="button" class="col btn h-100 nav-btn" @click="logout">
               <img src="../styling/pics/logout.png"> Logout
             </a>
-          <!-- </div> -->
         
       </div>
-
-      <!-- id="logout-container"  -->
-      <!-- class="container text-end" -->
       <div v-if="!isSmallScreen" class="container mt-3">
         <div class="row justify-content-between align-items-center">
           <h3 class="col header text-center bg-light rounded-pill w-75 p-3">Welcome back, {{userName}}

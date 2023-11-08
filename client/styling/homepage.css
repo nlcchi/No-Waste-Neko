@@ -17,8 +17,6 @@
   height: 100vh
 }
    
-
-
 @media (max-width: 767px) {
   .bottom-segment, .buttons-segment, .funfact-segment{
     height:auto;

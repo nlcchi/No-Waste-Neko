@@ -17,16 +17,16 @@ const app = Vue.createApp({
     methods: {
         removecard(recipeName,recipeURL) {
             var username= sessionStorage.getItem('username');
-            console.log(recipeName,recipeURL);
+            // console.log(recipeName,recipeURL);
 
             axios
             .delete(`../../backend/api/del_recipe.php?username=${username}&recipeName=${recipeName}&recipeURL=${recipeURL}`)
             .then((response) =>{
             let updateLoop = this.loop.filter((el) => el.food !== recipeName);
             this.loop = updateLoop
-            console.log(this.loop)
+            // console.log(this.loop)
             }).catch((error) => {
-                console.log(error);
+                // console.log(error);
             });
         },
 
@@ -35,7 +35,7 @@ const app = Vue.createApp({
             if (loadingScreen) {
                 loadingScreen.style.display = 'flex';
             } else {
-                console.error('Loading screen element not found!');
+                // console.error('Loading screen element not found!');
             }        },
             
         hideLoadingScreen() {
@@ -43,14 +43,14 @@ const app = Vue.createApp({
             if (loadingScreen) {
                 loadingScreen.style.display = 'none';
             } else {
-                console.error('Loading screen element not found!');
+                // console.error('Loading screen element not found!');
             }        
         },
 
         async onload(){
             this.showLoadingScreen();
             var username= sessionStorage.getItem('username');
-            console.log(username);
+            // console.log(username);
             axios
             .get(`../../backend/api/get_recipes.php?username=${username}`)
             .then((response) =>{
@@ -61,15 +61,15 @@ const app = Vue.createApp({
                     this.loop.push({food:this.recipes.recipeName, imgurl:this.recipes.imgURL,serving:this.recipes.servingSize, cookingtime:this.recipes.estCookingTime,fullrecipe:this.recipes.recipeURL})
                 }
                 // console.log(response.data.data)
-                console.log(this.loop);
+                // console.log(this.loop);
             
                 // Hide loading screen here after recipes are populated
                 this.hideLoadingScreen();
             }).catch((error) => {
-                console.log(error);
-                console.log("Hiding loading screen...");
+                // console.log(error);
+                // console.log("Hiding loading screen...");
                 this.hideLoadingScreen();
-                console.log("Loading screen should be hidden now");
+                // console.log("Loading screen should be hidden now");
             });
  
         },

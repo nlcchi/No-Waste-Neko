@@ -4,6 +4,13 @@ An web application aimed to reduce household food wastage due to expiry dates by
 2. Suggesting recipes based on user's prefrences chosen from a gamified quiz; and
 3. Spreading awareness in forms of fun facts and trivias.
 
+# links
+Deployed Website: https://no-waste-neko.azurewebsites.net/client/view/landingpage.html
+Git Repo: https://github.com/nlcchi/No-Waste-Neko
+If using Github: copy repository and launch landingpage.html
+If launching code from submitted files: launch landingpage.html
+
+
 # Tech Stacks
 Front end:
 - HTML
@@ -28,12 +35,14 @@ APIs used:
 4. Connect to database: Local REST API (documentation found in backend/index.html)
 
 # Team Contributions
-Beata Sancha Bautista De Leon: Front-end (Overall styling)
-Julia Villa: Front-end (profile and quiz pages HTML + Javascript)
-Khoo Chloe: Local REST API, back-end (login, signup Javascript)
-Koh Yong En Jeremy: Front-end (saved recipes HTML + Javascript)
-Ngyuen Le Cam Chi: GitHub Management, Cloud deployment, food tracker, Front-end (new recipe)
-Sophie Montalban: Front-end (Overall styling
+| Member  | Contribution |
+| ------------- | ------------- |
+| Beata Sancha Bautista De Leon  |  Front-end (Overall styling)  |
+| Julia Villa  | Front-end (profile and quiz pages HTML + Javascript)  |
+| Khoo Chloe  | Local REST API, back-end (login, signup Javascript)  |
+| Koh Yong En Jeremy  | Front-end (saved recipes HTML + Javascript)  |
+| Ngyuen Le Cam Chi  | GitHub Management, Cloud deployment, Front-end (new recipe, foodtracker)  |
+| Sophie Montalban  | Front-end (Overall styling)  |
 
 # Notes
 If quiz answers clash with diet/intolerences, Spoonacular API is unable to return recipes.
