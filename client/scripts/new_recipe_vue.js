@@ -79,8 +79,8 @@ const main = Vue.createApp({
             spoonurl += '&maxReadyTime=' + answers.maxReadyTime;
             spoonurl += '&includeIngredients=';
             for (let ingredient of answers.includeIngredients) {
-                console.log(ingredient);
-                if (ingredient == 'skip question') {
+                // console.log(ingredient);
+                if (ingredient == 'skip' || ingredient == "nvm, let's go") {
                     console.log(ingredient, 'true');
                     answers.includeIngredients.splice(answers.includeIngredients.indexOf(ingredient), 1);
                 }
