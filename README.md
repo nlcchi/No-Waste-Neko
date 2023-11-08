@@ -4,6 +4,12 @@ An web application aimed to reduce household food wastage due to expiry dates by
 2. Suggesting recipes based on user's prefrences chosen from a gamified quiz; and
 3. Spreading awareness in forms of fun facts and trivias.
 
+# links
+Deployed Website: https://no-waste-neko.azurewebsites.net/client/view/landingpage.html
+Git Repo: https://github.com/nlcchi/No-Waste-Neko
+If using Github: copy repository and launch landing page
+
+
 # Tech Stacks
 Front end:
 - HTML
