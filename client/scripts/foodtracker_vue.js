@@ -1,4 +1,3 @@
-
 const main = Vue.createApp({
     // Data Properties
     data() {
@@ -98,15 +97,15 @@ const main = Vue.createApp({
             let url = "../../backend/api/del_fridge.php?username="+user+"&productName="+ingredient.productName+"&productCat="+ingredient.productCat+"&expiryDate="+ingredient.expiryDate;
             axios.get(url).then(response =>{
                 var data = response.data;
-                    console.log(data);
+                    // console.log(data);
                     window.location.reload();
                 }).catch(error => {
-                    console.log(error);
+                    // console.log(error);
                 });
         },
 
         handleSubmit() {
-            console.log('Form submitted!', this.form);
+            // console.log('Form submitted!', this.form);
             var user = sessionStorage.getItem("username");
             let url = "../../backend/api/add_fridge.php";
             axios.post(url, {
@@ -116,10 +115,10 @@ const main = Vue.createApp({
                 expiryDate: this.form.expiryDate
             }).then(response => {
                 var data = response.data;
-                console.log(data);
+                // console.log(data);
                 window.location.reload();
             }).catch(error => {
-                console.log(error);
+                // console.log(error);
             });
         }
     },
@@ -144,10 +143,10 @@ const main = Vue.createApp({
             this.sortIngredients();
             this.displayItems(this.filter);
         }).catch(error => {
-            console.log(error);
-            console.log("Hiding loading screen...");
+            // console.log(error);
+            // console.log("Hiding loading screen...");
             this.hideLoadingScreen();
-            console.log("Loading screen should be hidden now");
+            // console.log("Loading screen should be hidden now");
         });
     },
 })

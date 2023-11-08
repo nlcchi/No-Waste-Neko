@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             video.srcObject = stream;
         })
         .catch((err) => {
-            console.error("Error accessing the camera: ", err);
+            // console.error("Error accessing the camera: ", err);
         });
 
     // Add click event listeners to all buttons with the class 'captureImageBtn'.
@@ -55,16 +55,16 @@ async function captureAndProcessFrame(inputId) {
             'eng',
             { logger: (m) => console.log(m) }
         );
-        console.log("Tesseract Output:", result);
+        // console.log("Tesseract Output:", result);
 
         if(result && typeof result.text !== 'undefined') {
             document.getElementById(inputId).value = result.text;
-            console.log('Text extracted from image:', result.text);        
+            // console.log('Text extracted from image:', result.text);        
         } else {
-            console.error('Tesseract Output is not in the expected format:', result);
+            // console.error('Tesseract Output is not in the expected format:', result);
         }
     } catch (err) {
-        console.error('Error while extracting text:', err);
+        // console.error('Error while extracting text:', err);
     }
 }
 
