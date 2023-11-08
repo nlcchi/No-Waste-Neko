@@ -169,6 +169,6 @@ img {
     
     /* Further reduce the font size for mobile screens */
     .floating-container h1 {
-      font-size: 20em; 
+      font-size: 5em; 
     }
   }
