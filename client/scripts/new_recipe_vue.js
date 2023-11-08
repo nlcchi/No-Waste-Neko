@@ -3,7 +3,6 @@ const main = Vue.createApp({
     data() {
         return {
             recipes: [],
-            // showNoRecipesModal: false, // New property to control modal visibility
         };
     },
 
@@ -60,16 +59,6 @@ const main = Vue.createApp({
         }
     },
 
-    // computed: {
-    //     modalClass() {
-    //         if (showNoRecipesModal) {
-    //             return 'modal show';
-    //         } else {
-    //             return 'modal';
-    //         }
-    //     }
-    // },
-
     // Lifecycle Hook
     mounted() {
         this.showLoadingScreen();
@@ -108,7 +97,6 @@ const main = Vue.createApp({
                 }
                 spoonurl += answers.includeIngredients.join(',');            
             }
-            // console.log(spoonurl);
 
             axios.get(spoonurl).then(response => {
                 console.log("getting recipes");
@@ -121,7 +109,6 @@ const main = Vue.createApp({
                     element.style.display = 'block';
                     element.setAttribute('aria-modal', 'true');
                     element.setAttribute('role', 'dialog');
-                    // this.showNoRecipesModal = true;
                 } else {
                     for (let recipe of recipes) {
                         axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=b6848601c8214ba2aa01641eb221e3cc&includeNutrition=false`).then((response) => {
