@@ -25,7 +25,7 @@ const main = Vue.createApp({
                 },
                 { 
                     question: 'Choice of Protein', 
-                    choices: ['Chicken', 'Pork', 'Beef', 'Fish','Tofu', 'Egg', 'Skip Question']
+                    choices: ['Chicken', 'Pork', 'Beef', 'Fish','Tofu', 'Egg', 'Skip']
                 }
             ],
             questionKeys: {
