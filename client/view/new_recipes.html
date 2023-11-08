@@ -56,7 +56,7 @@
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">No recipes found.</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <a type="button" class="btn-close" @click="showNoRecipesModal"></a>
                     </div>
                     <div class="modal-body">
                         <p><h5>You're choices may be clashing with your profile.</h5>
@@ -64,10 +64,8 @@
                         <h6>Feel free to redo the quiz or change you profile!</h6></p>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn nav-button" href="../view/quiz.html">Redo Quiz</button> -->
                         <a type="button" class="btn nav-button" href="../view/quiz.html">Redo Quiz</a>
                         <a type="button" class="btn nav-button" href="../view/profile_page.html">Change Profile</a>
-                        <!-- <button type="button" class="btn nav-button" href="../view/profile_page.html">Change Profile</button> -->
                     </div>
                     </div>
                 </div>

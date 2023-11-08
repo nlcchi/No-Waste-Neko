@@ -23,7 +23,7 @@ const main = Vue.createApp({
             like_btn.classList.add('liked');
             like_btn.disabled = true;
 
-            let spoonurl = `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`;
+            let spoonurl = `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=b6848601c8214ba2aa01641eb221e3cc&includeNutrition=false`;
             axios.get(spoonurl).then(response => {
                 let recipe = response.data;
                 this.addRecipe(recipe);
@@ -49,7 +49,26 @@ const main = Vue.createApp({
                 console.log(error);
             });
         },
+
+        showNoRecipesModal() {
+            var element = document.getElementById('no-recipes');
+            console.log(element);
+            element.class = 'model';
+            element.removeAttribute('aria-modal');
+            element.removeAttribute('role');
+            element.removeAttribute('style');
+        }
     },
+
+    // computed: {
+    //     modalClass() {
+    //         if (showNoRecipesModal) {
+    //             return 'modal show';
+    //         } else {
+    //             return 'modal';
+    //         }
+    //     }
+    // },
 
     // Lifecycle Hook
     mounted() {
@@ -60,7 +79,7 @@ const main = Vue.createApp({
         axios.get(url).then(response =>{
             var preference = response.data.data;
             
-            let spoonurl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&number=21';
+            let spoonurl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=b6848601c8214ba2aa01641eb221e3cc&number=21';
             
             let diet = preference.diet;
             if (diet.includes("Halal")) {
@@ -76,18 +95,21 @@ const main = Vue.createApp({
             console.log(answers);
             spoonurl += '&maxReadyTime=' + answers.maxReadyTime;
             spoonurl += '&type=' + answers.type;
-            spoonurl += '&cuisine=' + answers.cuisine;
-            spoonurl += '&maxReadyTime=' + answers.maxReadyTime;
-            spoonurl += '&includeIngredients=';
-            for (let ingredient of answers.includeIngredients) {
-                // console.log(ingredient);
-                if (ingredient == 'skip' || ingredient == "nvm, let's go") {
-                    console.log(ingredient, 'true');
-                    answers.includeIngredients.splice(answers.includeIngredients.indexOf(ingredient), 1);
+            if (answers.type == 'main course' || answers.type == 'appetizer') {
+                spoonurl += '&cuisine=' + answers.cuisine;
+                spoonurl += '&maxReadyTime=' + answers.maxReadyTime;
+                spoonurl += '&includeIngredients=';
+                for (let ingredient of answers.includeIngredients) {
+                    // console.log(ingredient);
+                    if (ingredient == 'skip' || ingredient == "nvm, let's go") {
+                        console.log(ingredient, 'true');
+                        answers.includeIngredients.splice(answers.includeIngredients.indexOf(ingredient), 1);
+                    }
                 }
+                spoonurl += answers.includeIngredients.join(',');            
             }
-            spoonurl += answers.includeIngredients.join(',');            
-            console.log(spoonurl);
+            // console.log(spoonurl);
+
             axios.get(spoonurl).then(response => {
                 console.log("getting recipes");
                 let recipes = response.data.results;
@@ -102,7 +124,7 @@ const main = Vue.createApp({
                     // this.showNoRecipesModal = true;
                 } else {
                     for (let recipe of recipes) {
-                        axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
+                        axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=b6848601c8214ba2aa01641eb221e3cc&includeNutrition=false`).then((response) => {
                             this.recipes.push(response.data);
                             // console.log(this.recipes);
                             this.hideLoadingScreen();
