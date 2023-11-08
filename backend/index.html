@@ -22,7 +22,9 @@
         <br>
 
         <font color="red" face="courier">GET
-            <font color="blue">../../backend/api/process_login.php?username=test&password=test</font>
+            <font color="blue">
+                http://localhost/No-Waste-Neko-main/backend/process_login.php?username=test&password=test
+            </font>
         </font>
     </p>
 
@@ -41,7 +43,9 @@
         <br>
 
         <font color="red" face="courier">POST
-            <font color="blue">../../backend/api/process_signup.php?username=neko&password=neko&c_password=neko</font>
+            <font color="blue">
+                http://localhost/No-Waste-Neko-main/backend/process_signup.php?username=neko&password=neko&c_password=neko
+            </font>
         </font>
     </p>
 
@@ -61,7 +65,7 @@
             <br>
 
             <font color="red" face="courier">GET
-                <font color="blue">>../../backend/api/get_preference.php?username=test</font>
+                <font color="blue">http://localhost/No-Waste-Neko-main/backend/get_preference.php?username=test</font>
             </font>
 
         </li>
@@ -73,7 +77,7 @@
             <br>
 
             <font color="red" face="courier">GET
-                <font color="blue">>../../backend/api/get_fridge.php?username=test</font>
+                <font color="blue">http://localhost/No-Waste-Neko-main/backend/get_fridge.php?username=test</font>
             </font>
 
         </li>
@@ -85,7 +89,7 @@
             <br>
 
             <font color="red" face="courier">GET
-                <font color="blue">>../../backend/api/get_recipes.php?username=test</font>
+                <font color="blue">http://localhost/No-Waste-Neko-main/backend/get_recipes.php?username=test</font>
             </font>
 
         </li>
@@ -108,10 +112,30 @@
             Inserts <b>preference</b> that belongs to <b>username</b> into preference table.
             <br>
 
-            <font color="red" face="courier">GET
-                <font color="blue">>../../backend/api/add_preference.php?username=test&diet=vegan</font>
+            <font color="red" face="courier">POST
+                <font color="blue">
+                    http://localhost/No-Waste-Neko-main/backend/add_preference.php
+                </font>
             </font>
+            <table border='1'>
+                <tr>
+                    <th>parameter</th>
+                    <th>value</th>
+                </tr>
 
+                <tr>
+                    <td>username</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>diet</td>
+                    <td>Vegan</td>
+                </tr>
+                <tr>
+                    <td>intolerence</td>
+                    <td>Nuts</td>
+                </tr>
+            </table>
         </li>
 
         <br>
@@ -120,12 +144,34 @@
             Inserts <b>fridge items</b> that belongs to <b>username</b> into fridge table.
             <br>
 
-            <font color="red" face="courier">GET
+            <font color="red" face="courier">POST
                 <font color="blue">
-                    >../../backend/api/add_fridge.php?username=test&productName=fish&productCat=meat&expiryDate=22112023
+                    http://localhost/No-Waste-Neko-main/backend/add_fridge.php
                 </font>
             </font>
+            <table border='1'>
+                <tr>
+                    <th>parameter</th>
+                    <th>value</th>
+                </tr>
 
+                <tr>
+                    <td>username</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>productName</td>
+                    <td>Chicken</td>
+                </tr>
+                <tr>
+                    <td>productCat</td>
+                    <td>Meat</td>
+                </tr>
+                <tr>
+                    <td>expiryDate</td>
+                    <td>2023-10-23</td>
+                </tr>
+            </table>
         </li>
 
         <br>
@@ -134,11 +180,42 @@
             Inserts <b>saved recipes</b> that belongs to <b>username</b> into recipes table.
             <br>
 
-            <font color="red" face="courier">GET
+            <font color="red" face="courier">POST
                 <font color="blue">
-                    >../../backend/api/add_recipes.php?username=test&recipeName=Pizza&recipeURL=www.pizza.com</font>
+                    http://localhost/No-Waste-Neko-main/backend/add_recipe.php
+                </font>
             </font>
+            <table border='1'>
+                <tr>
+                    <th>parameter</th>
+                    <th>value</th>
+                </tr>
 
+                <tr>
+                    <td>username</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>imgURL</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>recipeName</td>
+                    <td>Teriyaki Avocado Salmon</td>
+                </tr>
+                <tr>
+                    <td>servingSize</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>estCookingTime</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>recipeURL</td>
+                    <td>https://www.eatwell101.com/teriyaki-salmon-bowl-recipe</td>
+                </tr>
+            </table>
         </li>
 
     </ul>
@@ -160,7 +237,7 @@
             <br>
 
             <font color="red" face="courier">GET
-                <font color="blue">>../../backend/api/del_preference.php?username=test</font>
+                <font color="blue">http://localhost/No-Waste-Neko-main/backend/del_preference.php?username=test</font>
             </font>
 
         </li>
@@ -173,10 +250,33 @@
 
             <font color="red" face="courier">GET
                 <font color="blue">
-                    >../../backend/api/del_fridge.php?username=test&productName=fish&productCat=meat&expiryDate=22112023
+                    http://localhost/No-Waste-Neko-main/backend/del_fridge.php?username=test&productName=Chicken&productCat=Meat&expiryDate=2023-10-23
                 </font>
             </font>
 
+            <table border='1'>
+                <tr>
+                    <th>parameter</th>
+                    <th>value</th>
+                </tr>
+
+                <tr>
+                    <td>username</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>productName</td>
+                    <td>Chicken</td>
+                </tr>
+                <tr>
+                    <td>productCat</td>
+                    <td>Meat</td>
+                </tr>
+                <tr>
+                    <td>expiryDate</td>
+                    <td>2023-10-23</td>
+                </tr>
+            </table>
         </li>
 
         <br>
@@ -187,9 +287,40 @@
 
             <font color="red" face="courier">GET
                 <font color="blue">
-                    >../../backend/api/del_recipes.php?username=test&recipeName=Pizza&recipeURL=www.pizza.com</font>
+                    http://localhost/No-Waste-Neko-main/backend/del_recipe.php
+                </font>
             </font>
+            <table border='1'>
+                <tr>
+                    <th>parameter</th>
+                    <th>value</th>
+                </tr>
 
+                <tr>
+                    <td>username</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>imgURL</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>recipeName</td>
+                    <td>Teriyaki Avocado Salmon</td>
+                </tr>
+                <tr>
+                    <td>servingSize</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>estCookingTime</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>recipeURL</td>
+                    <td>https://www.eatwell101.com/teriyaki-salmon-bowl-recipe</td>
+                </tr>
+            </table>
         </li>
 
     </ul>
