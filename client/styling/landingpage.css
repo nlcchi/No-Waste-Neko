@@ -11,7 +11,6 @@ body {
 .overlay {
     position: relative;
 
-    /* To bring the bottom segment up in phone screen, see media below */
     display: flex;
     flex-direction: column;
     bottom: 0;
@@ -170,18 +169,18 @@ body {
         left: 15%;
         right: 15%;
     }
-  }
+}
   
   /* Further responsiveness for even smaller screens such as mobile phones */
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     #logo {
-      width: 100px;
-      height: 70px; /* Even smaller size for mobile screens */
+        width: 100px;
+        height: 70px; /* Even smaller size for mobile screens */
     }
     
     /* Further reduce the font size for mobile screens */
     .floating-container h1 {
-      font-size: 10px; 
+        font-size: 10px; 
     }
 
     .floating-container {
@@ -196,9 +195,9 @@ body {
     }
     
     .btn-sign-up, .btn-login {
-    font-size: 10px;
-    width: 80%; /* Adjust the width of the buttons as per design needs */
-    margin: 10px 0; /* Add margin for vertical spacing between buttons */
+        font-size: 10px;
+        width: 80%; /* Adjust the width of the buttons as per design needs */
+        margin: 10px 0; /* Add margin for vertical spacing between buttons */
     }
 
-  }
+}
