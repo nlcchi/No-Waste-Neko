@@ -60,8 +60,32 @@
             body{
                 font-size:16px;
             }
+            #name{
+                font-size: 16px;
+                margin:auto;
+            }
 
       }
+      @media (max-width: 576px) {
+    /* Further adjust font size for screens up to 576px width */
+    #name{
+      font-size: 14px;
+    }
+    body{
+        font-size:14px;
+        margin:auto;
+    }
+}
+      @media (max-width: 414px) {
+    /* Further adjust font size for screens up to 576px width */
+    #name{
+      font-size: 12px;
+    }
+    body{
+        font-size:12px;
+        margin:auto;
+    }
+  }
 
         
 
@@ -119,8 +143,7 @@
     <div class="container d-block h-75 mx-auto rounded-3" id="profile">
 
         <img src="../styling/pics/cat-chef.png" class="mx-auto d-block" alt="">
-
-        <h4 class="header text-center rounded-pill w-50 p-3 mx-auto" id="name">{{userName}}</h4>
+        <h4 class="header text-center rounded-pill w-50 p-3 mx-auto text-center" style="max-width: 100%;" id="name">{{userName}}</h4>
         
         <div class="row">
             <div class="col info">
