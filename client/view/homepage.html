@@ -17,111 +17,13 @@
     <!-- Default styling -->
     <link rel="stylesheet" href="../styling/default.css">
 
+    <!-- Homepage styling -->
+    <link rel="stylesheet" href="../styling/homepage.css">
+
     <!-- redirect if not logged in -->
     <script src="../scripts/redirect.js"></script>
 
-    <style>
-      .icons{
-        width:110px;
-        height:110px
-      }
 
-      #funfact{
-        font-size:15px;
-      }
-
-      .overlay {
-       /* position: fixed; */
-
-       /* To bring the bottom segment up in phone screen, see media below */
-       display: flex;
-       flex-direction: column;
-       /*  */
-
-       bottom: 0;
-       right: 0;
-       left: 0;
-       top: 0;
-       height: 100vh
-       }
-       
-
-
-      @media (max-width: 767px) {
-          .bottom-segment, .buttons-segment, .funfact-segment{
-            height:auto;
-          }
-          img{
-            width:40px;
-            height:40px;
-          }
-
-      }
-
-      @media (min-width: 768px) {
-            .bottom-segment{
-            height: 50vh;
-            bottom:0;
-          }
-
-          .buttons-segment{
-            height: 35vh;
-          }
-
-          .funfact-segment{
-            height: 20vh;
-          }
-      }
-
-      #funfact{
-        line-height:22px;
-        font-weight: 900;
-        font-family: monospace;
-
-      }
-
-        /* button colour */
-
-      
-      #foodtracker-btn{
-        color:rgb(10, 135, 144);
-        border:4px rgb(10, 135, 144) solid;
-        
-      }
-
-      #foodtracker-btn:hover{
-          background-color:rgb(10, 135, 144);
-          border:3px rgb(255, 251, 242) dashed;
-          color:white;
-      }
-
-      #quiz-start-btn{
-        color:rgb(205, 74, 27);
-        border: 4px rgb(205, 74, 27) solid;
-      }
-      #quiz-start-btn:hover{
-          background-color: rgb(224, 89, 41);
-          border:3px rgb(255, 251, 242) dashed;
-          color:white;
-      }
-
-      #saved-recipe-btn{
-        color:rgb(75, 35, 29);
-        border: 4px rgb(75, 35, 29) solid;
-        
-      }
-      #saved-recipe-btn:hover{
-          background-color: rgb(75, 35, 29);
-          border:3px rgb(255, 251, 242) dashed;
-          color:white;
-      }
-      [v-cloak]{
-        display:none
-      }
-      
-
-
-    </style>
   </head>
   
   <body class="non-recipe">
@@ -177,13 +79,8 @@
       <!-- class="container text-end" -->
       <div v-if="!isSmallScreen" class="container mt-3">
         <div class="row justify-content-between align-items-center">
-          <!-- <a type="button" class="col-2 btn btn-md mb-3 non-modal" href="profile_page.html"> My profile
-            <img src="../styling/pics/profile.png" style="width:30px; height:30px">
-          </a> -->
-          <!-- <div class="col-md-6 d-flex justify-content-center align-items-end"> -->
           <h3 class="col header text-center bg-light rounded-pill w-75 p-3">Welcome back, {{userName}}
           </h3>
-          <!-- <a type="button" id="logout" class="col-2 btn m-1 non-modal" @click="logout()">Logout</a> -->
         </div>
       </div>
       

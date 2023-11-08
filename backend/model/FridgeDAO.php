@@ -65,38 +65,6 @@ class FridgeDAO {
         return $result;
     }
 
-
-    // function update($fridge) {
-    //     $result = true;
-
-    //     // connect to database
-    //     $connMgr = new ConnectionManager();
-    //     $conn = $connMgr->connect();
-        
-    //     // prepare insert
-    //     $sql = "UPDATE userfridge SET "{insert}"  WHERE username = :username";
-    //     $stmt = $conn->prepare($sql);
-        
-    //     $username = $user->getUsername();
-    //     $passwordHash = $user->getPasswordHash();
-
-    //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    //     $stmt->bindParam(":passwordHash", $passwordHash, PDO::PARAM_STR);
-        
-
-    //     $result = $stmt->execute();
-    //     if (! $result ){ // encountered error
-    //         $parameters = [ "fridge" => $fridge, ];
-    //         $connMgr->handleError( $stmt, $sql, $parameters );
-    //     }
-        
-    //     // close connections
-    //     $stmt = null;
-    //     $conn = null;        
-        
-    //     return $result;
-    // }
-
     function delete($fridge) {
         $result = true;
 
