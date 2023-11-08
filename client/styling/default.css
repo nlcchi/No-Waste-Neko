@@ -32,15 +32,22 @@ body{
     border: 3px #954639ff solid;
 }
 
-.non-modal{
+.main-btn{
     background-color:rgb(255, 251, 242); 
-    border: 5px #954639 dashed;
+    border: 4px rgb(184, 83, 0) solid;
 
 }
-.non-modal:hover{
-    background-color:rgb(255, 251, 242) ;
-    border: 5px #954639 dashed;
-    color:#954639
+
+.nav-btn{
+    background-color:rgb(234,212,170);
+    border: 3px solid rgb(180, 72, 26);
+    color:black;
+}
+
+.nav-btn:hover{
+  background-color:rgb(234,212,170);
+    border: 3px solid rgb(201,142,117);
+    color:brown;
 }
 
 @media (max-width: 767px) {
@@ -51,6 +58,9 @@ body{
         font-size: 1px;
     }
 }
+
+
+
 
 @media (min-width: 768px) {
     body {
