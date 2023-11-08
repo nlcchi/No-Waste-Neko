@@ -112,7 +112,7 @@ const main = Vue.createApp({
             this.showImage = this.currentQuestion.question !== 'Max Prep time (in mins)';
           } else {
             this.answers['maxReadyTime'] = this.maxReadyTime;
-            console.log(this.answers);
+            // console.log(this.answers);
             sessionStorage.setItem('answers', JSON.stringify(this.answers));
             window.location.href = 'new_recipes.html';
           }

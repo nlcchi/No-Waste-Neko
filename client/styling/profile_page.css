@@ -1,7 +1,5 @@
 img{
     width:150px; height:150px
-    /* width: 100%;
-    height: 100%; */
 }
 
 #logo{
@@ -44,53 +42,53 @@ img{
 
 }
 @media (max-width: 576px) {
-/* Further adjust font size for screens up to 576px width */
-#name{
-font-size: 14px;
-}
-body{
-font-size:14px;
-margin:auto;
-}
+    /* Further adjust font size for screens up to 576px width */
+    #name{
+        font-size: 14px;
+    }
+    body{
+        font-size:14px;
+        margin:auto;
+    }
 }
 @media (max-width: 414px) {
-/* Further adjust font size for screens up to 414px width */
-#name{
-font-size: 12px;
-}
-body{
-font-size:12px;
-margin:auto;
-}
+    /* Further adjust font size for screens up to 414px width */
+    #name{
+        font-size: 12px;
+    }
+    body{
+        font-size:12px;
+        margin:auto;
+    }
 }
 
 
 .loading-screen {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(255, 255, 255, 0.9);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 9999;
-font-family: 'Public Pixel', sans-serif;
-flex-direction: column; /* This will stack children vertically */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: 'Public Pixel', sans-serif;
+    flex-direction: column; /* This will stack children vertically */
 }
 
 .spinner {
-border: 4px solid rgba(0, 0, 0, 0.1);
-border-radius: 50%;
-border-top: 4px solid #000;
-width: 40px;
-height: 40px;
-animation: spin 2s linear infinite;
-margin-bottom: 20px; /* This adds some space between the spinner and the text */
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #000;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px; /* This adds some space between the spinner and the text */
 }
 
 @keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
