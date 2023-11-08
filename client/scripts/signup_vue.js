@@ -13,7 +13,7 @@ const main = Vue.createApp({
     // Methods
     methods: {
         add_user() {
-            console.log("=== [START] add_user() ===")
+            // console.log("=== [START] add_user() ===")
         
         
             let api_endpoint_url = "../../backend/api/process_signup.php"
@@ -24,16 +24,15 @@ const main = Vue.createApp({
                 c_password: this.form.c_password,
             })
             .then((response) => {
-                console.log('Signup successful:', response.data);
+                // console.log('Signup successful:', response.data);
                 window.location.href = "../view/loginpage.html";
     
             }).catch((error) => {
                 // ERROR
-                // Something went wrong
-                console.log(error.response ? error.response.data : error);
+                // console.log(error.response ? error.response.data : error);
             })
         
-            console.log("=== [END] add_user() ===")
+            // console.log("=== [END] add_user() ===")
         
         }
     },

@@ -8,7 +8,6 @@
   }
 
   .overlay {
-   /* position: fixed; */
 
    /* To bring the bottom segment up in phone screen, see media below */
    display: flex;

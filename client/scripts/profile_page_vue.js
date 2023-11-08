@@ -1,4 +1,4 @@
-console.log("in profile_page.js");
+// console.log("in profile_page.js");
 
 const app = Vue.createApp({
     // Data Properties
@@ -22,7 +22,7 @@ const app = Vue.createApp({
         },
 
         addNewPreferences(user) {
-            console.log("addNewPreferences");
+            // console.log("addNewPreferences");
             this.dietReq = [];
             this.intolerances = [];
             
@@ -38,7 +38,7 @@ const app = Vue.createApp({
                 }
             };
 
-            console.log(this.dietReq, this.intolerances);
+            // console.log(this.dietReq, this.intolerances);
             if (this.dietReq.length > 0) {
             //iterate to add to diet
                 for (let i = 0; i < this.dietReq.length; i++) {
@@ -53,10 +53,10 @@ const app = Vue.createApp({
                                 'Content-Type': 'application/json'
                         }})
                         .then(response => {
-                            console.log('added diet', response.data);
+                            // console.log('added diet', response.data);
                         })
                         .catch(error => {
-                            console.error('adding error', error);
+                            // console.error('adding error', error);
                         });
                 }
             }
@@ -75,10 +75,10 @@ const app = Vue.createApp({
                                 'Content-Type': 'application/json'
                         }})
                         .then(response => {
-                            console.log('added intol', response.data);
+                            // console.log('added intol', response.data);
                         })
                         .catch(error => {
-                            console.error('adding error', error);
+                            // console.error('adding error', error);
                         });
                 }
             }
@@ -86,19 +86,19 @@ const app = Vue.createApp({
         },
         
         saveChanges() {
-            console.log("saveChanges");
+            // console.log("saveChanges");
             var user = sessionStorage.getItem("username");
 
             //clear db
             var url1 = '../../backend/api/del_preference.php?username=' + user;
             axios.post(url1)
             .then(response => {
-                console.log('deleted', response.data);
+                // console.log('deleted', response.data);
                 this.isCleared = true;
                 this.addNewPreferences(user);
             })
             .catch(error => {
-                console.error('Error removing preferences', error);
+                // console.error('Error removing preferences', error);
             });
 
         },
@@ -153,7 +153,7 @@ const app = Vue.createApp({
                 })
                 .catch(error => {
                     this.hideLoadingScreen();
-                    console.error('Error',error);
+                    // console.error('Error',error);
                 });
         }
     },
