@@ -28,12 +28,14 @@ APIs used:
 4. Connect to database: Local REST API (documentation found in backend/index.html)
 
 # Team Contributions
-Beata Sancha Bautista De Leon: Front-end (Overall styling)
-Julia Villa: Front-end (profile and quiz pages HTML + Javascript)
-Khoo Chloe: Local REST API, back-end (login, signup Javascript)
-Koh Yong En Jeremy: Front-end (saved recipes HTML + Javascript)
-Ngyuen Le Cam Chi: GitHub Management, Cloud deployment, food tracker, Front-end (new recipe)
-Sophie Montalban: Front-end (Overall styling
+| Member  | Contribution |
+| ------------- | ------------- |
+| Beata Sancha Bautista De Leon  |  Front-end (Overall styling)  |
+| Julia Villa  | Front-end (profile and quiz pages HTML + Javascript)  |
+| Khoo Chloe  | Local REST API, back-end (login, signup Javascript)  |
+| Koh Yong En Jeremy  | Front-end (saved recipes HTML + Javascript)  |
+| Ngyuen Le Cam Chi  | GitHub Management, Cloud deployment, Front-end (new recipe, foodtracker)  |
+| Sophie Montalban  | Front-end (Overall styling)  |
 
 # Notes
 If quiz answers clash with diet/intolerences, Spoonacular API is unable to return recipes.
