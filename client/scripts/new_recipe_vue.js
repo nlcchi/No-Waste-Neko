@@ -22,7 +22,7 @@ const main = Vue.createApp({
             like_btn.classList.add('liked');
             like_btn.disabled = true;
 
-            let spoonurl = `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=5276eade17fc4159ab4c6467ce330145&includeNutrition=false`;
+            let spoonurl = `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`;
             axios.get(spoonurl).then(response => {
                 let recipe = response.data;
                 this.addRecipe(recipe);
@@ -59,7 +59,7 @@ const main = Vue.createApp({
         axios.get(url).then(response =>{
             var preference = response.data.data;
             
-            let spoonurl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=5276eade17fc4159ab4c6467ce330145&number=21';
+            let spoonurl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&number=21';
             
             let diet = preference.diet;
             if (diet.includes("Halal")) {
@@ -93,7 +93,7 @@ const main = Vue.createApp({
                 console.log(recipes);
                 
                 for (let recipe of recipes) {
-                    axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=5276eade17fc4159ab4c6467ce330145&includeNutrition=false`).then((response) => {
+                    axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
                         this.recipes.push(response.data);
                         // console.log(this.recipes);
                         this.hideLoadingScreen();
