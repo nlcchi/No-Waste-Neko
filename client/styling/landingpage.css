@@ -59,6 +59,7 @@ img {
 
 .top-container {
     height: 50%;
+    /* position: relative; */
 }
 
 .bottom-container {
@@ -82,13 +83,16 @@ img {
 .floating-container {
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 70%; 
+    /* width: 70%;  */
     height: 30%; 
     position: absolute; 
     background-color: hsla(0, 100%, 100%, 0.8); 
-    top: 27%; /* Move the container 50% from the top of the background container */
-    left: 50%; /* Move the container 50% from the left of the background container */
-    transform: translate(-50%, -50%); /* Center the container both horizontally and vertically */
+    top: 10%; 
+    /* Move the container 50% from the top of the background container */
+    left: 15%; /* Move the container 50% from the left of the background container */
+    right: 15%; 
+    /* transform: translate(0, -50%);  */
+    /* Center the container both horizontally and vertically */
     /* z-index: 2; Use z-index to ensure the floating container appears on top of the background */
     /* border: 1px solid #000; */
     display: flex; 
@@ -140,6 +144,21 @@ img {
     height: 50%;;
 }
 
+.overlay {
+    position: relative;
+
+    /* To bring the bottom segment up in phone screen, see media below */
+    display: flex;
+    flex-direction: column;
+    /*  */
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100vh;
+}
+
 @media (max-width: 768px) { /* Adjust this breakpoint as needed */
     #logo {
       width: 100px;
@@ -148,15 +167,27 @@ img {
   
     .floating-container h1 {
       /* Smaller font size for smaller screens */
-      font-size: 20em; 
+      font-size: 20px; 
       /* Ensures text fits within the container */
       word-wrap: break-word;
       padding: 0 10px; /* Add padding to keep content from touching the edges */
     }
 
+    #buttons {
+        display: flex; /* Keep buttons next to each other */
+        justify-content: center; /* Center buttons horizontally */
+        flex-wrap: nowrap; /* Prevent buttons from wrapping to the next line */
+    }
+    
+    .btn-sign-up, .btn-login {
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    width: calc(50% - 10px); /* Adjust the width of the buttons to fit side by side, accounting for any margins */
+    margin: 0 5px; /* Add margin to create space between buttons, adjust as needed */
+    }
+    
     #chef {
-        width: 70px;
-        height: 70px;
+    width: 70px;
+    height: 70px;
     }
   }
   
@@ -169,6 +200,18 @@ img {
     
     /* Further reduce the font size for mobile screens */
     .floating-container h1 {
-      font-size: 5em; 
+      font-size: 10px; 
+    }
+
+    #buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%; /* Use the full width of the container */
+        align-items: center; /* Center buttons horizontally */
+    }
+    
+    .btn-sign-up, .btn-login {
+    font-size: 10px;
+    width: 80%; /* Adjust the width of the buttons as per design needs */
+    margin: 10px 0; /* Add margin for vertical spacing between buttons */
     }
   }
