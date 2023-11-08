@@ -60,7 +60,7 @@
 
             <div v-for="choice in currentChoices" :key="choice" 
                 class="col col-md d-flex justify-content-center align-items-center" 
-                :class="{ 'col-6': isTimeQuestion, 'col-12': !isTimeQuestion }">
+                :class="{ 'col-6': isTimeQuestion || isVegeQn || isProteinQn}">
                 <button class="btn btn-lg my-3 animate__animated animate__fadeInUp" 
                     :style="buttonStyle"
                     @click="selectChoice(choice)">

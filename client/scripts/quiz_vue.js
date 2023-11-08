@@ -51,7 +51,11 @@ const main = Vue.createApp({
       buttonStyle() {
         if (this.currentQuestion.question === 'Max Prep time (in mins)') {
           return "width:150px; height:150px";
-        } else if (this.currentQuestion.question === 'Which course') {
+        }
+          else if( this.currentQuestion.question === 'Choice of Protein' ){
+            return "width:170px; height:170px";
+          }
+         else if (this.currentQuestion.question === 'Which course') {
           return "width:300px; height:250px";
         } else {
           return "width:195px; height:195px";
@@ -67,6 +71,15 @@ const main = Vue.createApp({
         const timeQuestions = ['Max Prep time (in mins)'];
         return timeQuestions.includes(this.currentQuestion.question);
     },
+      isProteinQn() {
+        const Questions = ['Choice of Protein'];
+        return Questions.includes(this.currentQuestion.question);
+    },
+      isVegeQn() {
+        const Questions = ['Choice of Vegetable'];
+        return Questions.includes(this.currentQuestion.question);
+    },
+
     },
 
     // Methods
