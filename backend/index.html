@@ -1,0 +1,202 @@
+<html>
+
+<head>
+    <title>No-Waste Neko API Documentation</title>
+</head>
+
+<body>
+
+    <h1>No-Waste Neko API v1.0 - Documentation</h1>
+
+    <hr>
+
+
+    <h2>process_login</h2>
+    <p>
+        <b>Description</b>
+        <br>
+        Validates login information and redirects to homepage if successful.
+    </p>
+    <p>
+        <b>HTTP request</b>
+        <br>
+
+        <font color="red" face="courier">GET
+            <font color="blue">../../backend/api/process_login.php?username=test&password=test</font>
+        </font>
+    </p>
+
+
+    <hr>
+
+
+    <h2>process_signup</h2>
+    <p>
+        <b>Description</b>
+        <br>
+        Validates signup information and adds user's login information to database. Redirects to login page.
+    </p>
+    <p>
+        <b>HTTP request</b>
+        <br>
+
+        <font color="red" face="courier">POST
+            <font color="blue">../../backend/api/process_signup.php?username=neko&password=neko&c_password=neko</font>
+        </font>
+    </p>
+
+
+    <hr>
+
+    <h2>get_{item}</h2>
+    <p>
+        <b>Description</b>
+        <br>
+        Gets objects from the database.
+    </p>
+
+    <ul>
+        <li>
+            Return all <b>preferences</b> that belongs to <b>username</b> in a JSON format.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">>../../backend/api/get_preference.php?username=test</font>
+            </font>
+
+        </li>
+
+        <br>
+
+        <li>
+            Return all <b>fridge items</b> that belongs to <b>username</b> in a JSON format.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">>../../backend/api/get_fridge.php?username=test</font>
+            </font>
+
+        </li>
+
+        <br>
+
+        <li>
+            Return all <b>saved recipes</b> that belongs to <b>username</b> in a JSON format.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">>../../backend/api/get_recipes.php?username=test</font>
+            </font>
+
+        </li>
+
+    </ul>
+    </p>
+
+
+    <hr>
+
+
+    <h2>add_{item}</h2>
+    <p>
+        <b>Description</b>
+        <br>
+        Adds objects into the database.
+    </p>
+    <ul>
+        <li>
+            Inserts <b>preference</b> that belongs to <b>username</b> into preference table.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">>../../backend/api/add_preference.php?username=test&diet=vegan</font>
+            </font>
+
+        </li>
+
+        <br>
+
+        <li>
+            Inserts <b>fridge items</b> that belongs to <b>username</b> into fridge table.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">
+                    >../../backend/api/add_fridge.php?username=test&productName=fish&productCat=meat&expiryDate=22112023
+                </font>
+            </font>
+
+        </li>
+
+        <br>
+
+        <li>
+            Inserts <b>saved recipes</b> that belongs to <b>username</b> into recipes table.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">
+                    >../../backend/api/add_recipes.php?username=test&recipeName=Pizza&recipeURL=www.pizza.com</font>
+            </font>
+
+        </li>
+
+    </ul>
+    </p>
+
+
+    <hr>
+
+
+    <h2>del_{item}</h2>
+    <p>
+        <b>Description</b>
+        <br>
+        Delete objects from the database.
+    </p>
+    <ul>
+        <li>
+            Deletes all <b>preference</b> that belongs to <b>username</b>.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">>../../backend/api/del_preference.php?username=test</font>
+            </font>
+
+        </li>
+
+        <br>
+
+        <li>
+            Deletes <b>fridge items</b> that belongs to <b>username</b>.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">
+                    >../../backend/api/del_fridge.php?username=test&productName=fish&productCat=meat&expiryDate=22112023
+                </font>
+            </font>
+
+        </li>
+
+        <br>
+
+        <li>
+            Deletes <b>saved recipes</b> that belongs to <b>username</b>.
+            <br>
+
+            <font color="red" face="courier">GET
+                <font color="blue">
+                    >../../backend/api/del_recipes.php?username=test&recipeName=Pizza&recipeURL=www.pizza.com</font>
+            </font>
+
+        </li>
+
+    </ul>
+    </p>
+
+    <hr>
+
+</body>
+
+</html>
