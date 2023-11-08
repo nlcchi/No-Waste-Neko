@@ -57,7 +57,7 @@
 
   }
 
-    /* button colour */
+  /* button colour */
 
   
   #foodtracker-btn{
@@ -76,6 +76,7 @@
     color:rgb(205, 74, 27);
     border: 4px rgb(205, 74, 27) solid;
   }
+  
   #quiz-start-btn:hover{
       background-color: rgb(224, 89, 41);
       border:3px rgb(255, 251, 242) dashed;
@@ -87,11 +88,13 @@
     border: 4px rgb(75, 35, 29) solid;
     
   }
+
   #saved-recipe-btn:hover{
       background-color: rgb(75, 35, 29);
       border:3px rgb(255, 251, 242) dashed;
       color:white;
   }
+
   [v-cloak]{
     display:none
   }
