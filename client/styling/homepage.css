@@ -1,31 +1,58 @@
-.overlay {
-  /* position: fixed; */
+.icons{
+    width:110px;
+    height:110px
+}
 
-  /* To bring the bottom segment up in phone screen, see media below */
+#funfact{
+  font-size:15px;
+}
+
+.overlay {
   display: flex;
   flex-direction: column;
-
   bottom: 0;
   right: 0;
   left: 0;
   top: 0;
   height: 100vh
 }
+   
 
-.icons{
-  width:110px;
-  height:110px
+
+@media (max-width: 767px) {
+  .bottom-segment, .buttons-segment, .funfact-segment{
+    height:auto;
+  }
+  img{
+    width:40px;
+    height:40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bottom-segment{
+    height: 50vh;
+    bottom:0;
+  }
+
+  .buttons-segment{
+    height: 35vh;
+  }
+
+  .funfact-segment{
+    height: 20vh;
+  }
 }
 
 #funfact{
   line-height:22px;
   font-weight: 900;
   font-family: monospace;
-  font-size: 15px;
 }
 
 /* buttons */
 
+  
 #foodtracker-btn{
   color:rgb(10, 135, 144);
   border:4px rgb(10, 135, 144) solid;
@@ -59,32 +86,6 @@
     background-color: rgb(75, 35, 29);
     border:3px rgb(255, 251, 242) dashed;
     color:white;
-}
-
-@media (max-width: 767px) {
-  .bottom-segment, .buttons-segment, .funfact-segment{
-    height:auto;
-  }
-  img{
-    width:40px;
-    height:40px;
-  }
-
-}
-
-@media (min-width: 768px) {
-    .bottom-segment{
-    height: 50vh;
-    bottom:0;
-  }
-
-  .buttons-segment{
-    height: 35vh;
-  }
-
-  .funfact-segment{
-    height: 20vh;
-  }
 }
 
 [v-cloak]{
