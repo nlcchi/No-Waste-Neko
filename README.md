@@ -25,7 +25,7 @@ APIs used:
 1. Recipe generator: Spoonacular API (https://spoonacular.com/food-api/docs#Search-Recipes-Complex)
 2. Access to user's camera: MediaDevices API (https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
 3. Image to text: OCR API (Tesseract.js) (https://github.com/naptha/tesseract.js/blob/master/docs/intro.md)
-4. Connect to database: Local REST API
+4. Connect to database: Local REST API (documentation found in backend/index.html)
 
 # Team Contributions
 Beata Sancha Bautista De Leon: Front-end (Overall styling)
