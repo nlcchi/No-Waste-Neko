@@ -3,6 +3,7 @@ const main = Vue.createApp({
     data() {
         return {
             recipes: [],
+            // showNoRecipesModal: false, // New property to control modal visibility
         };
     },
 
@@ -91,21 +92,32 @@ const main = Vue.createApp({
                 console.log("getting recipes");
                 let recipes = response.data.results;
                 console.log(recipes);
-                
-                for (let recipe of recipes) {
-                    axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
-                        this.recipes.push(response.data);
-                        // console.log(this.recipes);
-                        this.hideLoadingScreen();
-                    }).catch((error) => {
-                        console.error(error);
-                        this.hideLoadingScreen();
-                    });
+                if (recipes.length == 0) {
+                    this.hideLoadingScreen();
+                    var element = document.getElementById('no-recipes');
+                    element.class = 'model show';
+                    element.style.display = 'block';
+                    element.setAttribute('aria-modal', 'true');
+                    element.setAttribute('role', 'dialog');
+                    // this.showNoRecipesModal = true;
+                } else {
+                    for (let recipe of recipes) {
+                        axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=8c261a5b6a7d439d8f4dd2357a0d9c0b&includeNutrition=false`).then((response) => {
+                            this.recipes.push(response.data);
+                            // console.log(this.recipes);
+                            this.hideLoadingScreen();
+                        }).catch((error) => {
+                            console.error(error);
+                            this.hideLoadingScreen();
+                        });
+                    }
                 }
+                
             }).catch((error) => {
                 console.error(error);
                 this.hideLoadingScreen();
             });
+            
         }).catch(error => {
             console.log(error);
         });

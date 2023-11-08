@@ -95,6 +95,28 @@
         </div>
 
         <div id="recipes-shown" class="container sml">
+            <div class="modal" tabindex="-1" id="no-recipes">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">No recipes found.</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><h5>You're choices may be clashing with your profile.</h5>
+                        <br>
+                        <h6>Feel free to redo the quiz or change you profile!</h6></p>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn nav-button" href="../view/quiz.html">Redo Quiz</button> -->
+                        <a type="button" class="btn nav-button" href="../view/quiz.html">Redo Quiz</a>
+                        <a type="button" class="btn nav-button" href="../view/profile_page.html">Change Profile</a>
+                        <!-- <button type="button" class="btn nav-button" href="../view/profile_page.html">Change Profile</button> -->
+                    </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="recipes-row" class="row">
                 <div v-for="recipe in recipes" :key="recipe.id" class="col col-lg-4 col-md-6">
                     <div class="card m-4" style="width: 18rem;">
@@ -124,5 +146,13 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script src="../scripts/new_recipe_vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
+        
+        myModal.addEventListener('shown.bs.modal', () => {
+          myInput.focus()
+        })
+    </script>
   </body>
 </html>
