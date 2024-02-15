@@ -5,13 +5,13 @@ An web application aimed to reduce household food wastage due to expiry dates by
 3. Spreading awareness in forms of fun facts and trivias.
 
 # links
-Deployed Website: https://no-waste-neko.azurewebsites.net/client/view/landingpage.html
-Git Repo: https://github.com/nlcchi/No-Waste-Neko
-If using Github: copy repository and launch landingpage.html
-If launching code from submitted files: launch landingpage.html
+Deployed Website: https://no-waste-neko.azurewebsites.net/client/view/landingpage.htm l<br>
+Git Repo: https://github.com/nlcchi/No-Waste-Neko <br>
+If using Github: copy repository and launch landingpage.html <br>
+If launching code from submitted files: launch landingpage.html <br>
 
 # Test Account
-Username: test
+Username: test <br>
 Password: test
 
 # Tech Stacks
@@ -44,7 +44,7 @@ APIs used:
 | Julia Villa  | Front-end (profile and quiz pages HTML + Javascript)  |
 | Khoo Chloe  | Local REST API, back-end (login, signup Javascript)  |
 | Koh Yong En Jeremy  | Front-end (saved recipes HTML + Javascript)  |
-| Ngyuen Le Cam Chi  | GitHub Management, Cloud deployment, Front-end (new recipe, foodtracker)  |
+| Ngyuen Le Cam Chi  | GitHub Management, Cloud deployment, Front-end (new recipe, foodtracker), External API deployment (Recipe generator, OCR API)  |
 | Sophie Montalban  | Front-end (Overall styling)  |
 
 # Notes
