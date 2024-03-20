@@ -7,6 +7,7 @@ An web application aimed to reduce household food wastage due to expiry dates by
 # links
 Deployed Website: https://no-waste-neko.azurewebsites.net/client/view/landingpage.html <br>
 Git Repo: https://github.com/nlcchi/No-Waste-Neko <br>
+Youtube Demostration: https://www.youtube.com/watch?v=wsaWLg5ZgEI <br>
 If using Github: copy repository and launch landingpage.html <br>
 If launching code from submitted files: launch landingpage.html <br>
 
